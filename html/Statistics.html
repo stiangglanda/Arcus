@@ -72,7 +72,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="Statistics.html">
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -121,79 +121,95 @@
 
 
     <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
-
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Dashboard</h5>
-
-              <!-- General Form Elements -->
-              <form>
-
-                <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">Parcour</label>
-                  <div class="col-9">
-                    <select class="form-select" aria-label="Default select example">
-                      <option selected>Open this select menu</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-                  </div>
-                  <div class="col-1">
-                    <button type="button" class="btn btn-success">Add</button>
-                  </div>
-                </div>
-
-                <div class="card">
-                  <div class="card-body">
-                    <h5 class="card-title">3 Player</h5>
-                    <!-- List group With badges -->
-                    <ul class="list-group">
-                      <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Player 1
-                        <span><button type="button" class="btn btn-danger rounded-pill">Remove</button></span>
-                      </li>
-                      <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Player 2
-                        <span><button type="button" class="btn btn-danger rounded-pill">Remove</button></span>
-                      </li>
-                      <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Player 3
-                        <span><button type="button" class="btn btn-danger rounded-pill">Remove</button></span>
-                      </li>
-                    </ul><!-- End List With badges -->
-                    <div class="d-grid gap-2 mt-3">
-                      <button class="btn btn btn-success" type="button">Add Player</button>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">Zählweise</label>
-                  <div>
-                    <select class="form-select" aria-label="Default select example">
-                      <option selected>Open this select menu</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="d-grid gap-2 mt-3">
-                  <button class="btn btn-primary" type="submit">Start</button>
-                </div>
-
-              </form><!-- End General Form Elements -->
-
+        <div class="row">
+  
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Statistics</h5>
+  
+                <!-- Line Chart -->
+                <div id="lineChart"></div>
+  
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    new ApexCharts(document.querySelector("#lineChart"), {
+                      series: [{
+                        name: "Score",
+                        data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+                      }],
+                      chart: {
+                        height: 350,
+                        type: 'line',
+                        zoom: {
+                          enabled: false
+                        }
+                      },
+                      dataLabels: {
+                        enabled: false
+                      },
+                      stroke: {
+                        curve: 'straight'
+                      },
+                      grid: {
+                        row: {
+                          colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                          opacity: 0.5
+                        },
+                      },
+                      xaxis: {
+                        categories: ['Animal 1', 'Animal 2', 'Animal 3', 'Animal 4', 'Animal 5', 'Animal 6', 'Animal 7', 'Animal 8', 'Animal 9'],
+                      }
+                    }).render();
+                  });
+                </script>
+                <!-- End Line Chart -->
+  
+              </div>
             </div>
           </div>
+  
+          
+      </section>
+      <section class="section">
+        <div class="row">
+          <div class="col-lg-12">
+  
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Default Table</h5>
+  
+                <!-- Default Table -->
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Position</th>
+                      <th scope="col">Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Player 2</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Player 1</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Player 3</td>
+                    </tr>
+                  </tbody>
+                </table>
 
-        </div>
-
-      </div>
-    </section>
+                <div class="d-grid gap-2 mt-3">
+                    <button class="btn btn-primary" type="submit">Finish</button>
+                  </div>
+                <!-- End Default Table Example -->
+              </div>
+            </div>
+        </section>
 
   </main><!-- End #main -->
 
