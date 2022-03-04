@@ -1,14 +1,15 @@
 <?php
-    function OpenCon() {
-        $dbhost = "localhost";
-        $dbuser = "id18558812_arcus";
-        $dbpass = "vrbLW!V?o0-H/(Fk";
-        $db = "id18558812_arcusdb";
-        $conn = new mysqli($dbhost, $dbuser, $dbpass, $db) or die("Connect failed: %s\n" . $conn->error);
-        return $conn;
-    }
+$servername = "localhost";
+$username = "id18558812_arcus";
+$password = "vrbLW!V?o0-H/(Fk";
+$database = "id18558812_arcusdb";
 
-    function CloseCon($conn) {
-        $conn->close();
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully"; 
+    } catch(PDOException $e) {    
+    echo "Connection failed: " . $e->getMessage();
     }
 ?>
