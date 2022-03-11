@@ -16,8 +16,6 @@
 
     echo "test";
     echo "$firstName";
-    // echo "This is Button1 that is selected";
-    // echo "This is Button1 that is selected";
     ?>
     </head>
 
