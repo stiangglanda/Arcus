@@ -11,9 +11,9 @@ function connect($host, $database, $user, $password)
 
 		return new PDO($dsn, $user, $password, $options);
 	} catch (PDOException $e) {
-        echo $e->getMessage();
+		echo $e->getMessage();
 		die($e->getMessage());
 	}
 }
 
-return connect($host, $db, $user, $password);
+return connect($host, $database, $user, $password);
