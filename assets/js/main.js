@@ -4,6 +4,20 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
+let btn = document.getElementById("addPlayer");
+btn.addEventListener('click', event => {
+  addPlayer();
+});
+
+function addPlayer() {
+  var add = document.getElementById("addPlayer");
+  add.innerHTML = "dasdasdasd"
+}
+
+
+
+
 (function () {
   "use strict";
 
