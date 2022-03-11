@@ -51,16 +51,16 @@
                                             <p class="text-center small">Enter your personal details to create account
                                             </p>
                                         </div>
-                                        <form class="row g-3 needs-validation" novalidate>
+                                        <form action="../forms/register.php" class="row g-3 needs-validation" novalidate>
                                             <div class="col-12">
                                                 <label for="FirstName" class="form-label">First Name</label>
-                                                <input type="text" name="name" class="form-control" id="FirstName"
+                                                <input type="text" name="firstName" class="form-control" id="FirstName"
                                                     required>
                                                 <div class="invalid-feedback">Please, enter your name!</div>
                                             </div>
                                             <div class="col-12">
                                                 <label for="SecondName" class="form-label">Second Name</label>
-                                                <input type="text" name="name" class="form-control" id="SecondName"
+                                                <input type="text" name="lastName" class="form-control" id="SecondName"
                                                     required>
                                                 <div class="invalid-feedback">Please, enter your name!</div>
                                             </div>
@@ -80,7 +80,7 @@
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-12">
-                                                <button class="btn btn-primary w-100" type="submit">Create
+                                                <button class="btn btn-primary w-100" type="submit" onclick="">Create
                                                     Account</button>
                                             </div>
                                             <div class="col-12">

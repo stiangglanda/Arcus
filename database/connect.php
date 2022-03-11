@@ -1,6 +1,6 @@
 <?php
 
-require_once 'config.php';
+require '../database/config.php';
 
 function connect($db_host, $db_database, $db_user, $db_password)
 {
@@ -9,9 +9,14 @@ function connect($db_host, $db_database, $db_user, $db_password)
 	try {
 		$options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
 
-		return new PDO($dsn, $db_user, $db_password, $options);
+		$pdo = new PDO($dsn, $db_user, $db_password, $options);
+
+		if ($pdo) {
+			echo "Successfully connected to $db_database";
+		}
+
+		return $pdo;
 	} catch (PDOException $e) {
-		echo $e->getMessage();
 		die($e->getMessage());
 	}
 }

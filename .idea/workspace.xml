@@ -20,8 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ef77e06-e42a-49f4-a248-ec2203026107" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/connect.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/connect.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/Register.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/Register.html" afterDir="false" />
     </list>
@@ -36,6 +35,8 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4" />
   <component name="ProjectId" id="26EfX5mTeGu6rJ4Cr1u8arLXNuq" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -57,7 +58,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1646993702960</updated>
-      <workItem from="1646993706184" duration="247000" />
+      <workItem from="1646993706184" duration="2112000" />
     </task>
     <servers />
   </component>
@@ -77,6 +78,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="420" y="160" key="#CLI_Interpreters" timestamp="1646994036559">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="420" y="160" key="#CLI_Interpreters/0.0.1680.1010@0.0.1680.1010" timestamp="1646994036559" />
+    <state x="547" y="148" key="#PHP" timestamp="1646994044449">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="547" y="148" key="#PHP/0.0.1680.1010@0.0.1680.1010" timestamp="1646994044449" />
     <state x="674" y="428" key="NewPhpFileDialog" timestamp="1646993930984">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
