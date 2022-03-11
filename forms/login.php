@@ -2,19 +2,18 @@
 // connect to db
 try {
 
-    $pdo = require 'connect.php';
+    $pdo = require '../database/connect.php';
     // get post records
-    $nickName = $_POST['username'];
-    $password = $_POST['password'];
+    $nickName = $_GET['username'];
+    $password = $_GET['password'];
 
     // sql statements
 
-    $stmt = $pdo->prepare("SELECT * FROM users where nickName like ? and password like ?");
-    $stmt->execute([$nickName, $password]);
+    $stmt = $pdo->prepare("SELECT * FROM user");
+    $stmt->execute();
     while ($row = $stmt->fetch()) {
-        echo $row['nickname'] . $row['password'] . "<br />\n";
+        echo $row['nickname'] . $row['password'] . "<br>\n";
     }
-} catch (\Throwable $th) {
-    print_r($e->getMessage());
+} catch (\Throwable $e) {
     die($e->getMessage());
 }
