@@ -15,6 +15,6 @@ try {
         echo $row['nickname'] . $row['password'] . "<br />\n";
     }
 } catch (\Throwable $th) {
-    echo $e->getMessage();
+    print_r($e->getMessage());
     die($e->getMessage());
 }
