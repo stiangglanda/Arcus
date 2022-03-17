@@ -11,7 +11,6 @@ try {
 
     $sql = "INSERT INTO user (firstName, lastName, nickName, password) VALUES (?,?,?,?)";
     $pdo->prepare($sql)->execute([$firstName, $lastName, $nickName, $password]);
-    echo "Inserted";
 } catch (\Throwable $e) {
     die($e->getMessage());
 }

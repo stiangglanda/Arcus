@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
-  <component name="ChangeListManager">
-    <list default="true" id="0db51fa7-1174-4f88-91ff-793778e5cf7d" name="Default Changelist" comment="" />
-=======
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -25,10 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0ef77e06-e42a-49f4-a248-ec2203026107" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/connect.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/connect.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/Register.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/Register.html" afterDir="false" />
     </list>
->>>>>>> 36c1fcb2839a6d3ec4fba4850b87153e6d831546
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,16 +34,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-<<<<<<< HEAD
   <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4" />
-=======
-<<<<<<< HEAD
-  <component name="ProjectId" id="25rtXE34W9cpHrkaSmZA05ne559" />
-=======
->>>>>>> 2409109340db27a34807285dd85e5dd9171e31f5
   <component name="ProjectId" id="26EfX5mTeGu6rJ4Cr1u8arLXNuq" />
->>>>>>> 36c1fcb2839a6d3ec4fba4850b87153e6d831546
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -58,49 +45,25 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-<<<<<<< HEAD
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Bikin 1" />
-=======
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
->>>>>>> 36c1fcb2839a6d3ec4fba4850b87153e6d831546
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-<<<<<<< HEAD
-      <changelist id="0db51fa7-1174-4f88-91ff-793778e5cf7d" name="Default Changelist" comment="" />
-      <created>1646297070671</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1646297070671</updated>
-      <workItem from="1646297074272" duration="216000" />
-=======
       <changelist id="0ef77e06-e42a-49f4-a248-ec2203026107" name="Default Changelist" comment="" />
       <created>1646993702960</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1646993702960</updated>
-<<<<<<< HEAD
-      <workItem from="1646993706184" duration="2112000" />
-=======
-      <workItem from="1646993706184" duration="247000" />
->>>>>>> 36c1fcb2839a6d3ec4fba4850b87153e6d831546
->>>>>>> 2409109340db27a34807285dd85e5dd9171e31f5
+      <workItem from="1646993706184" duration="2707000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
-<<<<<<< HEAD
-  <component name="WindowStateProjectService">
-    <state x="628" y="277" key="FileChooserDialogImpl" timestamp="1646297290644">
-      <screen x="0" y="0" width="1680" height="1010" />
-    </state>
-    <state x="628" y="277" key="FileChooserDialogImpl/0.0.1680.1010@0.0.1680.1010" timestamp="1646297290644" />
-=======
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -130,6 +93,5 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="341" y="150" key="SettingsEditor/0.0.1680.1010@0.0.1680.1010" timestamp="1646993848514" />
->>>>>>> 36c1fcb2839a6d3ec4fba4850b87153e6d831546
   </component>
 </project>
