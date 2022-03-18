@@ -9,10 +9,9 @@
     <?php
 
     // get post records
-    $firstName = $_GET['firstName'];
-    $lastName = $_GET['lastName'];
-    $nickName = $_GET['username'];
-    $password = $_GET['password'];
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['secondName'];
+    $nickName = $_POST['nickName'];
 
     echo "test";
     echo "$firstName";

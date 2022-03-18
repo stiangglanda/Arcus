@@ -81,20 +81,20 @@
               <div class="card-body">
                 <h5 class="card-title">Add Player</h5>
                 <!-- General Form Elements -->
-                <form>
+                <form action="../forms/addPlayer.php" method="post">
                   <div class="col-12">
-                    <label for="FirstName" class="form-label">First Name</label>
-                    <input type="text" name="name" class="form-control" id="FirstName" required>
+                    <label for="FirstName" class="form-label"><?php include addPlayer.php ?></label>
+                    <input type="text" name="firstName" class="form-control" id="FirstName" required>
                     <div class="invalid-feedback">Please, enter your name!</div>
                   </div>
                   <div class="col-12">
-                    <label for="SecondName" class="form-label">Second Name</label>
-                    <input type="text" name="name" class="form-control" id="SecondName" required>
+                    <label for="SecondName" class="form-label">Last Name</label>
+                    <input type="text" name="secondName" class="form-control" id="SecondName" required>
                     <div class="invalid-feedback">Please, enter your name!</div>
                   </div>
                   <div class="col-12">
-                    <label for="SecondName" class="form-label">Nickname</label>
-                    <input type="text" name="name" class="form-control" id="SecondName" required>
+                    <label for="NickName" class="form-label">Nickname</label>
+                    <input type="text" name="nickName" class="form-control" id="NickName" required>
                     <div class="invalid-feedback">Please, enter your name!</div>
                   </div>
                   <div class="container-fluid mt-3">

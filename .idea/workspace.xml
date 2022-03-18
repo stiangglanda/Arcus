@@ -21,7 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="0ef77e06-e42a-49f4-a248-ec2203026107" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/Register.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/Register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forms/register.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/addPlayer.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/addPlayer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/test.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +49,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="SvnConfiguration">
@@ -58,6 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1646993702960</updated>
       <workItem from="1646993706184" duration="2707000" />
+      <workItem from="1647587746857" duration="1760000" />
     </task>
     <servers />
   </component>
@@ -77,14 +83,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="420" y="160" key="#CLI_Interpreters" timestamp="1646994036559">
+    <state x="420" y="160" key="#CLI_Interpreters" timestamp="1647587791248">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="420" y="160" key="#CLI_Interpreters/0.0.1680.1010@0.0.1680.1010" timestamp="1646994036559" />
-    <state x="547" y="148" key="#PHP" timestamp="1646994044449">
+    <state x="420" y="160" key="#CLI_Interpreters/0.0.1680.1010@0.0.1680.1010" timestamp="1647587791248" />
+    <state x="547" y="148" key="#PHP" timestamp="1647587794797">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="547" y="148" key="#PHP/0.0.1680.1010@0.0.1680.1010" timestamp="1646994044449" />
+    <state x="547" y="148" key="#PHP/0.0.1680.1010@0.0.1680.1010" timestamp="1647587794797" />
     <state x="674" y="428" key="NewPhpFileDialog" timestamp="1646993930984">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
