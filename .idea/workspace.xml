@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0ef77e06-e42a-49f4-a248-ec2203026107" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/database/connect.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/connect.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms/getPlayer.php" beforeDir="false" afterPath="$PROJECT_DIR$/forms/getPlayer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/getUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/getUser.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
