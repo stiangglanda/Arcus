@@ -15,6 +15,7 @@ try {
     while ($row = $stmt->fetch()) {
         echo $row['nickName'] . $row['password'] . "<br>\n";
     }
+    header("Location:https://www.google.com");
 } catch (\Throwable $e) {
     die($e->getMessage());
 }
