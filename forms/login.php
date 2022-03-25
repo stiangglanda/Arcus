@@ -2,7 +2,7 @@
 // connect to db
 try {
 
-    $pdo = require '../database/connect.php';
+    $pdo = require '../database/db.php';
 
     // get post records
     $nickName = $_POST['username'];
