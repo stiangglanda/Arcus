@@ -7,7 +7,6 @@ class Parcour extends Database
 	public $place;
 	public $animalCount;
 
-
 	public function getParcours()
 	{
 		$stmt = $this->pdo->prepare("SELECT * FROM parcour");
