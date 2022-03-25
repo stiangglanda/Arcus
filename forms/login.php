@@ -3,18 +3,20 @@
 try {
 
     $pdo = require '../database/connect.php';
+
     // get post records
-    $nickName = $_GET['username'];
-    $password = $_GET['password'];
+    $nickName = $_POST['username'];
+    $password = $_POST['password'];
 
     // sql statements
-
+    header("Location: https://google.com/");
     $stmt = $pdo->prepare("SELECT * FROM user");
     $stmt->execute();
     while ($row = $stmt->fetch()) {
-        echo $row['nickname'] . $row['password'] . "<br>\n";
+        echo $row['nickName'] . $row['password'] . "<br>\n";
     }
     header("Location:https://www.google.com");
 } catch (\Throwable $e) {
     die($e->getMessage());
 }
+?>
