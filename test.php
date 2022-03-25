@@ -23,15 +23,10 @@
     $score = new Score();
     $user = new User();
 
-    $events = $event->getEvents();
-    echo "test";
-
-    foreach ($events as $event) {
-        echo $event['userId'];
+    $users = $user->getUsers();
+    foreach ($users as $user) {
+        echo $user['userId'] . " " . $user['nickName'];
     }
-
-    echo "test2";
-
     ?>
 </body>
 

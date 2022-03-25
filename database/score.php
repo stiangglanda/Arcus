@@ -9,13 +9,16 @@ class Score extends Database
 	public $created;
 	public $pdo;
 
-	// function __construct($pdo, $scoreId = null, $points = null, $userId = null, $animalId = null, $created = null)
-	// {
-	// 	$this->scoreId = $scoreId;
-	// 	$this->points = $points;
-	// 	$this->userId = $userId;
-	// 	$this->animalId = $animalId;
-	// 	$this->created = $created;
-	// 	$this->pdo = $pdo;
-	// }
+	public function getScore()
+	{
+		$stmt = $this->pdo->prepare("SELECT * FROM score");
+		$stmt->execute();
+		$data = array();
+
+		while ($row = $stmt->fetch()) {
+			$data[] = $row;
+		}
+
+		return $data;
+	}
 }

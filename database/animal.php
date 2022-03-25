@@ -7,11 +7,16 @@ class Animal extends Database
 	public $parcourId;
 	public  $pdo;
 
-	// function __construct($pdo, $animalId = null, $animalNumber = null, $parcourId = null)
-	// {
-	// 	$this->animalId = $animalId;
-	// 	$this->animalNumber = $animalNumber;
-	// 	$this->parcourId = $parcourId;
-	// 	$this->pdo = $pdo;
-	// }
+	public function getAnimals()
+	{
+		$stmt = $this->pdo->prepare("SELECT * FROM animal");
+		$stmt->execute();
+		$data = array();
+
+		while ($row = $stmt->fetch()) {
+			$data[] = $row;
+		}
+
+		return $data;
+	}
 }

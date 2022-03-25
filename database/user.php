@@ -10,14 +10,16 @@ class User extends Database
 	public $guest;
 	public $pdo;
 
-	// function __construct($pdo, $userId = null, $firstName = null, $lastName = null, $nickName = null, $password = null, $guest = null)
-	// {
-	// 	$this->userId = $userId;
-	// 	$this->firstName = $firstName;
-	// 	$this->lastName = $lastName;
-	// 	$this->nickName = $nickName;
-	// 	$this->password = $password;
-	// 	$this->guest = $guest;
-	// 	$this->pdo = $pdo;
-	// }
+	public function getUsers()
+	{
+		$stmt = $this->pdo->prepare("SELECT * FROM user");
+		$stmt->execute();
+		$data = array();
+
+		while ($row = $stmt->fetch()) {
+			$data[] = $row;
+		}
+
+		return $data;
+	}
 }

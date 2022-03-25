@@ -8,12 +8,16 @@ class Parcour extends Database
 	public $animalCount;
 
 
-	// function __construct($pdo, $parcourId = null, $name = null, $place = null, $animalCount = null)
-	// {
-	// 	$this->parcourId = $parcourId;
-	// 	$this->name = $name;
-	// 	$this->place = $place;
-	// 	$this->animalCount = $animalCount;
-	// 	$this->pdo = $pdo;
-	// }
+	public function getParcours()
+	{
+		$stmt = $this->pdo->prepare("SELECT * FROM parcour");
+		$stmt->execute();
+		$data = array();
+
+		while ($row = $stmt->fetch()) {
+			$data[] = $row;
+		}
+
+		return $data;
+	}
 }
