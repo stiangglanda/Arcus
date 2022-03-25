@@ -23,10 +23,13 @@
     $score = new Score();
     $user = new User();
 
+    $user->insert("Lena", "Wurmsdobler", "Leni", "1234", 0);
+
     $users = $user->getUsers();
-    foreach ($users as $user) {
-        echo $user['userId'] . " " . $user['nickName'];
+    foreach ($users as $userrow) {
+        echo $userrow['userId'] . " " . $userrow['firstName'] . " " . $userrow['lastName'] . " " . $userrow['password'] . " " . $userrow['guest'] . "<br>";
     }
+
     ?>
 </body>
 

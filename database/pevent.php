@@ -7,7 +7,7 @@ class PEvent extends Database
 
 	public function getEvents()
 	{
-		$stmt = $this->pdo->prepare("SELECT * FROM event");
+		$stmt = $this->connection()->prepare("SELECT * FROM event");
 		$stmt->execute();
 		$data = array();
 

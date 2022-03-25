@@ -8,11 +8,10 @@ class User extends Database
 	public $nickName;
 	public $password;
 	public $guest;
-	public $pdo;
 
 	public function getUsers()
 	{
-		$stmt = $this->pdo->prepare("SELECT * FROM user");
+		$stmt = $this->connection()->prepare("SELECT * FROM user");
 		$stmt->execute();
 		$data = array();
 
@@ -21,5 +20,31 @@ class User extends Database
 		}
 
 		return $data;
+	}
+
+	function __construct() 
+	{
+
+	}
+
+	public function insert($firstName, $lastName, $nickName, $password, $guest)
+	{
+		if (!$this->nickNameExists($nickName)) {
+			$stmt = $this->connection()->prepare("INSERT INTO user(firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?)");
+			$stmt->execute([$firstName, $lastName, $nickName, $password, $guest]);
+			return true;
+		}
+		return false;
+	}
+
+	public function nickNameExists($nickName)
+	{
+		$stmt = $this->connection()->prepare("SELECT * FROM user where nickName = ?");
+		$stmt->execute([$nickName]);
+
+		if ($stmt->rowCount() > 0) {
+			return true;
+		}
+		return false;
 	}
 }

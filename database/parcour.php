@@ -9,7 +9,7 @@ class Parcour extends Database
 
 	public function getParcours()
 	{
-		$stmt = $this->pdo->prepare("SELECT * FROM parcour");
+		$stmt = $this->connection()->prepare("SELECT * FROM parcour");
 		$stmt->execute();
 		$data = array();
 
