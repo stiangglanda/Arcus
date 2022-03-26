@@ -11,7 +11,7 @@ class Score extends Database
 
 	public function getScore()
 	{
-		$stmt = $this->connection()->prepare("SELECT * FROM score");
+		$stmt = $this->pdo->prepare("SELECT * FROM score");
 		$stmt->execute();
 		$data = array();
 

@@ -11,7 +11,7 @@ class User extends Database
 
 	public function getUsers()
 	{
-		$stmt = $this->connection()->prepare("SELECT * FROM user");
+		$stmt = $this->pdo->prepare("SELECT * FROM user");
 		$stmt->execute();
 		$data = array();
 
@@ -22,15 +22,10 @@ class User extends Database
 		return $data;
 	}
 
-	function __construct() 
-	{
-
-	}
-
 	public function insert($firstName, $lastName, $nickName, $password, $guest)
 	{
 		if (!$this->nickNameExists($nickName)) {
-			$stmt = $this->connection()->prepare("INSERT INTO user(firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?)");
+			$stmt = $this->pdo->prepare("INSERT INTO user(firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?)");
 			$stmt->execute([$firstName, $lastName, $nickName, $password, $guest]);
 			return true;
 		}
@@ -39,7 +34,7 @@ class User extends Database
 
 	public function nickNameExists($nickName)
 	{
-		$stmt = $this->connection()->prepare("SELECT * FROM user where nickName = ?");
+		$stmt = $this->pdo->prepare("SELECT * FROM user where nickName = ?");
 		$stmt->execute([$nickName]);
 
 		if ($stmt->rowCount() > 0) {

@@ -23,7 +23,7 @@
     $score = new Score();
     $user = new User();
 
-    $user->insert("Lena", "Wurmsdobler", "Leni", "1234", 0);
+    $user->insert("test1", "test1", "test1", "1234", 0);
 
     $users = $user->getUsers();
     foreach ($users as $userrow) {
