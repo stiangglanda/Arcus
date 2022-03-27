@@ -2,12 +2,33 @@
 require_once "./database/db.php";
 class PEvent extends Database
 {
-	public $eventId;
-	public $countingMode;
+	#region ctor
+	protected $eventId;
+	protected $countingMode;
 
-	public function getEvents()
+	public function __construct($eventId = null, $countingMode = null)
 	{
-		$stmt = $this->pdo->prepare("SELECT * FROM event");
+		$this->eventId = $eventId;
+		$this->countingMode = $countingMode;
+	}
+	#endregion
+
+	public function insert()
+	{
+		try {
+			$stmt = $this->pdo->prepare("INSERT INTO user(userId, firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?,?)");
+			$stmt->execute([$this->userId, $this->firstName, $this->lastName, $this->nickName, $this->password, $this->guest]);
+			return true;
+		} catch (Throwable $e) {
+			return false;
+		}
+	}
+
+	#region statics
+	public static function getEvents()
+	{
+		$db = new Database();
+		$stmt = $db->pdo->prepare("SELECT * FROM event");
 		$stmt->execute();
 		$data = array();
 
@@ -17,4 +38,17 @@ class PEvent extends Database
 
 		return $data;
 	}
+
+	public static function exists($id)
+	{
+		$db = new Database();
+		$stmt = $db->pdo->prepare("SELECT * FROM event where eventId = ?");
+		$stmt->execute([$id]);
+
+		if ($stmt->rowCount() > 0) {
+			return true;
+		}
+		return false;
+	}
+	#endregion
 }

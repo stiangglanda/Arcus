@@ -2,9 +2,17 @@
 
 class Animal extends Database
 {
-	public $animalId;
-	public $animalNumber;
-	public $parcourId;
+	protected $animalId;
+	protected $animalNumber;
+	protected $parcourId;
+
+	public function __construct($animalId = null, $animalNumber = null, $parcourId = null)
+	{
+		parent::__construct();
+		$this->animalId = $animalId;
+		$this->animalNumber = $animalNumber;
+		$this->parcourId = $parcourId;
+	}
 
 	public function getAnimals()
 	{
@@ -19,6 +27,14 @@ class Animal extends Database
 		return $data;
 	}
 
+	public function getAnimalById($id)
+	{
+		$stmt = $this->pdo->prepare("SELECT * FROM animal WHERE animalId = ?");
+		$stmt->execute([$id]);
+
+		return $stmt->fetch();
+	}
+
 	public function insert($animalNumber, $parcourId)
 	{
 		$stmt = $this->pdo->prepare("INSERT INTO animal (animalNumber, parcourId) VALUES (?,?)");
@@ -27,7 +43,7 @@ class Animal extends Database
 
 	public function exists($id)
 	{
-		$stmt = $this->pdo->prepare("SELECT * FROM user where id = ?");
+		$stmt = $this->pdo->prepare("SELECT * FROM animal where id = ?");
 		$stmt->execute([$id]);
 
 		if ($stmt->rowCount() > 0) {

@@ -2,39 +2,69 @@
 
 class User extends Database
 {
-	public $userId;
-	public $firstName;
-	public $lastName;
-	public $nickName;
-	public $password;
-	public $guest;
+	#region ctor
+	protected $userId;
+	protected $firstName;
+	protected $lastName;
+	protected $nickName;
+	protected $password;
+	protected $guest;
 
-	public function getUsers()
+	function __construct($userId = null, $firstName = null, $lastName = null, $nickName = null, $password = null, $guest = null)
 	{
-		$stmt = $this->pdo->prepare("SELECT * FROM user");
-		$stmt->execute();
-		$data = array();
+		parent::__construct();
+		$this->userId = $userId;
+		$this->firstName = $firstName;
+		$this->lastName = $lastName;
+		$this->nickName = $nickName;
+		$this->password = $password;
+		$this->guest = $guest;
+	}
+	#endregion
 
-		while ($row = $stmt->fetch()) {
-			$data[] = $row;
+	public function insert()
+	{
+		try {
+			$stmt = $this->pdo->prepare("INSERT INTO user(userId, firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?,?)");
+			$stmt->execute([$this->userId, $this->firstName, $this->lastName, $this->nickName, $this->password, $this->guest]);
+			return true;
+		} catch (Throwable $e) {
+			// todo: error logging?
+			return false;
 		}
-
-		return $data;
 	}
 
-	public function insert($firstName, $lastName, $nickName, $password, $guest)
+	// todo: wip making non-static
+	public function exists()
 	{
-		if (!$this->nickNameExists($nickName)) {
-			$stmt = $this->pdo->prepare("INSERT INTO user(firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?)");
-			$stmt->execute([$firstName, $lastName, $nickName, $password, $guest]);
+		$stmt = $this->pdo->prepare("SELECT * FROM user where userId = ?");
+		$stmt->execute([$this->userId]);
+
+		if ($stmt->rowCount() > 0) {
 			return true;
 		}
 		return false;
 	}
 
-	public function nickNameExists($nickName)
+	#region statics
+	public static function getUsers()
 	{
-		$stmt = $this->pdo->prepare("SELECT * FROM user where nickName = ?");
+		$db = new Database();
+		$stmt = $db->pdo->prepare("SELECT * FROM user");
+		$stmt->execute();
+		$data = array();
+
+		while ($row = $stmt->fetch()) {
+			$data[] = $row;;
+		}
+
+		return $data;
+	}
+
+	public static function nickNameExists($nickName)
+	{
+		$db = new Database();
+		$stmt = $db->pdo->prepare("SELECT * FROM user where nickName = ?");
 		$stmt->execute([$nickName]);
 
 		if ($stmt->rowCount() > 0) {
@@ -42,4 +72,5 @@ class User extends Database
 		}
 		return false;
 	}
+	#endregion
 }

@@ -21,13 +21,23 @@
     $event = new PEvent();
     $parcour = new Parcour();
     $score = new Score();
-    $user = new User();
+    
 
-    $user->insert("test1", "test1", "test1", "1234", 0);
+    // todo: define id? or let auto_increment auto select it but lose access to id
+    $user = new User($db::nextId("user"), "Leon", "Oberndorfer", "ENLuoi", "1234", 0);
+    
+    $user->insert();
+
+    if ($user->exists()) {
+        echo "yes";
+    }
+    else {
+        echo "no";
+    }
 
     $users = $user->getUsers();
     foreach ($users as $userrow) {
-        echo $userrow['userId'] . " " . $userrow['firstName'] . " " . $userrow['lastName'] . " " . $userrow['password'] . " " . $userrow['guest'] . "<br>";
+        echo $userrow['userId'] . " " . $userrow['firstName'] . " " . $userrow['lastName'] . " " . $userrow['nickName'] . " " . $userrow['password'] . " " . $userrow['guest'] . "<br>";
     }
 
     ?>
