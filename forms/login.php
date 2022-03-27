@@ -1,22 +1,21 @@
 <?php
-// connect to db
+require_once '../classes/db.php';
+require_once '../classes/user.php';
+$db = new Database();
+$pdo = $db->pdo;
+$user = new User();
+
 try {
-
-    $pdo = require '../database/db.php';
-
-    // get post records
-    $nickName = $_POST['username'];
-    $password = $_POST['password'];
-
-    // sql statements
-    header("Location: https://google.com/");
-    $stmt = $pdo->prepare("SELECT * FROM user");
-    $stmt->execute();
-    while ($row = $stmt->fetch()) {
-        echo $row['nickName'] . $row['password'] . "<br>\n";
-    }
+    listUsers($user::getUsers());
+    
     header("Location:https://www.google.com");
-} catch (\Throwable $e) {
+} catch (Exception $e) {
     die($e->getMessage());
 }
-?>
+
+function listUsers($users)
+{
+    foreach ($users as $userObj) {
+        echo $userObj->userId . " " . $userObj->firstName . " " . $userObj->lastName . " " . $userObj->nickName . " " . $userObj->password . " " . $userObj->guest . "<br>";
+    }
+}

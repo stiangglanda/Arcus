@@ -2,10 +2,10 @@
 
 class Parcour extends Database
 {
-	protected $parcourId;
-	protected $name;
-	protected $place;
-	protected $animalCount;
+	public $parcourId;
+	public $name;
+	public $place;
+	public $animalCount;
 
 	public function __construct($parcourId = null, $name = null, $place = null, $animalCount = null)
 	{
@@ -40,7 +40,7 @@ class Parcour extends Database
 		}
 	}
 
-	public function getParcourWithID($id)
+	public function getParcourById($id)
 	{
 		$parcour = new Parcour();
 		$stmt = $parcour->pdo->prepare("SELECT * FROM parcour WHERE parcourId = ?");

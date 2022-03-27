@@ -1,14 +1,13 @@
 <?php
-
 class User extends Database
 {
 	#region ctor
-	protected $userId;
-	protected $firstName;
-	protected $lastName;
-	protected $nickName;
-	protected $password;
-	protected $guest;
+	public $userId;
+	public $firstName;
+	public $lastName;
+	public $nickName;
+	public $password;
+	public $guest;
 
 	function __construct($userId = null, $firstName = null, $lastName = null, $nickName = null, $password = null, $guest = null)
 	{
@@ -24,26 +23,37 @@ class User extends Database
 
 	public function insert()
 	{
-		$stmt = $this->pdo->prepare("INSERT INTO user(userId, firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?,?)");
-		$stmt->execute([$this->userId, $this->firstName, $this->lastName, $this->nickName, $this->password, $this->guest]);
+		try {
+			$stmt = $this->pdo->prepare("INSERT INTO user(userId, firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?,?)");
+			$stmt->execute([$this->userId, $this->firstName, $this->lastName, $this->nickName, $this->password, $this->guest]);
+		} catch (Exception $err) {
+			return false;
+		}
 	}
 
 	public function drop()
 	{
-		$stmt = $this->pdo->prepare("DELETE FROM user WHERE userId = ?");
-		$stmt->execute([$this->userId]);
+		try {
+			$stmt = $this->pdo->prepare("DELETE FROM user WHERE userId = ?");
+			$stmt->execute([$this->userId]);
+		} catch (Exception $err) {
+			return false;
+		}
 	}
 
-	// todo: wip making non-static
 	public function exists()
 	{
-		$stmt = $this->pdo->prepare("SELECT * FROM user where userId = ?");
-		$stmt->execute([$this->userId]);
+		try {
+			$stmt = $this->pdo->prepare("SELECT * FROM user where userId = ?");
+			$stmt->execute([$this->userId]);
 
-		if ($stmt->rowCount() > 0) {
-			return true;
+			if ($stmt->rowCount() > 0) {
+				return true;
+			}
+			return false;
+		} catch (Error $th) {
+			return false;
 		}
-		return false;
 	}
 
 	#region statics
@@ -54,11 +64,41 @@ class User extends Database
 		$stmt->execute();
 		$data = array();
 
-		while ($row = $stmt->fetch()) {
-			$data[] = $row;;
+		for ($i = 0; $i < $stmt->rowCount(); $i++) {
+			$row = $stmt->fetch();
+			$data[$i] = new User($row["userId"], $row["firstName"], $row["lastName"], $row["nickName"], $row["password"], $row["guest"]);
 		}
 
 		return $data;
+	}
+
+	public static function getUserById($id)
+	{
+
+		$db = new Database();
+		$stmt = $db->pdo->prepare("SELECT * FROM user WHERE userId = ?");
+		$stmt->execute([$id]);
+		$res = $stmt->fetch();
+
+		if ($res) {
+			return new User($res["userId"], $res["firstName"], $res["lastName"], $res["nickName"], $res["password"], $res["guest"]);
+		} else {
+			return false;
+		}
+	}
+
+	public static function getUserByNickName($nickName)
+	{
+		$db = new Database();
+		$stmt = $db->pdo->prepare("SELECT * FROM user WHERE nickName = ?");
+		$stmt->execute([$nickName]);
+		$res = $stmt->fetch();
+
+		if ($res) {
+			return new User($res["userId"], $res["firstName"], $res["lastName"], $res["nickName"], $res["password"], $res["guest"]);
+		} else {
+			return false;
+		}
 	}
 
 	public static function nickNameExists($nickName)
@@ -66,6 +106,18 @@ class User extends Database
 		$db = new Database();
 		$stmt = $db->pdo->prepare("SELECT * FROM user where nickName = ?");
 		$stmt->execute([$nickName]);
+
+		if ($stmt->rowCount() > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	public static function idExists($id)
+	{
+		$db = new Database();
+		$stmt = $db->pdo->prepare("SELECT * FROM user where userId = ?");
+		$stmt->execute([$id]);
 
 		if ($stmt->rowCount() > 0) {
 			return true;

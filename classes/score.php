@@ -3,11 +3,11 @@
 class Score extends Database
 {
 	#region ctor
-	protected $scoreId;
-	protected $points;
-	protected $userId;
-	protected $animalId;
-	protected $created;
+	public $scoreId;
+	public $points;
+	public $userId;
+	public $animalId;
+	public $created;
 
 	public function __construct($scoreId = null, $points = null, $userId = null, $animalId = null, $created = null)
 	{

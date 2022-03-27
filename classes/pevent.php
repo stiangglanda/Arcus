@@ -2,8 +2,8 @@
 class PEvent extends Database
 {
 	#region ctor
-	protected $eventId;
-	protected $countingMode;
+	public $eventId;
+	public $countingMode;
 
 	public function __construct($eventId = null, $countingMode = null)
 	{

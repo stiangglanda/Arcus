@@ -2,9 +2,9 @@
 
 class Animal extends Database
 {
-	protected $animalId;
-	protected $animalNumber;
-	protected $parcourId;
+	public $animalId;
+	public $animalNumber;
+	public $parcourId;
 
 	public function __construct($animalId = null, $animalNumber = null, $parcourId = null)
 	{

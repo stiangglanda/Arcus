@@ -18,7 +18,7 @@ if (isset($_GET['getEvent'])) {
 function getUser()
 {
     try {
-        $pdo = require '../database/db.php';
+        $pdo = require '../classes/db.php';
         $sql = "SELECT * FROM user"; // call getUser
         $array = array();
         $count = 0;
@@ -54,7 +54,7 @@ function getUser()
 function getScore()
 {
     try {
-        $pdo = require '../database/db.php';
+        $pdo = require '../classes/db.php';
         $sql = "call getScore()";
         $array = array();
         $count = 0;
@@ -89,7 +89,7 @@ function getScore()
 function getAnimal()
 {
     try {
-        $pdo = require '../database/db.php';
+        $pdo = require '../classes/db.php';
         $sql = "call getAnimal()";
         $array = array();
         $count = 0;
@@ -122,7 +122,7 @@ function getAnimal()
 function getParcour()
 {
     try {
-        $pdo = require '../database/db.php';
+        $pdo = require '../classes/db.php';
         $sql = "SELECT * FROM parcour";
         $array = array();
         $count = 0;
@@ -156,7 +156,7 @@ function getParcour()
 function getEvent()
 {
     try {
-        $pdo = require '../database/db.php';
+        $pdo = require '../classes/db.php';
         $sql = "call getEvent()";
         $array = array();
         $count = 0;
