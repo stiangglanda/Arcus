@@ -26,18 +26,40 @@
     $parcour = new Parcour();
     $score = new Score();
 
-    echo "<hr>Objects can exists without necessarily existing in the database.<br><br>";
-    $jan = new User($utils::nextId("user"), "Jan", "Hofmann", "jan", "1234", 1);
-    $tim = $user->getUserByNickName("ThisTim");
+    $jan = new User($utils::nextId("user"), "Jan", "Hofmann", "jan", "1234", 1);    // user; not in db
+    $david = $user->getUserById(1);                                                 // user; in db
+    $tim = $user->getUserByNickName("ThisTim");                                     // user; in db
+    $leander = $user->getUserByNickName("stiangglanda");                            // user; in db
+    $leon = $user->getUserByNickName("ENLoui");                                     // user; in db
+    $lena = $user->getUserByNickName("Leni");                                       // user; in db
+    $stephan = $user->getUserByNickName("Stifigamer");                              // user; in db
+    $lukas = new User($utils::nextId("user"), "Lukas", "Natotea", "Teo", "", 1);    // user; in db
 
+    echo "<hr>Objects can exists without necessarily existing in the database.<br><br>";
     echo $tim ? "Tim Object exists<br>" : "Tim Object does not exist<br>";
     echo $jan ? "Jan Object exists<br><br>" : "Jan Object does not exist<br><br>";
     echo $tim->exists() ? "Tim exists in the db.<br>" : "Tim does not exist in the db.<br>";
     echo $jan->exists() ? "Jan exists in the db.<br>" : " Jan does not exist in the db.<br>";
 
-    echo "<br><hr>If an object only has null values then only static methods can be used.<br><br>";
+    echo "<br><hr>Insert (Lukas)<br><br>";
+    $stephan->insert();
     listUsers($user::getUsers());
-    echo '<br>Insert new user with \'$user->insert();\' (only actually inserts if possible without errors)<br>';
+
+    echo "<br><hr>Delete (Lukas)<br><br>";
+    // $stephan->delete();
+
+    // reset auto increment to before insert for testing - potentially make utils method?
+    $stmt = $db->pdo->prepare("ALTER TABLE user AUTO_INCREMENT = 6");
+    $stmt->execute();
+
+    listUsers($user::getUsers());
+
+
+    echo "<br><hr>Utils class for small utlities that don't fit another class.<br><br>";
+    echo "Next userId: " . $utils::nextId("user") . "<br>";
+    echo "Next eventId: " . $utils::nextId("event") . "<br>";
+    echo "Next parcourId: " . $utils::nextId("parcour") . "<br>";
+    echo "Next animalId: " . $utils::nextId("animal") . "<br>";
 
     function listUsers($users)
     {
@@ -72,9 +94,6 @@
         </table>
     <?php
     }
-
-    echo "<br><hr>Utils class for small utlities that don't fit another class.<br><br>";
-    echo "Next userId: " . $utils::nextId("user") . "<br>";
     ?>
 </body>
 
