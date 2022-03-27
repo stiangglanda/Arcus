@@ -24,14 +24,14 @@ class User extends Database
 
 	public function insert()
 	{
-		try {
-			$stmt = $this->pdo->prepare("INSERT INTO user(userId, firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?,?)");
-			$stmt->execute([$this->userId, $this->firstName, $this->lastName, $this->nickName, $this->password, $this->guest]);
-			return true;
-		} catch (Throwable $e) {
-			// todo: error logging?
-			return false;
-		}
+		$stmt = $this->pdo->prepare("INSERT INTO user(userId, firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?,?)");
+		$stmt->execute([$this->userId, $this->firstName, $this->lastName, $this->nickName, $this->password, $this->guest]);
+	}
+
+	public function drop()
+	{
+		$stmt = $this->pdo->prepare("DELETE FROM user WHERE userId = ?");
+		$stmt->execute([$this->userId]);
 	}
 
 	// todo: wip making non-static

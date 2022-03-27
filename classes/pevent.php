@@ -1,5 +1,4 @@
 <?php
-require_once "./database/db.php";
 class PEvent extends Database
 {
 	#region ctor
