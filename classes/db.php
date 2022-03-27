@@ -1,10 +1,10 @@
 <?php
 class Database
 {
-    public $db_host = '127.0.0.1';
-    public $db_name = "arcusdb";
-    public $db_user = "root";
-    public $db_password = "";
+    protected $db_host = '127.0.0.1';
+    protected $db_name = "arcusdb";
+    protected $db_user = "root";
+    protected $db_password = "";
     public $pdo;
 
     public function __construct()
