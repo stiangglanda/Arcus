@@ -42,14 +42,14 @@
     echo $jan->exists() ? "Jan exists in the db.<br>" : " Jan does not exist in the db.<br>";
 
     echo "<br><hr>Insert (Lukas)<br><br>";
-    $stephan->insert();
+    $lukas->insert();
     listUsers($user::getUsers());
 
     echo "<br><hr>Delete (Lukas)<br><br>";
-    // $stephan->delete();
+    $lukas->delete();
 
-    // reset auto increment to before insert for testing - potentially make utils method?
-    $stmt = $db->pdo->prepare("ALTER TABLE user AUTO_INCREMENT = 6");
+    // reset auto increment to before insert for testing - potentially make utils method? (would break if deleting user in middle of table!)
+    $stmt = $db->pdo->prepare("ALTER TABLE user AUTO_INCREMENT = 7");
     $stmt->execute();
 
     listUsers($user::getUsers());
