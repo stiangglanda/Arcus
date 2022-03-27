@@ -23,22 +23,14 @@ class User extends Database
 
 	public function insert()
 	{
-		try {
-			$stmt = $this->pdo->prepare("INSERT INTO user(userId, firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?,?)");
-			$stmt->execute([$this->userId, $this->firstName, $this->lastName, $this->nickName, $this->password, $this->guest]);
-		} catch (Exception $err) {
-			return false;
-		}
+		$stmt = $this->pdo->prepare("INSERT INTO user(userId, firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?,?)");
+		$stmt->execute([$this->userId, $this->firstName, $this->lastName, $this->nickName, $this->password, $this->guest]);
 	}
 
-	public function drop()
+	public function delete()
 	{
-		try {
-			$stmt = $this->pdo->prepare("DELETE FROM user WHERE userId = ?");
-			$stmt->execute([$this->userId]);
-		} catch (Exception $err) {
-			return false;
-		}
+		$stmt = $this->pdo->prepare("DELETE FROM user WHERE userId = ?");
+		$stmt->execute([$this->userId]);
 	}
 
 	public function exists()
