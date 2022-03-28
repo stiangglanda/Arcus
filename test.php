@@ -49,12 +49,11 @@
     $lukas->delete();
 
     // reset auto increment to before insert for testing - potentially make utils method? (would break if deleting user in middle of table!)
-    $stmt = $db->pdo->prepare("ALTER TABLE user AUTO_INCREMENT = 7");
-    $stmt->execute();
+    // $stmt = $db->pdo->prepare("ALTER TABLE user AUTO_INCREMENT = 7");
+    // $stmt->execute();
 
     listUsers($user::getUsers());
-
-
+    
     echo "<br><hr>Utils class for small utlities that don't fit another class.<br><br>";
     echo "Next userId: " . $utils::nextId("user") . "<br>";
     echo "Next eventId: " . $utils::nextId("event") . "<br>";
@@ -65,7 +64,7 @@
     {
     ?>
         <table>
-            <thead>
+            <thead> 
                 <tr>
                     <th>userId</th>
                     <th>firstName</th>

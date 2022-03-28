@@ -5,6 +5,12 @@ class Database
     protected $db_name = "arcusdb";
     protected $db_user = "root";
     protected $db_password = "";
+
+    // protected $db_host = "localhost";
+    // protected $db_user = "id18558812_arcus";
+    // protected $db_password = "vrbLW!V?o0-H/(Fk";
+    // protected $db_database = "id18558812_arcusdb";
+
     public $pdo;
 
     public function __construct()
