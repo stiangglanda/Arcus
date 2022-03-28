@@ -43,7 +43,8 @@ class User extends Database
 				return true;
 			}
 			return false;
-		} catch (Error $th) {
+		}
+		catch (Error $th) {
 			return false;
 		}
 	}
@@ -74,7 +75,8 @@ class User extends Database
 
 		if ($res) {
 			return new User($res["userId"], $res["firstName"], $res["lastName"], $res["nickName"], $res["password"], $res["guest"]);
-		} else {
+		}
+		else {
 			return false;
 		}
 	}
@@ -88,7 +90,8 @@ class User extends Database
 
 		if ($res) {
 			return new User($res["userId"], $res["firstName"], $res["lastName"], $res["nickName"], $res["password"], $res["guest"]);
-		} else {
+		}
+		else {
 			return false;
 		}
 	}
@@ -116,5 +119,5 @@ class User extends Database
 		}
 		return false;
 	}
-	#endregion
+#endregion
 }

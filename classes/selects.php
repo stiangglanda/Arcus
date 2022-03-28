@@ -46,7 +46,8 @@ function getUser()
         if (!file_put_contents("data.json", $json)) {
             echo "Oops! Error creating json file...";
         }
-    } catch (\Throwable $e) {
+    }
+    catch (\Throwable $e) {
         die($e->getMessage());
     }
 }
@@ -81,7 +82,8 @@ function getScore()
         if (!file_put_contents("data.json", $json)) {
             echo "Oops! Error creating json file...";
         }
-    } catch (\Throwable $e) {
+    }
+    catch (\Throwable $e) {
         die($e->getMessage());
     }
 }
@@ -114,7 +116,8 @@ function getAnimal()
         if (!file_put_contents("data.json", $json)) {
             echo "Oops! Error creating json file...";
         }
-    } catch (\Throwable $e) {
+    }
+    catch (\Throwable $e) {
         die($e->getMessage());
     }
 }
@@ -148,7 +151,8 @@ function getParcour()
         if (!file_put_contents("data.json", $json)) {
             echo "Oops! Error creating json file...";
         }
-    } catch (\Throwable $e) {
+    }
+    catch (\Throwable $e) {
         die($e->getMessage());
     }
 }
@@ -180,7 +184,8 @@ function getEvent()
         if (!file_put_contents("data.json", $json)) {
             echo "Oops! Error creating json file...";
         }
-    } catch (\Throwable $e) {
+    }
+    catch (\Throwable $e) {
         die($e->getMessage());
     }
 }

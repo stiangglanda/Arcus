@@ -35,7 +35,8 @@ class Parcour extends Database
 			$stmt = $this->pdo->prepare("INSERT INTO animal (animalNumber, parcourId) VALUES (?,?)");
 			$stmt->execute([$this->name, $this->place, $this->animalCount]);
 			return true;
-		} catch (PDOException $e) {
+		}
+		catch (PDOException $e) {
 			return false;
 		}
 	}

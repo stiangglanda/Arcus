@@ -25,7 +25,8 @@ class Score extends Database
 			$stmt = $this->pdo->prepare("INSERT INTO score(scoreId, points, userId, animalId, created) VALUES (?,?,?,?,?)");
 			$stmt->execute([$this->scoreId, $this->points, $this->userId, $this->animalId, $this->created]);
 			return true;
-		} catch (Throwable $e) {
+		}
+		catch (Throwable $e) {
 			return false;
 		}
 	}
@@ -56,5 +57,5 @@ class Score extends Database
 		}
 		return false;
 	}
-	#endregion
+#endregion
 }

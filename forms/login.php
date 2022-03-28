@@ -7,9 +7,10 @@ $user = new User();
 
 try {
     listUsers($user::getUsers());
-    
+
     header("Location:https://www.google.com");
-} catch (Exception $e) {
+}
+catch (Exception $e) {
     die($e->getMessage());
 }
 

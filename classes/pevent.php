@@ -18,7 +18,8 @@ class PEvent extends Database
 			$stmt = $this->pdo->prepare("INSERT INTO user(userId, firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?,?)");
 			$stmt->execute([$this->userId, $this->firstName, $this->lastName, $this->nickName, $this->password, $this->guest]);
 			return true;
-		} catch (Throwable $e) {
+		}
+		catch (Throwable $e) {
 			return false;
 		}
 	}
@@ -49,5 +50,5 @@ class PEvent extends Database
 		}
 		return false;
 	}
-	#endregion
+#endregion
 }
