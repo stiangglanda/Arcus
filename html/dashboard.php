@@ -101,13 +101,13 @@
                       <h5 class="card-title">3 Player</h5>
                       <!-- List group With badges -->
                       <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center"> Player 1
+                        <li class="list-group-item d-flex justify-content-between align-items-center" onclick="remove(this)" id="remove"> Player 1
                           <span><button type="button" class="btn btn-danger rounded-pill">Remove</button></span>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center"> Player 2
+                        <li class="list-group-item d-flex justify-content-between align-items-center" onclick="remove(this)" id="remove"> Player 2
                           <span><button type="button" class="btn btn-danger rounded-pill">Remove</button></span>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center"> Player 3
+                        <li class="list-group-item d-flex justify-content-between align-items-center" onclick="remove(this)" id="remove"> Player 3
                           <span><button type="button" class="btn btn-danger rounded-pill">Remove</button></span>
                         </li>
                       </ul><!-- End List With badges -->
