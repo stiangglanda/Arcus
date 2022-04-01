@@ -11,6 +11,7 @@ if(isset($_POST['save']))
 
         if(!is_null($loggedUser))
         {
+            
             $_SESSION['loggedUser'] = $loggedUser;
             header('Location: ../html/dashboard.php');
         }

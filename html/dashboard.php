@@ -54,8 +54,8 @@
                 <php?
                 session_start();
                 ?>
-                <h6><?=$_SESSION["loggedin_user"]->firstName?> <?=$_SESSION["loggedin_user"]->lastName?></h6>
-                <span><?=$_SESSION["loggedin_user"]->nickName?></span>
+                <h6><?=$_SESSION['loggedUser']->firstName?> <?=$_SESSION['loggedUser']->lastName?></h6>
+                <span><?=$_SESSION['loggedUser']->nickName?></span>
               </li>
               <li>
                 <hr class="dropdown-divider">
@@ -101,7 +101,7 @@
                       </select>
                     </div>
                     <div class="col-1">
-                      <a href="addParcour.php" class="btn btn btn-success" role="button">Add</a>
+                      <a href="?page=addParcour" class="btn btn btn-success" role="button">Add</a>
                     </div>
                   </div>
                   <div class="card">
@@ -140,7 +140,7 @@
                     </div>
                   </div>
                   <div class="d-grid gap-2 mt-3">
-                    <a href="html/Game.php" class="btn btn-primary" role="button">Start</a>
+                    <a href="?page=Game" class="btn btn-primary" role="button">Start</a>
                   </div>
                 </form><!-- End General Form Elements -->
               </div>
