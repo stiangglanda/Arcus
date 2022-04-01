@@ -4,15 +4,14 @@
 if(isset($_POST['save']))
 {
     try {
-        $Username=$_POST['yourUsername'];
-        $Password=$_POST['yourPassword'];
-        //$db = new Database();
-        $exists= User::getUserByNickNamePassword($Username, $Password);
+        $username = $_POST['yourUsername'];
+        $password = $_POST['yourPassword'];
 
-        if(!is_null($exists))
+        $loggedUser = User::getUserByNickNamePassword($username, $password);
+
+        if(!is_null($loggedUser))
         {
-            session_start();
-            $_SESSION['loggedin_user'] = $exists;
+            $_SESSION['loggedUser'] = $loggedUser;
             header('Location: ../html/dashboard.php');
         }
         else
