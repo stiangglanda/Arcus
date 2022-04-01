@@ -31,7 +31,6 @@ class Score extends Database
 		}
 	}
 
-	#region statics
 	public static function getScores()
 	{
 		$db = new Database();
@@ -57,5 +56,4 @@ class Score extends Database
 		}
 		return false;
 	}
-#endregion
 }
