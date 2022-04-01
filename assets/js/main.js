@@ -20,7 +20,14 @@ function cancelAddPlayer() {
   add.innerHTML = ''
 }
 
-
+/**
+ * function delete player
+ */
+ function remove()
+ {
+   const element = document.getElementById('remove');
+   element.remove();
+ }
 
 
 (function () {
