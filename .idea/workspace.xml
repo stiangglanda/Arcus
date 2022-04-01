@@ -19,7 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ef77e06-e42a-49f4-a248-ec2203026107" name="Default Changelist" comment="" />
+    <list default="true" id="0ef77e06-e42a-49f4-a248-ec2203026107" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/html/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/Game.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/LogIn.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/LogIn.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/Register.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/Register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/Settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/Settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/Statistics.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/Statistics.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/addParcour.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/addParcour.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/addPlayer.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/addPlayer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,6 +78,7 @@
       <workItem from="1648113535761" duration="24000" />
       <workItem from="1648205027522" duration="596000" />
       <workItem from="1648206837360" duration="779000" />
+      <workItem from="1648714560343" duration="18000" />
     </task>
     <servers />
   </component>
@@ -161,7 +172,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/test.php</url>
-          <line>20</line>
+          <line>24</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
