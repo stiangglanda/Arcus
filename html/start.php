@@ -59,13 +59,13 @@ if(isset($_POST['save']))
                                         </div>
                                         <div class="col-12">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                                                <label class="form-check-label" for="rememberMe">Remember me</label>
+                                                <!-- <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
+                                                <label class="form-check-label" for="rememberMe">Remember me</label> -->
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <button class="btn btn-primary w-100" name="save" type="submit">Login</button>
-                                            <a href="?page=dashboard">Dashboard</a>
+                                            <!-- <a href="?page=dashboard">Dashboard</a> -->
                                         </div>
                                         <div class="col-12">
                                             <p class="small mb-0">Don't have account? <a href="?page=Register">Create an account</a></p>

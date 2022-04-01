@@ -118,7 +118,7 @@
                         </li>
                       </ul><!-- End List With badges -->
                       <div class="d-grid gap-2 mt-3">
-                        <a href="html/addPlayer.php" type="button" class="btn btn btn-success">Add Player</a>
+                        <a href="addPlayer.php" type="button" class="btn btn btn-success">Add Player</a>
                       </div>
                       <!-- <div class="d-grid gap-2 mt-3">
                         <button type="button" class="btn btn btn-success" onclick="addPlayer()">Add Player</button>
@@ -137,7 +137,7 @@
                     </div>
                   </div>
                   <div class="d-grid gap-2 mt-3">
-                    <a href="html/Game.php" class="btn btn-primary" role="button">Start</a>
+                    <a href="Game.php" class="btn btn-primary" role="button">Start</a>
                   </div>
                 </form><!-- End General Form Elements -->
               </div>
