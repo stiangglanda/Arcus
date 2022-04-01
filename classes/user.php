@@ -105,18 +105,19 @@ class User extends Database
 	{
 		$db = new Database();
 		$stmt = $db->pdo->prepare("SELECT * FROM user WHERE nickName = ? and password =?");
-		$stmt->execute([$nickName,$password]);
+		$stmt->execute([$nickName, $password]);
 		$res = $stmt->fetch();
 
-		if ($stmt->rowCount() > 0) {
-			return true;
+		if ($res) {
+			return new User($res["userId"], $res["firstName"], $res["lastName"], $res["nickName"], $res["password"], $res["guest"]);
 		}
 		else {
-			return false;
+			return null;
 		}
 	}
 
-	public static function prepareGuestName($nickName) {
+	public static function prepareGuestName($nickName)
+	{
 		return substr($nickName, strpos($nickName, '_') + 1);
 	}
 
