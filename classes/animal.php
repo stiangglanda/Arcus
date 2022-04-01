@@ -2,6 +2,7 @@
 
 class Animal extends Database
 {
+	#region ctor
 	public $animalId;
 	public $animalNumber;
 	public $parcourId;
@@ -13,6 +14,7 @@ class Animal extends Database
 		$this->animalNumber = $animalNumber;
 		$this->parcourId = $parcourId;
 	}
+	#endregion
 
 	public function getAnimals()
 	{
@@ -27,23 +29,31 @@ class Animal extends Database
 		return $data;
 	}
 
-	public function getAnimalById($id)
+	public function insert()
 	{
-		$stmt = $this->pdo->prepare("SELECT * FROM animal WHERE animalId = ?");
+		$stmt = $this->pdo->prepare("INSERT INTO animal (animalNumber, parcourId) VALUES (?,?)");
+		$stmt->execute([$this->animalNumber, $this->parcourId]);
+	}
+
+	public function delete()
+	{
+		$stmt = $this->pdo->prepare("DELETE FROM animal WHERE animalId = ?");
+		$stmt->execute([$this->animalId]);
+	}
+
+	public static function getAnimalById($id)
+	{
+		$db = new Database();
+		$stmt = $db->pdo->prepare("SELECT * FROM animal WHERE animalId = ?");
 		$stmt->execute([$id]);
 
 		return $stmt->fetch();
 	}
 
-	public function insert($animalNumber, $parcourId)
+	public static function exists($id)
 	{
-		$stmt = $this->pdo->prepare("INSERT INTO animal (animalNumber, parcourId) VALUES (?,?)");
-		$stmt->execute([$animalNumber, $parcourId]);
-	}
-
-	public function exists($id)
-	{
-		$stmt = $this->pdo->prepare("SELECT * FROM animal where id = ?");
+		$db = new Database();
+		$stmt = $db->pdo->prepare("SELECT * FROM animal where id = ?");
 		$stmt->execute([$id]);
 
 		if ($stmt->rowCount() > 0) {
