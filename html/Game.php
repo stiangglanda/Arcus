@@ -86,17 +86,17 @@
                 <form>
                   <div class="col-12">
                     <label for="FirstName" class="form-label">1. Shot</label>
-                    <input type="text" name="name" class="form-control" id="FirstName" required>
+                    <input type="number" min=0 max=20 name="name" class="form-control" id="FirstName" required>
                     <div class="invalid-feedback">Please, enter your name!</div>
                   </div>
                   <div class="col-12">
                     <label for="SecondName" class="form-label">2. Shot</label>
-                    <input type="text" name="name" class="form-control" id="SecondName" required>
+                    <input type="number" min=0 max=20 name="name" class="form-control" id="SecondName" required>
                     <div class="invalid-feedback">Please, enter your name!</div>
                   </div>
                   <div class="col-12">
                     <label for="SecondName" class="form-label">3. Shot</label>
-                    <input type="text" name="name" class="form-control" id="SecondName" required>
+                    <input type="number" min=0 max=20 name="name" class="form-control" id="SecondName" required>
                     <div class="invalid-feedback">Please, enter your name!</div>
                   </div>
                   <div class="container-fluid mt-12">
