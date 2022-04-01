@@ -8,16 +8,14 @@ if(isset($_POST['save']))
         //$db = new Database();
         $exists= User::getUserByNickNamePassword( $Username,$Password);
 
-        echo '<form method="post">';
         if($exists)
         {
-            echo '<a id="clickButton" href="?page=dashboard">dashboard</a>';
+            header('Location: ../html/dashboard.php');
         }
         else
         {
-            echo '<a id="clickButton" href="?page=start">Start</a>';
+            header('Location: ../index.php');
         }
-        echo   '</form>';
         
         
     }catch (Exception $e)
