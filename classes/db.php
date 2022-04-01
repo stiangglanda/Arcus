@@ -7,21 +7,16 @@ class Database
     protected $db_password = "";
 
     // protected $db_host = "localhost";
+    // protected $db_name = "id18558812_arcusdb";
     // protected $db_user = "id18558812_arcus";
     // protected $db_password = "vrbLW!V?o0-H/(Fk";
-    // protected $db_database = "id18558812_arcusdb";
 
     public $pdo;
 
     public function __construct()
     {
-        try {
-            $pdo = new PDO("mysql:host=$this->db_host;dbname=$this->db_name", $this->db_user, $this->db_password);
-            $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-            $this->pdo = $pdo;
-        }
-        catch (Exception $e) {
-            echo $e;
-        }
+        $pdo = new PDO("mysql:host=$this->db_host;dbname=$this->db_name", $this->db_user, $this->db_password);
+        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $this->pdo = $pdo;
     }
 }
