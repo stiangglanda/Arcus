@@ -1,6 +1,6 @@
 
 <?php
-session_start();
+
 if(isset($_POST['save']))
 {
     try {
@@ -11,6 +11,7 @@ if(isset($_POST['save']))
 
         if(!is_null($exists))
         {
+            session_start();
             $_SESSION['loggedin_user'] = $exists;
             header('Location: ../html/dashboard.php');
         }
