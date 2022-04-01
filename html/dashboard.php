@@ -87,6 +87,7 @@
                     <div class="col-9">
                       <select class="form-select" aria-label="Default select example">
                         <option selected>Open this select menu</option>
+                        <!-- todo: get parcours from db -->
                         <option value="1">One</option>
                         <option value="2">Two</option>
                         <option value="3">Three</option>
@@ -98,6 +99,7 @@
                   </div>
                   <div class="card">
                     <div class="card-body">
+                      <!-- todo: get players from db -->
                       <h5 class="card-title">3 Player</h5>
                       <!-- List group With badges -->
                       <ul class="list-group">

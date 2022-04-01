@@ -23,12 +23,6 @@
     <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
     <!-- Template Main CSS File -->
     <link href="../assets/css/style.css" rel="stylesheet">
-    <!-- =======================================================
-  * Template Name: NiceAdmin - v2.2.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
   </head>
   <body>
     <!-- ======= Header ======= -->
@@ -47,7 +41,8 @@
             </a><!-- End Profile Iamge Icon -->
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                <h6>Leander Kieweg</h6>
+              <!-- todo: get logged in user   -->
+              <h6>Leander Kieweg</h6>
                 <span>stiangglanda</span>
               </li>
               <li>
@@ -68,11 +63,19 @@
                   <span>Sign Out</span>
                 </a>
               </li>
-            </ul><!-- End Profile Dropdown Items -->
-          </li><!-- End Profile Nav -->
+            </ul>
+            <!-- End Profile Dropdown Items -->
+          
+          </li>
+          <!-- End Profile Nav -->
+        
         </ul>
-      </nav><!-- End Icons Navigation -->
-    </header><!-- End Header -->
+      </nav>
+      <!-- End Icons Navigation -->
+    
+    </header>
+    <!-- End Header -->
+    
     <main id="main" class="main">
       <section class="section">
         <div class="row">
@@ -80,28 +83,29 @@
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Add Parcour</h5>
+                
                 <!-- General Form Elements -->
-                <form>
+                <form action="das">
                   <div class="col-12">
-                    <label for="FirstName" class="form-label">Name</label>
-                    <input type="text" name="name" class="form-control" id="FirstName" required>
-                    <div class="invalid-feedback">Please, enter your name!</div>
+                    <label for="FirstName" class="form-label">Parcour Name</label>
+                    <input type="text" name="name" class="form-control" id="name" required>
+                    <div class="invalid-feedback">Please, enter a valid name!</div>
                   </div>
                   <div class="col-12">
                     <label for="SecondName" class="form-label">Place</label>
-                    <input type="text" name="name" class="form-control" id="SecondName" required>
-                    <div class="invalid-feedback">Please, enter your name!</div>
+                    <input type="text" name="name" class="form-control" id="place" required>
+                    <div class="invalid-feedback">Please, enter a valid place!</div>
                   </div>
                   <div class="col-12">
-                    <label for="SecondName" class="form-label">3d Animal Count</label>
-                    <input type="text" name="name" class="form-control" id="SecondName" required>
-                    <div class="invalid-feedback">Please, enter your name!</div>
+                    <label for="SecondName" class="form-label">3D Animal Count</label>
+                    <input type="number" name="name" class="form-control" id="animalCount" required>
+                    <div class="invalid-feedback">Please, enter a valid number!</div>
                   </div>
                   <div class="container-fluid mt-3">
                     <div class="row">
                       <div class="col-sm-6 p-3 text-white">
                         <div class="d-grid gap-2 mt-3">
-                          <button class="btn btn-primary" type="submit">Save</button>
+                          <button class="btn btn-primary" type="submit" name="submit">Save</button>
                         </div>
                       </div>
                       <div class="col-sm-6 p-3 text-white">
@@ -111,13 +115,34 @@
                       </div>
                     </div>
                   </div>
-                </form><!-- End General Form Elements -->
+                </form>
+                <!-- End General Form Elements -->
+              
+                <?php
+                  // insert new parcour
+                  if (isset($_POST['submit'])) {
+
+                    $name = $_POST['name'];
+                    $place = $_POST['place'];
+                    $animalCount = $_POST['animalCount'];
+
+                    $new_parcour = new Parcour(Utils::nextId("parcour"), $name, $place, $animalCount);
+                    if ($new_parcour->insert()) {
+                      echo "<script>window.location.href = \"dashboard site\"</script>";
+                    } else {
+                      echo "Error inserting new parcour";
+                    }
+                  }
+                ?>
+
               </div>
             </div>
           </div>
         </div>
       </section>
-    </main><!-- End #main -->
+    </main>
+    <!-- End #main -->
+    
     <!-- ======= Footer ======= -->
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
         class="bi bi-arrow-up-short"></i></a>

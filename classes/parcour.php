@@ -44,7 +44,7 @@ class Parcour extends Database
 
 			return true;
 		}
-		catch (PDOException $e) {
+		catch (Exception $e) {
 			return false;
 		}
 	}
