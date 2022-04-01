@@ -47,8 +47,8 @@
             </a><!-- End Profile Iamge Icon -->
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                <h6><?=$_SESSION["loggedin_user"]->firstName?> <?=$_SESSION["loggedin_user"]->lastName?></h6>
-                <span><?=$_SESSION["loggedin_user"]->nickName?></span>
+                <h6><?=$_SESSION['loggedin_user']->firstName?> <?=$_SESSION['loggedin_user']->lastName?></h6>
+                <span><?=$_SESSION['loggedin_user']->nickName?></span>
               </li>
               <li>
                 <hr class="dropdown-divider">
