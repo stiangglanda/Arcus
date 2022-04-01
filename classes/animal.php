@@ -2,6 +2,7 @@
 
 class Animal extends Database
 {
+	#region ctor
 	public $animalId;
 	public $animalNumber;
 	public $parcourId;
@@ -13,6 +14,7 @@ class Animal extends Database
 		$this->animalNumber = $animalNumber;
 		$this->parcourId = $parcourId;
 	}
+	#endregion
 
 	public function getAnimals()
 	{

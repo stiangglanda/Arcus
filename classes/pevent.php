@@ -24,7 +24,6 @@ class PEvent extends Database
 		}
 	}
 
-	#region statics
 	public static function getEvents()
 	{
 		$db = new Database();
@@ -50,5 +49,4 @@ class PEvent extends Database
 		}
 		return false;
 	}
-#endregion
 }

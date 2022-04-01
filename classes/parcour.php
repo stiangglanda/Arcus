@@ -2,6 +2,7 @@
 
 class Parcour extends Database
 {
+	#region ctor
 	public $parcourId;
 	public $name;
 	public $place;
@@ -15,6 +16,7 @@ class Parcour extends Database
 		$this->place = $place;
 		$this->animalCount = $animalCount;
 	}
+	#endregion
 
 	public function getParcours()
 	{

@@ -49,7 +49,6 @@ class User extends Database
 		}
 	}
 
-	#region statics
 	public static function getUsers()
 	{
 		$db = new Database();
@@ -129,5 +128,4 @@ class User extends Database
 		}
 		return false;
 	}
-#endregion
 }
