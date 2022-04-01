@@ -32,7 +32,7 @@ class Animal extends Database
 	public function insert()
 	{
 		$stmt = $this->pdo->prepare("INSERT INTO animal (animalNumber, parcourId) VALUES (?,?)");
-		$stmt->execute([$this->animalNumber, $this->parcourId]);
+		return $stmt->execute([$this->animalNumber, $this->parcourId]);
 	}
 
 	public function delete()
