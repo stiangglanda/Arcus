@@ -6,22 +6,22 @@ if(isset($_POST['save']))
         $Username=$_POST['yourUsername'];
         $Password=$_POST['yourPassword'];
         //$db = new Database();
-        $exists= User::getUserByNickNamePassword( $Username,$Password);
+        $exists= User::getUserByNickNamePassword($Username, $Password);
 
-        if($exists)
+        if(!is_null($exists))
         {
+            $_SESSION['loggedin_user'] = $exists;
             header('Location: ../html/dashboard.php');
         }
         else
         {
             header('Location: ../index.php');
-        }
-        
-        
+        }        
     }catch (Exception $e)
     {
         echo $e->getCode().': '.$e->getMessage().'<br>';
     }
+
 }else{
     ?>
         <div class="container">

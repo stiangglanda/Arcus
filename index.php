@@ -33,54 +33,48 @@
 <body>
     <main>
     <?php
-    $nickname="";
-        require_once "./classes/db.php";
-        require_once "./classes/animal.php";
-        require_once "./classes/pevent.php";
-        require_once "./classes/parcour.php";
-        require_once "./classes/score.php";
-        require_once "./classes/user.php";
-        require_once "./classes/utils.php";
-      if(isset($_GET['page']))
-      {
-          switch ($_GET['page'])
-          {
-              case 'Register':
-                  include 'html/Register.php';
-                  break;
-              case 'addPlayer':
-                  include 'html/addPlayer.php';
-                  break;
-              case 'addParcour':
-                    include 'html/addParcour.php';
-                    break;
-              case 'addPlayer':
-                    include 'html/addPlayer.php';
-                    break;
-              case 'Statistics':
-                    include 'html/Statistics.php';
-                    break;      
-              case 'dashboard':
-                  include 'html/dashboard.php';
-                  break;
-              case 'Settings':
-                  include 'html/Settings.php';
-                  break;
-              case 'Game':
-                  include 'html/Game.php';
-                  break;
-              case 'LogIn':
-                  include 'html/LogIn.php';
-                  break;
-              default:
-                  include 'html/start.php';
-          }
-      }
-      else
-      {
-          include 'html/start.php';
-      }
-      ?>
+$nickname = "";
+require_once "./classes/db.php";
+require_once "./classes/animal.php";
+require_once "./classes/pevent.php";
+require_once "./classes/parcour.php";
+require_once "./classes/score.php";
+require_once "./classes/user.php";
+require_once "./classes/utils.php";
+if (isset($_GET['page'])) {
+    switch ($_GET['page']) {
+        case 'Register':
+            include 'html/Register.php';
+            break;
+        case 'addPlayer':
+            include 'html/addPlayer.php';
+            break;
+        case 'addParcour':
+            include 'html/addParcour.php';
+            break;
+        case 'Statistics':
+            include 'html/Statistics.php';
+            break;
+        case 'dashboard':
+            include 'html/dashboard.php';
+            break;
+        case 'Settings':
+            include 'html/Settings.php';
+            break;
+        case 'Game':
+            include 'html/Game.php';
+            break;
+        case 'LogIn':
+            include 'html/LogIn.php';
+            break;
+        default:
+            include 'html/start.php';
+    }
+}
+else {
+    include 'html/start.php';
+}
+?>
        
     </main><!-- End #main -->
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
