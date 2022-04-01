@@ -96,6 +96,21 @@ class User extends Database
 		}
 	}
 
+	public static function getUserByNickNamePassword($nickName, $password)
+	{
+		$db = new Database();
+		$stmt = $db->pdo->prepare("SELECT * FROM user WHERE nickName = ? and password =?");
+		$stmt->execute([$nickName,$password]);
+		$res = $stmt->fetch();
+
+		if ($stmt->rowCount() > 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
 	public static function nickNameExists($nickName)
 	{
 		$db = new Database();
