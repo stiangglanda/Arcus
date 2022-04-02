@@ -113,7 +113,7 @@ class User extends Database
 			return new User($res["userId"], $res["firstName"], $res["lastName"], $res["nickName"], $res["password"], $res["guest"]);
 		}
 		else {
-			return "test";
+			return null;
 		}
 	}
 
