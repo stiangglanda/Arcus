@@ -12,9 +12,8 @@ if (isset($_POST['save']))
         $loggedUser = User::validUser($username, $password);
 
         if (!is_null($loggedUser)) {
-
             $_SESSION['loggedUser'] = $loggedUser;
-            header('Location: ./dashboard.php');
+            header('Location: ./html/dashboard.php');
         }
         else {
             header('Location: ../index.php');
@@ -66,9 +65,6 @@ else {
                                     </div>
                                     <div class="col-12">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="remember" value="true"
-                                                id="rememberMe">
-                                            <label class="form-check-label" for="rememberMe">Remember me</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
