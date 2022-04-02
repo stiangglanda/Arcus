@@ -42,35 +42,35 @@ session_start();
 if (isset($_GET['page'])) {
     switch ($_GET['page']) {
         case 'signup':
-            include 'html/signup.php';
+            include './html/signup.php';
             break;
         case 'addPlayer':
-            include 'html/addPlayer.php';
+            include './html/addPlayer.php';
             break;
         case 'addParcour':
-            include 'html/addParcour.php';
+            include './html/addParcour.php';
             break;
         case 'statistics':
-            include 'html/statistics.php';
+            include './html/statistics.php';
             break;
         case 'dashboard':
-            include 'html/dashboard.php';
+            include './html/dashboard.php';
             break;
         case 'settings':
-            include 'html/settings.php';
+            include './html/settings.php';
             break;
         case 'game':
-            include 'html/game.php';
+            include './html/game.php';
             break;
         case 'signin':
-            include 'html/signin.php';
+            include './html/signin.php';
             break;
         default:
-            include 'html/start.php';
+            include './html/start.php';
     }
 }
 else {
-    include 'html/start.php';
+    include './html/start.php';
 }
 ?>
     </main><!-- End #main -->
