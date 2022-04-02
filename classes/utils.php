@@ -1,5 +1,6 @@
 <?php
-class Utils
+require_once "db.php";
+class Utils extends Database
 {
     public static function nextId($table)
     {
@@ -16,5 +17,12 @@ class Utils
         $regex = '/[0-9]+(\\s+([a-zA-Z]+\\s+)+)\'[a-zA-Z]+\'(\\s+([a-zA-Z]+\\s+)+)\'[^\']*\'/i';
         preg_match($regex, $input, $matches);
         return $matches[0];
+    }
+
+    public static function resetDb()
+    {
+        $db = new Database();
+        $stmt = $db->pdo->prepare(file_get_contents("assets/sql/arcusdb_local.sql"));
+        $stmt->execute();
     }
 }
