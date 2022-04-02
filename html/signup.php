@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <title>Register</title>
+        <title>Sign Up</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
         <!-- Favicons -->
@@ -46,7 +46,7 @@
                                             <p class="text-center small">Enter your personal details to create account
                                             </p>
                                         </div>
-                                        <form action="../forms/register.php" class="row g-3 needs-validation" novalidate>
+                                        <form action="../forms/signup.php" class="row g-3 needs-validation" novalidate>
                                             <div class="col-12">
                                                 <label for="FirstName" class="form-label">First Name</label>
                                                 <input type="text" name="firstName" class="form-control" id="FirstName"

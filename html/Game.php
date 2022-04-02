@@ -54,7 +54,7 @@
                 <hr class="dropdown-divider">
               </li>
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="Settings.php">
+                <a class="dropdown-item d-flex align-items-center" href="settings.php">
                   <i class="bi bi-gear"></i>
                   <span>Account Settings</span>
                 </a>
@@ -103,7 +103,7 @@
                     <div class="row">
                       <div class="col-12">
                         <div class="d-grid gap-2 mt-3">
-                          <a href="?page=Statistics" class="btn btn-primary btn-lg float-right" role="button">Next</a>
+                          <a href="?page=statistics" class="btn btn-primary btn-lg float-right" role="button">Next</a>
                         </div>
                       </div>
                     </div>

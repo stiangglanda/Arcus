@@ -16,7 +16,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Login</title>
+    <title>Sign In</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <!-- Favicons -->
@@ -41,8 +41,8 @@ session_start();
     <?php
 if (isset($_GET['page'])) {
     switch ($_GET['page']) {
-        case 'Register':
-            include 'html/Register.php';
+        case 'signup':
+            include 'html/signup.php';
             break;
         case 'addPlayer':
             include 'html/addPlayer.php';
@@ -50,20 +50,20 @@ if (isset($_GET['page'])) {
         case 'addParcour':
             include 'html/addParcour.php';
             break;
-        case 'Statistics':
-            include 'html/Statistics.php';
+        case 'statistics':
+            include 'html/statistics.php';
             break;
         case 'dashboard':
             include 'html/dashboard.php';
             break;
-        case 'Settings':
-            include 'html/Settings.php';
+        case 'settings':
+            include 'html/settings.php';
             break;
-        case 'Game':
-            include 'html/Game.php';
+        case 'game':
+            include 'html/game.php';
             break;
-        case 'LogIn':
-            include 'html/LogIn.php';
+        case 'signin':
+            include 'html/signin.php';
             break;
         default:
             include 'html/start.php';
@@ -73,7 +73,6 @@ else {
     include 'html/start.php';
 }
 ?>
-       
     </main><!-- End #main -->
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
     <!-- Vendor JS Files -->

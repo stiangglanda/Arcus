@@ -101,7 +101,7 @@ class User extends Database
 		}
 	}
 
-	public static function getUserByNickNamePassword($nickName, $password)
+	public static function validUser($nickName, $password)
 	{
 		$db = new Database();
 		$stmt = $db->pdo->prepare("SELECT * FROM user WHERE nickName = ? and password =?");
