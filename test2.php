@@ -17,7 +17,6 @@ session_start();
     </ul>
 
 <?php
-$_SESSION['name'] = 'John';
 echo $_SESSION['name'];
 ?>
 </body>
