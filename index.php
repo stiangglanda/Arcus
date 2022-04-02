@@ -1,4 +1,12 @@
 <?php
+require_once "./classes/db.php";
+require_once "./classes/utils.php";
+require_once "./classes/user.php";
+require_once "./classes/parcour.php";
+require_once "./classes/pevent.php";
+require_once "./classes/animal.php";
+require_once "./classes/score.php";
+
 session_start();
 ?>
 
@@ -26,25 +34,11 @@ session_start();
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
-    <!-- =======================================================
-    * Template Name: NiceAdmin - v2.2.2
-    * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
 </head>
 
 <body>
     <main>
     <?php
-$nickname = "";
-require_once "./classes/db.php";
-require_once "./classes/animal.php";
-require_once "./classes/pevent.php";
-require_once "./classes/parcour.php";
-require_once "./classes/score.php";
-require_once "./classes/user.php";
-require_once "./classes/utils.php";
 if (isset($_GET['page'])) {
     switch ($_GET['page']) {
         case 'Register':
