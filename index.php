@@ -66,11 +66,11 @@ if (isset($_GET['page'])) {
             include './html/signin.php';
             break;
         default:
-            include './html/start.php';
+            include './html/signin.php';
     }
 }
 else {
-    include './html/start.php';
+    include './html/signin.php';
 }
 ?>
     </main><!-- End #main -->

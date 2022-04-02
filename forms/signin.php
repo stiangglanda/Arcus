@@ -18,7 +18,7 @@ if (isset($_POST['save'])) {
     }
     // if the user is not valid, redirect to index page
     else {
-        header('Location: ../html/start.php');
+        header('Location: ../html/signin.php');
     }
 }
 ?>
