@@ -60,9 +60,6 @@ if (isset($_GET['page'])) {
         case 'game':
             include './html/game.php';
             break;
-        case 'signin':
-            include './html/signin.php';
-            break;
         default:
             include './html/signin.php';
     }
