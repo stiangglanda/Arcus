@@ -1,5 +1,13 @@
-
 <?php
+require_once "./classes/db.php";
+require_once "./classes/utils.php";
+require_once "./classes/user.php";
+require_once "./classes/parcour.php";
+require_once "./classes/pevent.php";
+require_once "./classes/animal.php";
+require_once "./classes/score.php";
+
+session_start();
 
 if(isset($_POST['save']))
 {
