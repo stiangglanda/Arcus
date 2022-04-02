@@ -54,12 +54,12 @@
                 <hr class="dropdown-divider">
               </li>
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="Settings.php">
+                <a class="dropdown-item d-flex align-items-center" href="settings.php">
                   <i class="bi bi-gear"></i>
                   <span>Account Settings</span>
                 </a>
               </li>
-              <li>
+              <li>s
                 <hr class="dropdown-divider">
               </li>
               <li>
