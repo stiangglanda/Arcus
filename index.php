@@ -39,8 +39,8 @@ require_once "./classes/user.php";
     <?php
 if (isset($_GET['page'])) {
     switch ($_GET['page']) {
-        case 'Register':
-            include './html/Register.php';
+        case 'signup':
+            include './html/signup.php';
             break;
         case 'addPlayer':
             include './html/addPlayer.php';
@@ -48,27 +48,29 @@ if (isset($_GET['page'])) {
         case 'addParcour':
             include './html/addParcour.php';
             break;
-        case 'Statistics':
-            include './html/Statistics.php';
+        case 'statistics':
+            include './html/statistics.php';
             break;
         case 'dashboard':
             include './html/dashboard.php';
             break;
-        case 'Settings':
-            include './html/Settings.php';
+        case 'settings':
+            include './html/settings.php';
             break;
-        case 'Game':
-            include './html/Game.php';
+        case 'game':
+            include './html/game.php';
+            break;
+        case 'signin':
+            include './html/signin.php';
             break;
         default:
-            include './html/start.php';
+            include './html/signin.php';
     }
 }
 else {
-    include './html/start.php';
+    include './html/signin.php';
 }
 ?>
-       
     </main><!-- End #main -->
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
     <!-- Vendor JS Files -->
