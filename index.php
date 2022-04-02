@@ -2,7 +2,7 @@
 
 <?php
 session_start();
-$_SESSION['auth'] = false;
+// $_SESSION['auth'] = false;
 
 if ($_SESSION['auth']) {
     header("location: ./html/dashboard.php");
