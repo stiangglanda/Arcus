@@ -1,4 +1,5 @@
 <?php
+require_once "db.php";
 class User extends Database
 {
 	#region ctor
