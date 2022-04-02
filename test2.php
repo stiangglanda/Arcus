@@ -17,7 +17,12 @@ session_start();
     </ul>
 
 <?php
-echo $_SESSION['name'];
+
+foreach ($_SESSION as $sessvar) {
+    print_r($sessvar);
+    echo "<br>";
+}
+
 ?>
 </body>
 </html>

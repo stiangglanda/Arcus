@@ -1,5 +1,7 @@
 <?php
 session_start();
+require './classes/user.php';
+require './classes/utils.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +19,16 @@ session_start();
     </ul>
 
 <?php
-$_SESSION['name'] = 'John';
-echo $_SESSION['name'];
+    $tim = User::getUserByNickName("ThisTim");
+    // $_SESSION['loggedUser'] = $tim;
+
+    // save values of user in session variable
+    $_SESSION['userId'] = $tim->userId;
+    $_SESSION['firstName'] = $tim->firstName;
+    $_SESSION['lastName'] = $tim->lastName;
+    $_SESSION['nickName'] = $tim->nickName;
+    $_SESSION['password'] = $tim->password;
+    $_SESSION['guest'] = $tim->guest;
 ?>
 </body>
 </html>
