@@ -74,9 +74,7 @@ require_once '../classes/user.php';
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
-                                                    <button class="btn btn-primary w-100" name="save"
-                                                        type="submit">Login</button>
-                                                    <a href="?page=dashboard">Dashboard</a>
+                                                    <button class="btn btn-primary w-100" name="save" type="submit">Login</button>
                                                 </div>
                                                 <div class="col-12">
                                                     <p class="small mb-0">Don't have account? <a href="?page=Register">Create an account</a></p>

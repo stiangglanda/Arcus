@@ -4,7 +4,7 @@
 session_start();
 // $_SESSION['auth'] = false;
 
-if ($_SESSION['auth']) {
+if (isset($_SESSION['auth']) && $_SESSION['auth'] == true) {
     header("location: ./html/dashboard.php");
 }
 else {
