@@ -61,7 +61,7 @@
                 <hr class="dropdown-divider">
               </li>
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="Settings.php">
+                <a class="dropdown-item d-flex align-items-center" href="settings.php">
                   <i class="bi bi-gear"></i>
                   <span>Account Settings</span>
                 </a>
@@ -140,7 +140,7 @@
                     </div>
                   </div>
                   <div class="d-grid gap-2 mt-3">
-                    <a href="?page=Game" class="btn btn-primary" role="button">Start</a>
+                    <a href="?page=game" class="btn btn-primary" role="button">Start</a>
                   </div>
                 </form><!-- End General Form Elements -->
               </div>
