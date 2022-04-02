@@ -92,14 +92,6 @@ require_once '../classes/user.php';
                                                         $userVars = array($loggedUser->userId, $loggedUser->firstName, $loggedUser->lastName, $loggedUser->nickName, $loggedUser->password, $loggedUser->guest);
 
                                                         $_SESSION['loggedUser'] = $userVars;
-
-                                                        // $_SESSION['userId'] = $loggedUser->userId;
-                                                        // $_SESSION['firstName'] = $loggedUser->firstName;
-                                                        // $_SESSION['lastName'] = $loggedUser->lastName;
-                                                        // $_SESSION['nickName'] = $loggedUser->nickName;
-                                                        // $_SESSION['password'] = $loggedUser->password;
-                                                        // $_SESSION['guest'] = $loggedUser->guest;
-
                                                         echo '<script>window.location.href = "./dashboard.php";</script>';
                                                     }
                                                     else {
