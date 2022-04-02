@@ -2,6 +2,7 @@
 
 class Parcour extends Database
 {
+	#region ctor
 	public $parcourId;
 	public $name;
 	public $place;
@@ -15,6 +16,7 @@ class Parcour extends Database
 		$this->place = $place;
 		$this->animalCount = $animalCount;
 	}
+	#endregion
 
 	public function getParcours()
 	{
@@ -32,11 +34,17 @@ class Parcour extends Database
 	public function insert()
 	{
 		try {
-			$stmt = $this->pdo->prepare("INSERT INTO animal (animalNumber, parcourId) VALUES (?,?)");
+			$stmt = $this->pdo->prepare("INSERT INTO parcour (name, place, animalCount) VALUES (?,?,?)");
 			$stmt->execute([$this->name, $this->place, $this->animalCount]);
+
+			for ($i=0; $i < $this->animalCount; $i++) { 
+				$animal = new Animal(Utils::nextId("animal"), $i, $this->parcourId);
+				$animal->insert();
+			}
+
 			return true;
 		}
-		catch (PDOException $e) {
+		catch (Exception $e) {
 			return false;
 		}
 	}

@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,7 +38,7 @@
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
       <div class="d-flex align-items-center justify-content-between">
-        <a href="dashboard.html" class="logo d-flex align-items-center">
+        <a href="dashboard.php" class="logo d-flex align-items-center">
           <img src="../assets/img/arrows.png" alt="">
           <span class="d-none d-lg-block">Arcus</span>
         </a>
@@ -47,14 +51,17 @@
             </a><!-- End Profile Iamge Icon -->
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                <h6>Leander Kieweg</h6>
-                <span>stiangglanda</span>
+                <php?
+                session_start();
+                ?>
+                <h6><?=$_SESSION['loggedUser']->firstName?> <?=$_SESSION['loggedUser']->lastName?></h6>
+                <span><?=$_SESSION['loggedUser']->nickName?></span>
               </li>
               <li>
                 <hr class="dropdown-divider">
               </li>
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="Settings.html">
+                <a class="dropdown-item d-flex align-items-center" href="Settings.php">
                   <i class="bi bi-gear"></i>
                   <span>Account Settings</span>
                 </a>
@@ -63,7 +70,7 @@
                 <hr class="dropdown-divider">
               </li>
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="../index.html">
+                <a class="dropdown-item d-flex align-items-center" href="../index.php">
                   <i class="bi bi-box-arrow-right"></i>
                   <span>Sign Out</span>
                 </a>
@@ -87,37 +94,39 @@
                     <div class="col-9">
                       <select class="form-select" aria-label="Default select example">
                         <option selected>Open this select menu</option>
+                        <!-- todo: get parcours from db -->
                         <option value="1">One</option>
                         <option value="2">Two</option>
                         <option value="3">Three</option>
                       </select>
                     </div>
                     <div class="col-1">
-                      <a href="addParcour.html" class="btn btn btn-success" role="button">Add</a>
+                      <a href="?page=addParcour" class="btn btn btn-success" role="button">Add</a>
                     </div>
                   </div>
                   <div class="card">
                     <div class="card-body">
+                      <!-- todo: get players from db -->
                       <h5 class="card-title">3 Player</h5>
                       <!-- List group With badges -->
                       <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center"> Player 1
+                        <li class="list-group-item d-flex justify-content-between align-items-center" onclick="remove(this)" id="remove"> Player 1
                           <span><button type="button" class="btn btn-danger rounded-pill">Remove</button></span>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center"> Player 2
+                        <li class="list-group-item d-flex justify-content-between align-items-center" onclick="remove(this)" id="remove"> Player 2
                           <span><button type="button" class="btn btn-danger rounded-pill">Remove</button></span>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center"> Player 3
+                        <li class="list-group-item d-flex justify-content-between align-items-center" onclick="remove(this)" id="remove"> Player 3
                           <span><button type="button" class="btn btn-danger rounded-pill">Remove</button></span>
                         </li>
                       </ul><!-- End List With badges -->
                       <div class="d-grid gap-2 mt-3">
-                        <a href="addPlayer.html" type="button" class="btn btn btn-success">Add Player</a>
+                        <a href="html/addPlayer.php" type="button" class="btn btn btn-success">Add Player</a>
                       </div>
-                      <div class="d-grid gap-2 mt-3">
+                      <!-- <div class="d-grid gap-2 mt-3">
                         <button type="button" class="btn btn btn-success" onclick="addPlayer()">Add Player</button>
                       </div>
-                      <div id="addPlayer"></div>
+                      <div id="addPlayer"></div> -->
                     </div>
                   </div>
                   <div class="row mb-3">
@@ -131,7 +140,7 @@
                     </div>
                   </div>
                   <div class="d-grid gap-2 mt-3">
-                    <a href="Game.html" class="btn btn-primary" role="button">Start</a>
+                    <a href="?page=Game" class="btn btn-primary" role="button">Start</a>
                   </div>
                 </form><!-- End General Form Elements -->
               </div>

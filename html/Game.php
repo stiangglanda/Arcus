@@ -34,7 +34,7 @@
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
       <div class="d-flex align-items-center justify-content-between">
-        <a href="dashboard.html" class="logo d-flex align-items-center">
+        <a href="dashboard.php" class="logo d-flex align-items-center">
           <img src="../assets/img/arrows.png" alt="">
           <span class="d-none d-lg-block">Arcus</span>
         </a>
@@ -54,7 +54,7 @@
                 <hr class="dropdown-divider">
               </li>
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="Settings.html">
+                <a class="dropdown-item d-flex align-items-center" href="Settings.php">
                   <i class="bi bi-gear"></i>
                   <span>Account Settings</span>
                 </a>
@@ -63,7 +63,7 @@
                 <hr class="dropdown-divider">
               </li>
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="../index.html">
+                <a class="dropdown-item d-flex align-items-center" href="../index.php">
                   <i class="bi bi-box-arrow-right"></i>
                   <span>Sign Out</span>
                 </a>
@@ -86,24 +86,24 @@
                 <form>
                   <div class="col-12">
                     <label for="FirstName" class="form-label">1. Shot</label>
-                    <input type="text" name="name" class="form-control" id="FirstName" required>
+                    <input type="number" min="0" max="20" name="name" class="form-control" id="FirstName" required>
                     <div class="invalid-feedback">Please, enter your name!</div>
                   </div>
                   <div class="col-12">
                     <label for="SecondName" class="form-label">2. Shot</label>
-                    <input type="text" name="name" class="form-control" id="SecondName" required>
+                    <input type="number" min="0" max="20" name="name" class="form-control" id="SecondName" required>
                     <div class="invalid-feedback">Please, enter your name!</div>
                   </div>
                   <div class="col-12">
                     <label for="SecondName" class="form-label">3. Shot</label>
-                    <input type="text" name="name" class="form-control" id="SecondName" required>
+                    <input type="number" min="0" max="20" name="name" class="form-control" id="SecondName" required>
                     <div class="invalid-feedback">Please, enter your name!</div>
                   </div>
                   <div class="container-fluid mt-12">
                     <div class="row">
                       <div class="col-12">
                         <div class="d-grid gap-2 mt-3">
-                          <a href="Statistics.html" class="btn btn-primary btn-lg float-right" role="button">Next</a>
+                          <a href="?page=Statistics" class="btn btn-primary btn-lg float-right" role="button">Next</a>
                         </div>
                       </div>
                     </div>

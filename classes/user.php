@@ -23,8 +23,8 @@ class User extends Database
 
 	public function insert()
 	{
-		$stmt = $this->pdo->prepare("INSERT INTO user(userId, firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?,?)");
-		$stmt->execute([$this->userId, $this->firstName, $this->lastName, $this->nickName, $this->password, $this->guest]);
+		$stmt = $this->pdo->prepare("INSERT INTO user(firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?)");
+		$stmt->execute([$this->firstName, $this->lastName, $this->nickName, $this->password, $this->guest]);
 	}
 
 	public function delete()
@@ -49,7 +49,6 @@ class User extends Database
 		}
 	}
 
-	#region statics
 	public static function getUsers()
 	{
 		$db = new Database();
@@ -67,7 +66,6 @@ class User extends Database
 
 	public static function getUserById($id)
 	{
-
 		$db = new Database();
 		$stmt = $db->pdo->prepare("SELECT * FROM user WHERE userId = ?");
 		$stmt->execute([$id]);
@@ -79,6 +77,13 @@ class User extends Database
 		else {
 			return false;
 		}
+	}
+
+	public static function addGuest($firstName, $lastName, $nickName)
+	{
+		$db = new Database();
+		$stmt = $db->pdo->prepare("call addGuest(?,?,?);");
+		$stmt->execute([$firstName, $lastName, $nickName]);
 	}
 
 	public static function getUserByNickName($nickName)
@@ -94,6 +99,26 @@ class User extends Database
 		else {
 			return false;
 		}
+	}
+
+	public static function getUserByNickNamePassword($nickName, $password)
+	{
+		$db = new Database();
+		$stmt = $db->pdo->prepare("SELECT * FROM user WHERE nickName = ? and password =?");
+		$stmt->execute([$nickName, $password]);
+		$res = $stmt->fetch();
+
+		if ($res) {
+			return new User($res["userId"], $res["firstName"], $res["lastName"], $res["nickName"], $res["password"], $res["guest"]);
+		}
+		else {
+			return null;
+		}
+	}
+
+	public static function prepareGuestName($nickName)
+	{
+		return substr($nickName, strpos($nickName, '_') + 1);
 	}
 
 	public static function nickNameExists($nickName)
@@ -119,5 +144,4 @@ class User extends Database
 		}
 		return false;
 	}
-#endregion
 }
