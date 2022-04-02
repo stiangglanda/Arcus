@@ -4,8 +4,6 @@ session_start();
 require_once "./classes/db.php";
 require_once "./classes/utils.php";
 require_once "./classes/user.php";
-
-
 ?>
 
 <!DOCTYPE html>
