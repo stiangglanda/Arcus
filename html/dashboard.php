@@ -48,8 +48,8 @@
                 <php?
                 session_start();
                 ?>
-                <h6><?=$_SESSION['loggedUser']->firstName?> <?=$_SESSION['loggedUser']->lastName?></h6>
-                <span><?=$_SESSION['loggedUser']->nickName?></span>
+                <h6><?=$_SESSION['loggedUser'][1]?> <?=$_SESSION['loggedUser'][2]?></h6>
+                <span><?=$_SESSION['loggedUser'][3]?></span>
               </li>
               <li>
                 <hr class="dropdown-divider">
