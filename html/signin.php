@@ -91,7 +91,8 @@ require_once '../classes/user.php';
 													if (!is_null($loggedUser)) {
 														$_SESSION['auth'] = true;
 												
-														$userVars = array($loggedUser->userId, $loggedUser->firstName, $loggedUser->lastName, $loggedUser->nickName, $loggedUser->password, $loggedUser->guest);
+                                                        $userVars = array("userId"=>$loggedUser->userId, "firstName"=>$loggedUser->firstName, "lastName"=>$loggedUser->firstName, "nickName"=>$loggedUser->nickName, "password"=>$loggedUser->password, "guest"=>$loggedUser->guest);
+														// $userVars = array($loggedUser->userId, $loggedUser->firstName, $loggedUser->lastName, $loggedUser->nickName, $loggedUser->password, $loggedUser->guest);
 
 														$_SESSION['loggedUser'] = $userVars;
 														echo '<script>window.location.href = "./dashboard.php";</script>';
