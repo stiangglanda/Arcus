@@ -81,7 +81,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Dashboard</h5>
                                 <!-- General Form Elements -->
-                                <form>
+                                <form method="post">
                                     <div class="row mb-3">
                                         <label class="col-sm-2 col-form-label">Parcour</label>
                                         <div class="col-9">
@@ -130,12 +130,11 @@
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label class="col-sm-2 col-form-label">Zählweise</label>
+                                        <label class="col-sm-2 col-form-label">Counting System</label>
                                         <div>
                                             <select class="form-select" aria-label="Default select example">
-                                                <option selected>Open this select menu</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                                <option name="countingSystem" value="2">Two Arrows</option>
+                                                <option name="countingSystem" value="3" selected>Three Arrows</option>
                                             </select>
                                         </div>
                                     </div>
@@ -143,6 +142,12 @@
                                         <a href="?page=game" class="btn btn-primary" role="button">Start</a>
                                     </div>
                                 </form><!-- End General Form Elements -->
+                                <?php
+                                    if(isset($_POST['countingSystem']))
+                                    {
+                                        $_SESSION['countingSystem'] = $_POST['countingSystem'];
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
