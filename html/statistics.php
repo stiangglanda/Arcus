@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,12 +26,6 @@
     <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
     <!-- Template Main CSS File -->
     <link href="../assets/css/style.css" rel="stylesheet">
-    <!-- =======================================================
-  * Template Name: NiceAdmin - v2.2.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
   </head>
   <body>
     <!-- ======= Header ======= -->
@@ -54,12 +51,12 @@
                 <hr class="dropdown-divider">
               </li>
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="Settings.php">
+                <a class="dropdown-item d-flex align-items-center" href="settings.php">
                   <i class="bi bi-gear"></i>
                   <span>Account Settings</span>
                 </a>
               </li>
-              <li>
+              <li>s
                 <hr class="dropdown-divider">
               </li>
               <li>
@@ -79,40 +76,81 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Game: parcourName</h5>
-                <h5 class="card-title text-center">Animal 3/22</h5>
-                <h6 class="card-title text-center">Nickname</h6>
-                <!-- General Form Elements -->
-                <form>
-                  <div class="col-12">
-                    <label for="FirstName" class="form-label">1. Shot</label>
-                    <input type="number" min="0" max="20" name="name" class="form-control" id="FirstName" required>
-                    <div class="invalid-feedback">Please, enter your name!</div>
-                  </div>
-                  <div class="col-12">
-                    <label for="SecondName" class="form-label">2. Shot</label>
-                    <input type="number" min="0" max="20" name="name" class="form-control" id="SecondName" required>
-                    <div class="invalid-feedback">Please, enter your name!</div>
-                  </div>
-                  <div class="col-12">
-                    <label for="SecondName" class="form-label">3. Shot</label>
-                    <input type="number" min="0" max="20" name="name" class="form-control" id="SecondName" required>
-                    <div class="invalid-feedback">Please, enter your name!</div>
-                  </div>
-                  <div class="container-fluid mt-12">
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="d-grid gap-2 mt-3">
-                          <a href="Statistics.php" class="btn btn-primary btn-lg float-right" role="button">Next</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </form><!-- End General Form Elements -->
+                <h5 class="card-title">Statistics</h5>
+                <!-- Line Chart -->
+                <div id="lineChart"></div>
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    new ApexCharts(document.querySelector("#lineChart"), {
+                      series: [{
+                        name: "Score",
+                        data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+                      }],
+                      chart: {
+                        height: 350,
+                        type: 'line',
+                        zoom: {
+                          enabled: false
+                        }
+                      },
+                      dataLabels: {
+                        enabled: false
+                      },
+                      stroke: {
+                        curve: 'straight'
+                      },
+                      grid: {
+                        row: {
+                          colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                          opacity: 0.5
+                        },
+                      },
+                      xaxis: {
+                        categories: ['Animal 1', 'Animal 2', 'Animal 3', 'Animal 4', 'Animal 5', 'Animal 6', 'Animal 7', 'Animal 8', 'Animal 9'],
+                      }
+                    }).render();
+                  });
+                </script>
+                <!-- End Line Chart -->
               </div>
             </div>
           </div>
-        </div>
+      </section>
+      <section class="section">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Players</h5>
+                <!-- Default Table -->
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Position</th>
+                      <th scope="col">Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Player 2</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Player 1</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Player 3</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="d-grid gap-2 mt-3">
+                  <a href="?page=dashboard" class="btn btn-primary" role="button">Finish</a>
+                </div>
+                <!-- End Default Table Example -->
+              </div>
+            </div>
       </section>
     </main><!-- End #main -->
     <!-- ======= Footer ======= -->

@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,7 +52,7 @@
                 <hr class="dropdown-divider">
               </li>
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="Settings.php">
+                <a class="dropdown-item d-flex align-items-center" href="settings.php">
                   <i class="bi bi-gear"></i>
                   <span>Account Settings</span>
                 </a>

@@ -1,4 +1,5 @@
 <?php
+require_once "db.php";
 class User extends Database
 {
 	#region ctor
@@ -101,10 +102,10 @@ class User extends Database
 		}
 	}
 
-	public static function getUserByNickNamePassword($nickName, $password)
+	public static function validUser($nickName, $password)
 	{
 		$db = new Database();
-		$stmt = $db->pdo->prepare("SELECT * FROM user WHERE nickName = ? and password =?");
+		$stmt = $db->pdo->prepare("SELECT * FROM user WHERE nickName = ? and password = ?");
 		$stmt->execute([$nickName, $password]);
 		$res = $stmt->fetch();
 
