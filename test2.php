@@ -18,10 +18,12 @@ session_start();
 
 <?php
 
-foreach ($_SESSION as $sessvar) {
-    print_r($sessvar);
-    echo "<br>";
-}
+echo $_SESSION['loggedUser']["nickName"];
+
+// foreach ($_SESSION as $sessvar) {
+//     print_r($sessvar);
+//     echo "<br>";
+// }
 
 ?>
 </body>
