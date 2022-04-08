@@ -28,7 +28,7 @@ class Parcour extends Database
 
 		for ($i = 0; $i < $stmt->rowCount(); $i++) {
 			$row = $stmt->fetch();
-			$data[$i] = new User($row["userId"], $row["firstName"], $row["lastName"], $row["nickName"], $row["password"], $row["guest"]);
+			$data[$i] = new Parcour($row["parcourId"], $row["name"], $row["place"], $row["animalCount"]);
 		}
 
 		return $data;
