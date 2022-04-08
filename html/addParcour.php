@@ -50,11 +50,12 @@
                             data-bs-toggle="dropdown">
                             <i class="bi-list toggle-sidebar-btn"></i>
                         </a><!-- End Profile Iamge Icon -->
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" style="user-select: none">
                             <li class="dropdown-header">
-                                <!-- todo: get logged in user   -->
-                                <h6>Leander Kieweg</h6>
-                                <span>stiangglanda</span>
+                                <php? session_start(); ?>
+                                    <h6><?=$_SESSION['loggedUser']['firstName']?>
+                                        <?=$_SESSION['loggedUser']['lastName']?></h6>
+                                    <span><?=$_SESSION['loggedUser']['nickName']?></span>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -69,19 +70,15 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="../index.php">
+                                <a class="dropdown-item d-flex align-items-center" href="./signout.php">
                                     <i class="bi bi-box-arrow-right"></i>
                                     <span>Sign Out</span>
                                 </a>
                             </li>
-                        </ul>
-                        <!-- End Profile Dropdown Items -->
-
-                    </li>
-                    <!-- End Profile Nav -->
-
+                        </ul><!-- End Profile Dropdown Items -->
+                    </li><!-- End Profile Nav -->
                 </ul>
-            </nav>
+            </nav><!-- End Icons Navigation -->
             <!-- End Icons Navigation -->
 
         </header>
