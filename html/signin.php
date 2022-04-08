@@ -89,7 +89,7 @@ require_once '../classes/user.php';
 													$loggedUser = User::validUser($username, $password);
 
 													if (!is_null($loggedUser)) {
-														$_SESSION['auth'] = true;
+														$_SESSION['logged'] = true;
 												
                                                         $userVars = array("userId"=>$loggedUser->userId, "firstName"=>$loggedUser->firstName, "lastName"=>$loggedUser->firstName, "nickName"=>$loggedUser->nickName, "password"=>$loggedUser->password, "guest"=>$loggedUser->guest);
 														// $userVars = array($loggedUser->userId, $loggedUser->firstName, $loggedUser->lastName, $loggedUser->nickName, $loggedUser->password, $loggedUser->guest);
