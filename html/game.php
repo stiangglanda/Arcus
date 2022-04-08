@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once '../classes/hitzone.php';
+// require '../classes/_classes.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -115,7 +117,7 @@ session_start();
                                                 $hitzone = Hitzone::getAll();
                                                 foreach ($hitzone as $curr_hitzone)
                                                 {
-                                                    echo '<option value="'.$curr_hitzone->hitzoneId.'">'.$curr_hitzone->hitzoneName.'</option>';
+                                                    echo '<option value="' . $curr_hitzone->hitzoneId . '">' . $curr_hitzone->hitzoneName . '</option>';
                                                 }
                                             ?>
                                         </select>
