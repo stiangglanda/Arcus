@@ -32,11 +32,11 @@ class User extends Database
 	{
 		mysql_select_db($db_name,$db_connection);
 
-		$firstName = $_POST['firstName'];
-		$lastName = $_POST['lastName'];
-		$nickName = $_POST['nickName'];
+		$firstName = $_POST['FirstName'];
+		$lastName = $_POST['LastName'];
+		$nickName = $_POST['NickName'];
 
-		mysql_query("INSERT INTO user (firstName, lastName, nickName) VALUES ('$firstName', '$lastName', '$nickName'");
+		mysql_query("INSERT INTO user (FirstName, LastName, NickName) VALUES ('$firstName', '$lastName', '$nickName'");
 	}
 
 	public function delete()
