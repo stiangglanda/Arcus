@@ -28,6 +28,7 @@ class User extends Database
 		$stmt->execute([$this->firstName, $this->lastName, $this->nickName, $this->password, $this->guest]);
 	}
 
+<<<<<<< HEAD
 	public function insertGuest($db_name, $db_connection)
 	{
 		mysql_select_db($db_name,$db_connection);
@@ -39,6 +40,8 @@ class User extends Database
 		mysql_query("INSERT INTO user (FirstName, LastName, NickName) VALUES ('$firstName', '$lastName', '$nickName'");
 	}
 
+=======
+>>>>>>> 3e472a7c4a1a3ce14c383682e95f994758487b65
 	public function delete()
 	{
 		$stmt = $this->pdo->prepare("DELETE FROM user WHERE userId = ?");
