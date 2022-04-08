@@ -16,14 +16,15 @@ class Animal extends Database
 	}
 	#endregion
 
-	public function getAnimals()
+	public function getAll()
 	{
 		$stmt = $this->pdo->prepare("SELECT * FROM animal");
 		$stmt->execute();
 		$data = array();
 
-		while ($row = $stmt->fetch()) {
-			$data[] = $row;
+		for ($i = 0; $i < $stmt->rowCount(); $i++) {
+			$row = $stmt->fetch();
+			$data[$i] = new Animal($row["animalId"], $row["animalNumber"], $row["parcourId"]);
 		}
 
 		return $data;
@@ -41,24 +42,13 @@ class Animal extends Database
 		$stmt->execute([$this->animalId]);
 	}
 
-	public static function getAnimalById($id)
+	public static function getById($id)
 	{
 		$db = new Database();
 		$stmt = $db->pdo->prepare("SELECT * FROM animal WHERE animalId = ?");
 		$stmt->execute([$id]);
+		$row = $stmt->fetch();
 
-		return $stmt->fetch();
-	}
-
-	public static function exists($id)
-	{
-		$db = new Database();
-		$stmt = $db->pdo->prepare("SELECT * FROM animal where id = ?");
-		$stmt->execute([$id]);
-
-		if ($stmt->rowCount() > 0) {
-			return true;
-		}
-		return false;
+		return new Animal($row["animalId"], $row["animalNumber"], $row["parcourId"]);
 	}
 }

@@ -5,7 +5,7 @@
   require_once '../classes/utils.php';
   require_once '../classes/parcour.php';
   require_once '../classes/user.php';
-  require_once '../classes/pevent.php';
+  require_once '../classes/game.php';
   require_once '../classes/score.php';
 ?>
 <!DOCTYPE html>

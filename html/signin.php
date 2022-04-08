@@ -89,7 +89,7 @@ require_once '../classes/user.php';
                                             </form>
                                             <?php
 												if (isset($_POST['save']) && $username != '' && $password != '') {
-													$loggedUser = User::validUser($username, $password);
+													$loggedUser = User::validate($username, $password);
 
 													if (!is_null($loggedUser)) {
 														$_SESSION['logged'] = true;

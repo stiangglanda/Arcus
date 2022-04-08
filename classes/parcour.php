@@ -50,11 +50,8 @@ class Parcour extends Database
 		$parcour = new Parcour();
 		$stmt = $parcour->pdo->prepare("SELECT * FROM parcour WHERE parcourId = ?");
 		$stmt->execute([$id]);
+		$row = $stmt->fetch();
 
-		$parcour->id = $stmt->fetch()['parcourId'];
-		$parcour->nickname = $stmt->fetch()['name'];
-		$parcour->vName = $stmt->fetch()['place'];
-		$parcour->nName = $stmt->fetch()['animalCount'];
-		return $parcour;
+		return $parcour = new Parcour($row["parcourId"], $row["name"], $row["place"], $row["animalCount"]);
 	}
 }
