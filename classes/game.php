@@ -1,5 +1,6 @@
 <?php
-class PEvent extends Database
+require_once 'db.php';
+class Game extends Database
 {
 	#region ctor
 	public $eventId;
@@ -18,29 +19,28 @@ class PEvent extends Database
 		$stmt->execute([$this->userId, $this->firstName, $this->lastName, $this->nickName, $this->password, $this->guest]);
 	}
 
-	public static function getEvents()
+	public static function getAll()
 	{
 		$db = new Database();
 		$stmt = $db->pdo->prepare("SELECT * FROM event");
 		$stmt->execute();
 		$data = array();
 
-		while ($row = $stmt->fetch()) {
-			$data[] = $row;
+		for ($i = 0; $i < $stmt->rowCount(); $i++) {
+			$row = $stmt->fetch();
+			$data[$i] = new Game($row["eventId"], $row["countingMode"]);
 		}
 
 		return $data;
 	}
 
-	public static function exists($id)
+	public static function getById($id)
 	{
 		$db = new Database();
-		$stmt = $db->pdo->prepare("SELECT * FROM event where eventId = ?");
+		$stmt = $db->pdo->prepare("SELECT * FROM event WHERE eventId = ?");
 		$stmt->execute([$id]);
+		$row = $stmt->fetch();
 
-		if ($stmt->rowCount() > 0) {
-			return true;
-		}
-		return false;
+		return new Game($row["eventId"], $row["countingMode"]);
 	}
 }
