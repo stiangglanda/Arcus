@@ -100,13 +100,9 @@ session_start();
                                             }
                                             catch(PDOException $e)
                                             {
-                                                echo $e->getMessage();
+                                                //echo $e->getMessage();
                                                 $loggedUser=null;
-                                                ?>
-                                            <script>
-                                                alert('User with this username already exists!');
-                                            </script>
-                                            <?php
+                                                echo '<br><div class="alert alert-danger" role="alert">Wrong username or password.</div>';
                                             }
                                             
                                             if (!is_null($loggedUser)) {
