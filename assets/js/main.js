@@ -14,6 +14,15 @@ function cancelAddPlayer() {
 }
 
 /**
+ * function count player
+ */
+function count_player() {
+  var elem = document.getElementById('remove');
+  var count = elem.getsElementByTagName().length;
+  elem.style.width = ((count * 178) - 10) + 'px';
+}
+
+/**
  * function delete player
  */
  function remove()
