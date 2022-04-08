@@ -2,7 +2,7 @@
 session_start();
 $_SESSION['logged'] = false;
 
-if (isset($_SESSION['logged']) && $_SESSION['logged'] === true) {
+if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
     header("location: ./html/dashboard.php");
 }
 else {

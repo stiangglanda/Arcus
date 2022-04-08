@@ -2,7 +2,7 @@
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
 -- Schema arcusdb
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `arcusdb`.`user` (
   `password` VARCHAR(45) NOT NULL,
   `guest` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`userId`),
-  UNIQUE INDEX `nickName_UNIQUE` (`nickName` ASC) VISIBLE)
+  UNIQUE INDEX `nickName_UNIQUE` (`nickName` ASC))
 ENGINE = InnoDB;
 
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `arcusdb`.`animal` (
   `animalNumber` INT NOT NULL,
   `parcourId` INT NOT NULL,
   PRIMARY KEY (`animalId`),
-  INDEX `fk_animal_parcour1_idx` (`parcourId` ASC) VISIBLE,
+  INDEX `fk_animal_parcour1_idx` (`parcourId` ASC),
   CONSTRAINT `fk_animal_parcour1`
     FOREIGN KEY (`parcourId`)
     REFERENCES `arcusdb`.`parcour` (`parcourId`)
@@ -70,12 +70,12 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `arcusdb`.`hitZone`
+-- Table `arcusdb`.`hitzone`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `arcusdb`.`hitZone` (
-  `hitZoneId` INT NOT NULL AUTO_INCREMENT,
-  `hitZoneName` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`hitZoneId`))
+CREATE TABLE IF NOT EXISTS `arcusdb`.`hitzone` (
+  `hitzoneId` INT NOT NULL AUTO_INCREMENT,
+  `hitzoneName` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`hitzoneId`))
 ENGINE = InnoDB;
 
 
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `arcusdb`.`arrow` (
   `arrowId` INT NOT NULL AUTO_INCREMENT,
   `arrowUsed` INT NULL,
   PRIMARY KEY (`arrowId`),
-  UNIQUE INDEX `arrowUsed_UNIQUE` (`arrowUsed` ASC) VISIBLE)
+  UNIQUE INDEX `arrowUsed_UNIQUE` (`arrowUsed` ASC))
 ENGINE = InnoDB;
 
 
@@ -96,14 +96,14 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `arcusdb`.`points` (
   `pointsId` INT NOT NULL AUTO_INCREMENT,
   `counting` INT NULL,
-  `hitZoneId` INT NOT NULL,
+  `hitzoneId` INT NOT NULL,
   `arrowId` INT NULL,
   PRIMARY KEY (`pointsId`),
-  INDEX `fk_points_hitZone1_idx` (`hitZoneId` ASC) VISIBLE,
-  INDEX `fk_points_arrow1_idx` (`arrowId` ASC) VISIBLE,
+  INDEX `fk_points_hitZone1_idx` (`hitzoneId` ASC),
+  INDEX `fk_points_arrow1_idx` (`arrowId` ASC),
   CONSTRAINT `fk_points_hitZone1`
-    FOREIGN KEY (`hitZoneId`)
-    REFERENCES `arcusdb`.`hitZone` (`hitZoneId`)
+    FOREIGN KEY (`hitzoneId`)
+    REFERENCES `arcusdb`.`hitzone` (`hitzoneId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_points_arrow1`
@@ -122,11 +122,13 @@ CREATE TABLE IF NOT EXISTS `arcusdb`.`score` (
   `userId` INT NOT NULL,
   `animalId` INT NOT NULL,
   `pointsId` INT NOT NULL,
+  `eventId` INT NOT NULL,
   `created` DATETIME NULL DEFAULT current_timestamp,
   PRIMARY KEY (`scoreId`),
-  INDEX `fk_score_user_idx` (`userId` ASC) VISIBLE,
-  INDEX `fk_score_animal1_idx` (`animalId` ASC) VISIBLE,
-  INDEX `fk_score_points1_idx` (`pointsId` ASC) VISIBLE,
+  INDEX `fk_score_user_idx` (`userId` ASC),
+  INDEX `fk_score_animal1_idx` (`animalId` ASC),
+  INDEX `fk_score_points1_idx` (`pointsId` ASC),
+  INDEX `fk_score_event1_idx` (`eventId` ASC),
   CONSTRAINT `fk_score_user`
     FOREIGN KEY (`userId`)
     REFERENCES `arcusdb`.`user` (`userId`)
@@ -141,6 +143,11 @@ CREATE TABLE IF NOT EXISTS `arcusdb`.`score` (
     FOREIGN KEY (`pointsId`)
     REFERENCES `arcusdb`.`points` (`pointsId`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_score_event1`
+    FOREIGN KEY (`eventId`)
+    REFERENCES `arcusdb`.`event` (`eventId`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -151,8 +158,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `arcusdb`.`event_has_parcour` (
   `eventId` INT NOT NULL,
   `parcourId` INT NOT NULL,
-  INDEX `fk_event_has_parcour_parcour1_idx` (`parcourId` ASC) VISIBLE,
-  INDEX `fk_event_has_parcour_event1_idx` (`eventId` ASC) VISIBLE,
+  INDEX `fk_event_has_parcour_parcour1_idx` (`parcourId` ASC),
+  INDEX `fk_event_has_parcour_event1_idx` (`eventId` ASC),
   CONSTRAINT `fk_event_has_parcour_event1`
     FOREIGN KEY (`eventId`)
     REFERENCES `arcusdb`.`event` (`eventId`)
@@ -172,8 +179,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `arcusdb`.`event_has_user` (
   `eventId` INT NOT NULL,
   `userId` INT NOT NULL,
-  INDEX `fk_event_has_user_user1_idx` (`userId` ASC) VISIBLE,
-  INDEX `fk_event_has_user_event1_idx` (`eventId` ASC) VISIBLE,
+  INDEX `fk_event_has_user_user1_idx` (`userId` ASC),
+  INDEX `fk_event_has_user_event1_idx` (`eventId` ASC),
   CONSTRAINT `fk_event_has_user_event1`
     FOREIGN KEY (`eventId`)
     REFERENCES `arcusdb`.`event` (`eventId`)
@@ -228,14 +235,14 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `arcusdb`.`hitZone`
+-- Data for table `arcusdb`.`hitzone`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `arcusdb`;
-INSERT INTO `arcusdb`.`hitZone` (`hitZoneId`, `hitZoneName`) VALUES (DEFAULT, 'Center Kill');
-INSERT INTO `arcusdb`.`hitZone` (`hitZoneId`, `hitZoneName`) VALUES (DEFAULT, 'Kill');
-INSERT INTO `arcusdb`.`hitZone` (`hitZoneId`, `hitZoneName`) VALUES (DEFAULT, 'Wounded');
-INSERT INTO `arcusdb`.`hitZone` (`hitZoneId`, `hitZoneName`) VALUES (DEFAULT, 'Miss');
+INSERT INTO `arcusdb`.`hitzone` (`hitzoneId`, `hitzoneName`) VALUES (DEFAULT, 'Center Kill');
+INSERT INTO `arcusdb`.`hitzone` (`hitzoneId`, `hitzoneName`) VALUES (DEFAULT, 'Kill');
+INSERT INTO `arcusdb`.`hitzone` (`hitzoneId`, `hitzoneName`) VALUES (DEFAULT, 'Body');
+INSERT INTO `arcusdb`.`hitzone` (`hitzoneId`, `hitzoneName`) VALUES (DEFAULT, 'Miss');
 
 COMMIT;
 
@@ -257,16 +264,16 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `arcusdb`;
-INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitZoneId`, `arrowId`) VALUES (DEFAULT, 20, 1, 1);
-INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitZoneId`, `arrowId`) VALUES (DEFAULT, 18, 2, 1);
-INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitZoneId`, `arrowId`) VALUES (DEFAULT, 16, 3, 1);
-INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitZoneId`, `arrowId`) VALUES (DEFAULT, 14, 1, 2);
-INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitZoneId`, `arrowId`) VALUES (DEFAULT, 12, 2, 2);
-INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitZoneId`, `arrowId`) VALUES (DEFAULT, 10, 3, 2);
-INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitZoneId`, `arrowId`) VALUES (DEFAULT, 8, 1, 3);
-INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitZoneId`, `arrowId`) VALUES (DEFAULT, 6, 2, 3);
-INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitZoneId`, `arrowId`) VALUES (DEFAULT, 4, 3, 3);
-INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitZoneId`, `arrowId`) VALUES (DEFAULT, 0, 4, NULL);
+INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitzoneId`, `arrowId`) VALUES (DEFAULT, 20, 1, 1);
+INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitzoneId`, `arrowId`) VALUES (DEFAULT, 18, 2, 1);
+INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitzoneId`, `arrowId`) VALUES (DEFAULT, 16, 3, 1);
+INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitzoneId`, `arrowId`) VALUES (DEFAULT, 14, 1, 2);
+INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitzoneId`, `arrowId`) VALUES (DEFAULT, 12, 2, 2);
+INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitzoneId`, `arrowId`) VALUES (DEFAULT, 10, 3, 2);
+INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitzoneId`, `arrowId`) VALUES (DEFAULT, 8, 1, 3);
+INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitzoneId`, `arrowId`) VALUES (DEFAULT, 6, 2, 3);
+INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitzoneId`, `arrowId`) VALUES (DEFAULT, 4, 3, 3);
+INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitzoneId`, `arrowId`) VALUES (DEFAULT, 0, 4, NULL);
 
 COMMIT;
 

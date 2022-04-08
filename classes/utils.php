@@ -28,4 +28,11 @@ class Utils extends Database
         $stmt = $db->pdo->prepare(file_get_contents("assets/sql/arcusdb_local.sql"));
         $stmt->execute();
     }
+
+    public static function executeAnything($query, $array = null)
+    {
+        $db = new Database();
+        $stmt = $db->pdo->prepare($query);
+        $stmt->execute($array);
+    }
 }
