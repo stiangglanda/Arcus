@@ -50,7 +50,7 @@ session_start();
                                             <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
                                             <p class="text-center small">Enter your personal details to create an account</p>
                                         </div>
-                                        <form action="./signup.php" method="POST" class="row g-3 needs-validation" novalidate>
+                                        <form method="POST" class="row g-3 needs-validation" novalidate>
                                             <?php
                                             $firstname = isset($_POST['firstName']) ? $_POST['firstName'] : '';
                                             $lastname = isset($_POST['lastName']) ? $_POST['lastName'] : '';
@@ -81,18 +81,30 @@ session_start();
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-12">
-                                                <button class="btn btn-primary w-100" type="submit" onclick="">Create Account</button>
+                                                <button class="btn btn-primary w-100" type="submit"  name="submit">Create Account</button>
                                             </div>
                                             <div class="col-12">
                                                 <p class="small mb-0">Already have an account? <a href="./signin.php">Sign in</a></p>
                                             </div>
                                         </form>
                                         <?php
-                                        if (isset($_POST['submit']) && $username != '' && $password != '') {
-                                            $loggedUser = User::validUser($username, $password);
-
+                                        if (isset($_POST['submit'])) {
+                                            include '../classes/user.php';
+                                            include '../classes/utils.php';
+                                            
+                                            //$loggedUser = User::validUser($username, $password);
+                                            $loggedUser=new User(Utils::nextId("user"),$firstname,$lastname,$username,$password,0);
+                                            try
+                                            {
+                                                $loggedUser->insert();
+                                            }
+                                            catch(PDOExeption $e)
+                                            {
+                                                echo $e->getMessage();
+                                            }
+                                            
                                             if (!is_null($loggedUser)) {
-                                                $_SESSION['logged'] = true;
+                                                $_SESSION['auth'] = true;
                                         
                                                 $userVars = array();
                                                 $userVars['userId'] = $loggedUser->userId;
