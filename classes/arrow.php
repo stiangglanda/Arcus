@@ -4,12 +4,12 @@ class Arrow extends Database
 {
     #region ctor
     public $arrowId;
-    public $arrowused;
+    public $arrowUsed;
 
-    public function __construct($arrowId = null, $arrowused = null)
+    public function __construct($arrowId = null, $arrowUsed = null)
     {
         $this->arrowId = $arrowId;
-        $this->arrowused = $arrowused;
+        $this->arrowUsed = $arrowUsed;
     }
 
     #endregion
@@ -23,7 +23,7 @@ class Arrow extends Database
 
         for ($i = 0; $i < $stmt->rowCount(); $i++) {
             $row = $stmt->fetch();
-            $data[$i] = new Arrow($row["arrowId"], $row["arrowused"]);
+            $data[$i] = new Arrow($row["arrowId"], $row["arrowUsed"]);
         }
 
         return $data;
@@ -36,6 +36,6 @@ class Arrow extends Database
         $stmt->execute([$id]);
         $row = $stmt->fetch();
 
-        return new Arrow($row["arrowId"], $row["arrowused"]);
+        return new Arrow($row["arrowId"], $row["arrowUsed"]);
     }
 }
