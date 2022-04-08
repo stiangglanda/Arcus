@@ -1,4 +1,4 @@
 <?php
 session_start();
-$_SESSION['auth'] = false;
+$_SESSION['logged'] = false;
 header("location: ../index.php");
