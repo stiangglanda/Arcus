@@ -92,7 +92,7 @@ session_start();
                                             $loggedUser = User::validUser($username, $password);
 
                                             if (!is_null($loggedUser)) {
-                                                $_SESSION['auth'] = true;
+                                                $_SESSION['logged'] = true;
                                         
                                                 $userVars = array();
                                                 $userVars['userId'] = $loggedUser->userId;
