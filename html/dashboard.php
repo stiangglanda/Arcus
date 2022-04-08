@@ -47,8 +47,8 @@
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                             <li class="dropdown-header">
                                 <php? session_start(); ?>
-                                    <h6><?=$_SESSION['loggedUser']["firstName"]?> <?=$_SESSION['loggedUser']["lastName"]?></h6>
-                                    <span><?=$_SESSION['loggedUser']["nickName"]?></span>
+                                    <h6><?=$_SESSION['loggedUser']['firstName']?> <?=$_SESSION['loggedUser']['lastName']?></h6>
+                                    <span><?=$_SESSION['loggedUser']['nickName']?></span>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
