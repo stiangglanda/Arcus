@@ -23,7 +23,7 @@ require './classes/animal.php';
     </ul>
 
 <?php
-    $tim = User::getUserByNickName("ThisTim");
+    $tim = User::getByNickName("ThisTim");
     
     $new_parcour = new Parcour(Utils::nextId("parcour"), '$name', '$place', '$animalCount');
 
