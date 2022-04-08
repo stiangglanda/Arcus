@@ -5,6 +5,7 @@ class Database
     protected $db_name = "arcusdb";
     protected $db_user = "root";
     protected $db_password = "";
+    protected $db_connection = mysql_connect($db_host, $db_user, $db_password);
 
     // protected $db_host = "localhost";
     // protected $db_name = "id18558812_arcusdb";
