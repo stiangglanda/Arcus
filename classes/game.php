@@ -1,6 +1,6 @@
 <?php
 require_once 'db.php';
-class PEvent extends Database
+class Game extends Database
 {
 	#region ctor
 	public $eventId;
@@ -28,7 +28,7 @@ class PEvent extends Database
 
 		for ($i = 0; $i < $stmt->rowCount(); $i++) {
 			$row = $stmt->fetch();
-			$data[$i] = new PEvent($row["eventId"], $row["countingMode"]);
+			$data[$i] = new Game($row["eventId"], $row["countingMode"]);
 		}
 
 		return $data;
@@ -41,6 +41,6 @@ class PEvent extends Database
 		$stmt->execute([$id]);
 		$row = $stmt->fetch();
 
-		return new PEvent($row["eventId"], $row["countingMode"]);
+		return new Game($row["eventId"], $row["countingMode"]);
 	}
 }
