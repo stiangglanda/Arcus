@@ -14,14 +14,8 @@ class PEvent extends Database
 
 	public function insert()
 	{
-		try {
-			$stmt = $this->pdo->prepare("INSERT INTO user(userId, firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?,?)");
-			$stmt->execute([$this->userId, $this->firstName, $this->lastName, $this->nickName, $this->password, $this->guest]);
-			return true;
-		}
-		catch (Throwable $e) {
-			return false;
-		}
+		$stmt = $this->pdo->prepare("INSERT INTO user(userId, firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?,?)");
+		$stmt->execute([$this->userId, $this->firstName, $this->lastName, $this->nickName, $this->password, $this->guest]);
 	}
 
 	public static function getEvents()
