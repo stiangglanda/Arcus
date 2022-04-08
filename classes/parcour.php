@@ -1,5 +1,6 @@
 <?php
 
+require_once '../classes/db.php';
 class Parcour extends Database
 {
 	#region ctor
@@ -33,19 +34,12 @@ class Parcour extends Database
 
 	public function insert()
 	{
-		try {
-			$stmt = $this->pdo->prepare("INSERT INTO parcour (name, place, animalCount) VALUES (?,?,?)");
-			$stmt->execute([$this->name, $this->place, $this->animalCount]);
+		$stmt = $this->pdo->prepare("INSERT INTO parcour (name, place, animalCount) VALUES (?,?,?)");
+		$stmt->execute([$this->name, $this->place, $this->animalCount]);
 
-			for ($i=0; $i < $this->animalCount; $i++) { 
-				$animal = new Animal(Utils::nextId("animal"), $i, $this->parcourId);
-				$animal->insert();
-			}
-
-			return true;
-		}
-		catch (Exception $e) {
-			return false;
+		for ($i = 0; $i < $this->animalCount; $i++) {
+			$animal = new Animal(Utils::nextId("animal"), $i, $this->parcourId);
+			$animal->insert();
 		}
 	}
 

@@ -20,22 +20,12 @@ require './classes/utils.php';
 
 <?php
     $tim = User::getUserByNickName("ThisTim");
-
-    // serialization of 'PDO' is not allowed
-    // $_SESSION['loggedUser'] = serialize($tim);
-
-    // save values of user in sesion var as array
-    $user = array("userId"=>$tim->userId, "firstName"=>$tim->firstName, "lastName"=>$tim->firstName, "nickName"=>$tim->nickName, "password"=>$tim->password, "guest"=>$tim->guest);
-    $_SESSION['loggedUser'] = $user;
-
-
-    // save values of user in session variable
-    // $_SESSION['userId'] = $tim->userId;
-    // $_SESSION['firstName'] = $tim->firstName;
-    // $_SESSION['lastName'] = $tim->lastName;
-    // $_SESSION['nickName'] = $tim->nickName;
-    // $_SESSION['password'] = $tim->password;
-    // $_SESSION['guest'] = $tim->guest;
+    
+    try {
+        $tim->insert();
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
 ?>
 </body>
 </html>

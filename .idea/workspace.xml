@@ -20,8 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ef77e06-e42a-49f4-a248-ec2203026107" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/html/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/start.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/start.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +49,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Berufsschule/Y3/ITL/Sticht/bootstrap/koala" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="SvnConfiguration">
@@ -73,6 +72,8 @@
       <workItem from="1648206837360" duration="779000" />
       <workItem from="1648714560343" duration="18000" />
       <workItem from="1648803172089" duration="131000" />
+      <workItem from="1649247604097" duration="423000" />
+      <workItem from="1649314198559" duration="26000" />
     </task>
     <servers />
   </component>
@@ -100,10 +101,10 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="547" y="148" key="#PHP/0.0.1680.1010@0.0.1680.1010" timestamp="1647587794797" />
-    <state x="620" y="260" key="FileChooserDialogImpl" timestamp="1648113383068">
+    <state x="620" y="260" key="FileChooserDialogImpl" timestamp="1649314222689">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="620" y="260" key="FileChooserDialogImpl/0.0.1680.1010@0.0.1680.1010" timestamp="1648113383068" />
+    <state x="620" y="260" key="FileChooserDialogImpl/0.0.1680.1010@0.0.1680.1010" timestamp="1649314222689" />
     <state width="1637" height="336" key="GridCell.Tab.0.bottom" timestamp="1648207974795">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
@@ -166,7 +167,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/test.php</url>
-          <line>24</line>
+          <line>19</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
