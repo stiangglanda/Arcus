@@ -84,7 +84,7 @@ require_once '../classes/user.php';
                                                 </div>
                                                 <div class="col-12">
                                                     <p class="small mb-0">Don't have an account? <a
-                                                            href="./signup.php">Create an account</a></p>
+                                                            href="./signup.php">Create an account.</a></p>
                                                 </div>
                                             </form>
                                             <?php
@@ -108,11 +108,8 @@ require_once '../classes/user.php';
 														echo '<script>window.location.href = "./dashboard.php";</script>';
 													}
 													else {
-                                                        ?>
-                                            <script>
-                                            alert('Invalid username or password');
-                                            </script>
-                                            <?php
+                                                        echo '<br><div class="alert alert-danger" role="alert">Wrong username or password.</div>';
+
 													}
 												}
 											?>
