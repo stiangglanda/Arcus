@@ -101,6 +101,12 @@ session_start();
                                             catch(PDOException $e)
                                             {
                                                 echo $e->getMessage();
+                                                $loggedUser=null;
+                                                ?>
+                                            <script>
+                                                alert('User with this username already exists!');
+                                            </script>
+                                            <?php
                                             }
                                             
                                             if (!is_null($loggedUser)) {
@@ -119,13 +125,7 @@ session_start();
                                                 $_SESSION['loggedUser'] = $userVars;
                                                 echo '<script>window.location.href = "./dashboard.php";</script>';
                                             }
-                                            else {
-                                            ?>
-                                            <script>
-                                                alert('User with this username already exists!');
-                                            </script>
-                                            <?php
-                                            }
+                                            
                                         }
                                         ?>
                                     </div>
