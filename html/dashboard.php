@@ -139,15 +139,9 @@
                                         </div>
                                     </div>
                                     <div class="d-grid gap-2 mt-3">
-                                        <a href="?page=game" class="btn btn-primary" role="button">Start</a>
+                                        <a href="./game.php" class="btn btn-primary" role="button">Start</a>
                                     </div>
                                 </form><!-- End General Form Elements -->
-                                <?php
-                                    if(isset($_POST['countingSystem']))
-                                    {
-                                        $_SESSION['countingSystem'] = $_POST['countingSystem'];
-                                    }
-                                ?>
                             </div>
                         </div>
                     </div>
