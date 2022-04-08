@@ -50,7 +50,7 @@ class User extends Database
 		}
 	}
 
-	public static function getUsers()
+	public static function getAll()
 	{
 		$db = new Database();
 		$stmt = $db->pdo->prepare("SELECT * FROM user");
@@ -65,7 +65,7 @@ class User extends Database
 		return $data;
 	}
 
-	public static function getUserById($id)
+	public static function getById($id)
 	{
 		$db = new Database();
 		$stmt = $db->pdo->prepare("SELECT * FROM user WHERE userId = ?");
@@ -87,7 +87,7 @@ class User extends Database
 		$stmt->execute([$firstName, $lastName, $nickName]);
 	}
 
-	public static function getUserByNickName($nickName)
+	public static function getByNickName($nickName)
 	{
 		$db = new Database();
 		$stmt = $db->pdo->prepare("SELECT * FROM user WHERE nickName = ?");
@@ -102,7 +102,7 @@ class User extends Database
 		}
 	}
 
-	public static function validUser($nickName, $password)
+	public static function validate($nickName, $password)
 	{
 		$db = new Database();
 		$stmt = $db->pdo->prepare("SELECT * FROM user WHERE nickName = ? and password = ?");
@@ -120,29 +120,5 @@ class User extends Database
 	public static function prepareGuestName($nickName)
 	{
 		return substr($nickName, strpos($nickName, '_') + 1);
-	}
-
-	public static function nickNameExists($nickName)
-	{
-		$db = new Database();
-		$stmt = $db->pdo->prepare("SELECT * FROM user where nickName = ?");
-		$stmt->execute([$nickName]);
-
-		if ($stmt->rowCount() > 0) {
-			return true;
-		}
-		return false;
-	}
-
-	public static function idExists($id)
-	{
-		$db = new Database();
-		$stmt = $db->pdo->prepare("SELECT * FROM user where userId = ?");
-		$stmt->execute([$id]);
-
-		if ($stmt->rowCount() > 0) {
-			return true;
-		}
-		return false;
 	}
 }
