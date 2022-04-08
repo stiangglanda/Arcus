@@ -21,14 +21,8 @@ class Score extends Database
 
 	public function insert()
 	{
-		try {
-			$stmt = $this->pdo->prepare("INSERT INTO score(scoreId, points, userId, animalId, created) VALUES (?,?,?,?,?)");
-			$stmt->execute([$this->scoreId, $this->points, $this->userId, $this->animalId, $this->created]);
-			return true;
-		}
-		catch (Throwable $e) {
-			return false;
-		}
+		$stmt = $this->pdo->prepare("INSERT INTO score(scoreId, points, userId, animalId, created) VALUES (?,?,?,?,?)");
+		$stmt->execute([$this->scoreId, $this->points, $this->userId, $this->animalId, $this->created]);
 	}
 
 	public static function getScores()
