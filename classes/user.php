@@ -28,17 +28,6 @@ class User extends Database
 		$stmt->execute([$this->firstName, $this->lastName, $this->nickName, $this->password, $this->guest]);
 	}
 
-	public function insertGuest($db_name, $db_connection)
-	{
-		mysql_select_db($db_name,$db_connection);
-
-		$firstName = $_POST['firstName'];
-		$lastName = $_POST['lastName'];
-		$nickName = $_POST['nickName'];
-
-		mysql_query("INSERT INTO user (firstName, lastName, nickName) VALUES ('$firstName', '$lastName', '$nickName'");
-	}
-
 	public function delete()
 	{
 		$stmt = $this->pdo->prepare("DELETE FROM user WHERE userId = ?");
