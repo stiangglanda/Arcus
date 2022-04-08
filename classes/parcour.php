@@ -19,14 +19,16 @@ class Parcour extends Database
 	}
 	#endregion
 
-	public function getParcours()
+	public static function getParcours()
 	{
-		$stmt = $this->pdo->prepare("SELECT * FROM parcour");
+		$db = new Database();
+		$stmt = $db->pdo->prepare("SELECT * FROM parcour");
 		$stmt->execute();
 		$data = array();
 
-		while ($row = $stmt->fetch()) {
-			$data[] = $row;
+		for ($i = 0; $i < $stmt->rowCount(); $i++) {
+			$row = $stmt->fetch();
+			$data[$i] = new User($row["userId"], $row["firstName"], $row["lastName"], $row["nickName"], $row["password"], $row["guest"]);
 		}
 
 		return $data;

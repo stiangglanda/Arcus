@@ -1,5 +1,7 @@
 <?php
   session_start();
+  require_once "./classes/utils.php";
+  require_once "./classes/parcour.php";
 ?>
 
 <!DOCTYPE html>
@@ -88,10 +90,13 @@
                                         <div class="col-9">
                                             <select class="form-select" aria-label="Default select example">
                                                 <option selected>Open this select menu</option>
-                                                <!-- todo: get parcours from db -->
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                                <!-- get parcours from db -->
+                                                <?php
+                                                    $parcours = Parcour::getParcours();
+                                                    foreach ($parcours as $parcour) {
+                                                        echo "<option value='".$parcour['id']."'>".$parcour['name']."</option>";
+                                                    }
+                                                ?>
                                             </select>
                                         </div>
                                         <div class="col-1">
