@@ -1,7 +1,11 @@
 <?php
 session_start();
-require './classes/user.php';
+require './classes/db.php';
 require './classes/utils.php';
+require './classes/user.php';
+require './classes/parcour.php';
+require './classes/score.php';
+require './classes/animal.php';
 ?>
 
 <!DOCTYPE html>
@@ -21,11 +25,18 @@ require './classes/utils.php';
 <?php
     $tim = User::getUserByNickName("ThisTim");
     
-    try {
-        $tim->insert();
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-    }
+    $new_parcour = new Parcour(Utils::nextId("parcour"), '$name', '$place', '$animalCount');
+
+    echo $new_parcour->parcourId;
+    echo $new_parcour->name;
+    echo $new_parcour->place;
+    echo $new_parcour->animalCount;
+
+    // try {
+    //     $tim->insert();
+    // } catch (PDOException $e) {
+    //     echo $e->getMessage();
+    // }
 ?>
 </body>
 </html>
