@@ -1,5 +1,5 @@
 <?php
-  session_start();
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,22 +94,26 @@
                                 <!-- General Form Elements -->
                                 <form>
                                     <div class="col-12">
-                                        <label for="FirstName" class="form-label">1. Shot</label>
-                                        <input type="number" min="0" max="20" name="name" class="form-control"
-                                            id="FirstName" required>
-                                        <div class="invalid-feedback">Please, enter your name!</div>
+                                        <label for="Arrows" class="form-label">How much Arrows did you shot?</label>
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>1 Arrow</option>
+                                            <option>2 Arrows</option>
+                                            <?php
+                                                if (/*If three Arrows as counting system selected*/ true)
+                                                {
+                                                    echo '<option>3 Arrows</option>';
+                                                }
+                                            ?>
+                                        </select>
                                     </div>
                                     <div class="col-12">
-                                        <label for="SecondName" class="form-label">2. Shot</label>
-                                        <input type="number" min="0" max="20" name="name" class="form-control"
-                                            id="SecondName" required>
-                                        <div class="invalid-feedback">Please, enter your name!</div>
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="SecondName" class="form-label">3. Shot</label>
-                                        <input type="number" min="0" max="20" name="name" class="form-control"
-                                            id="SecondName" required>
-                                        <div class="invalid-feedback">Please, enter your name!</div>
+                                        <label for="Points" class="form-label">Where did you hit the Animal?</label>
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>Center Kill</option>
+                                            <option>Kill</option>
+                                            <option>Body</option>
+                                            <option>Miss</option>
+                                        </select>
                                     </div>
                                     <div class="container-fluid mt-12">
                                         <div class="row">
