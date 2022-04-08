@@ -108,11 +108,7 @@ require_once '../classes/user.php';
 														echo '<script>window.location.href = "./dashboard.php";</script>';
 													}
 													else {
-                                                        ?>
-                                            <script>
-                                            alert('Invalid username or password');
-                                            </script>
-                                            <?php
+                                                        echo '<div class="alert alert-danger" role="alert">Wrong username or password.</div>';
 													}
 												}
 											?>

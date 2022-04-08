@@ -93,18 +93,18 @@ session_start();
                                             include '../classes/utils.php';
                                             
                                             //$loggedUser = User::validUser($username, $password);
-                                            $loggedUser=new User(Utils::nextId("user"),$firstname,$lastname,$username,$password,0);
+                                            $loggedUser = new User(Utils::nextId("user"),$firstname,$lastname,$username,$password,0);
                                             try
                                             {
                                                 $loggedUser->insert();
                                             }
-                                            catch(PDOExeption $e)
+                                            catch(PDOException $e)
                                             {
                                                 echo $e->getMessage();
                                             }
                                             
                                             if (!is_null($loggedUser)) {
-                                                $_SESSION['auth'] = true;
+                                                $_SESSION['logged'] = true;
                                         
                                                 $userVars = array();
                                                 $userVars['userId'] = $loggedUser->userId;
