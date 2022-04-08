@@ -1,5 +1,5 @@
 <?php
-    session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -99,8 +99,8 @@
                                             <option selected>1 Arrow</option>
                                             <option>2 Arrows</option>
                                             <?php
-                                                if (/*If three Arrows as counting system selected*/ true)
-                                                {
+                                                /*If three Arrows as counting system selected*/
+                                                if (true) {
                                                     echo '<option>3 Arrows</option>';
                                                 }
                                             ?>
