@@ -92,8 +92,8 @@ session_start();
                                             include '../classes/user.php';
                                             include '../classes/utils.php';
                                             
-                                            $loggedUser = User::validUser($username, $password);
-                                            $loggedUser=new User(Utils::nextId("user"),$firstname,$lastname,$username,$password,0);
+                                            //$loggedUser = User::validUser($username, $password);
+                                            $loggedUser = new User(Utils::nextId("user"),$firstname,$lastname,$username,$password,0);
                                             try
                                             {
                                                 $loggedUser->insert();
