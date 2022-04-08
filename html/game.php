@@ -96,12 +96,13 @@
                                     <div class="col-12">
                                         <label for="Arrows" class="form-label">How much Arrows did you shot?</label>
                                         <select class="form-select" aria-label="Default select example">
-                                            <option selected>1 Arrow</option>
-                                            <option>2 Arrows</option>
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">1 Arrow</option>
+                                            <option value="2">2 Arrows</option>
                                             <?php
                                                 if (/*If three Arrows as counting system selected*/ true)
                                                 {
-                                                    echo '<option>3 Arrows</option>';
+                                                    echo '<option value="3">3 Arrows</option>';
                                                 }
                                             ?>
                                         </select>
@@ -109,10 +110,14 @@
                                     <div class="col-12">
                                         <label for="Points" class="form-label">Where did you hit the Animal?</label>
                                         <select class="form-select" aria-label="Default select example">
-                                            <option selected>Center Kill</option>
-                                            <option>Kill</option>
-                                            <option>Body</option>
-                                            <option>Miss</option>
+                                            <option selected>Open this select menu</option>
+                                            <?php
+                                                $hitzone = Hitzone::getAll();
+                                                foreach ($hitzone as $curr_hitzone)
+                                                {
+                                                    echo '<option value="'.$curr_hitzone->hitzoneId.'">'.$curr_hitzone->hitzoneName.'</option>';
+                                                }
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="container-fluid mt-12">
