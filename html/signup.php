@@ -92,19 +92,25 @@ session_start();
                                             include '../classes/user.php';
                                             include '../classes/utils.php';
                                             
-                                            //$loggedUser = User::validUser($username, $password);
+                                            $loggedUser = User::validUser($username, $password);
                                             $loggedUser=new User(Utils::nextId("user"),$firstname,$lastname,$username,$password,0);
                                             try
                                             {
                                                 $loggedUser->insert();
                                             }
-                                            catch(PDOExeption $e)
+                                            catch(PDOException $e)
                                             {
                                                 echo $e->getMessage();
+                                                $loggedUser=null;
+                                                ?>
+                                            <script>
+                                                alert('User with this username already exists!');
+                                            </script>
+                                            <?php
                                             }
                                             
                                             if (!is_null($loggedUser)) {
-                                                $_SESSION['auth'] = true;
+                                                $_SESSION['logged'] = true;
                                         
                                                 $userVars = array();
                                                 $userVars['userId'] = $loggedUser->userId;
@@ -119,13 +125,7 @@ session_start();
                                                 $_SESSION['loggedUser'] = $userVars;
                                                 echo '<script>window.location.href = "./dashboard.php";</script>';
                                             }
-                                            else {
-                                            ?>
-                                            <script>
-                                                alert('User with this username already exists!');
-                                            </script>
-                                            <?php
-                                            }
+                                            
                                         }
                                         ?>
                                     </div>
