@@ -102,7 +102,7 @@ session_start();
                                             {
                                                 //echo $e->getMessage();
                                                 $loggedUser=null;
-                                                echo '<br><div class="alert alert-danger" role="alert">Wrong username or password.</div>';
+                                                echo '<br><div class="alert alert-danger" role="alert">username is already taken</div>';
                                             }
                                             
                                             if (!is_null($loggedUser)) {
