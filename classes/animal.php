@@ -1,5 +1,5 @@
 <?php
-
+require_once 'db.php';
 class Animal extends Database
 {
 	#region ctor
@@ -32,7 +32,7 @@ class Animal extends Database
 	public function insert()
 	{
 		$stmt = $this->pdo->prepare("INSERT INTO animal (animalNumber, parcourId) VALUES (?,?)");
-		return $stmt->execute([$this->animalNumber, $this->parcourId]);
+		$stmt->execute([$this->animalNumber, $this->parcourId]);
 	}
 
 	public function delete()

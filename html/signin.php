@@ -16,7 +16,8 @@ require_once '../classes/user.php';
         <link href="../assets/img/arrows.png" rel="icon">
         <!-- Google Fonts -->
         <link href="https://fonts.gstatic.com" rel="preconnect">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
             rel="stylesheet">
         <!-- Vendor CSS Files -->
         <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -78,10 +79,12 @@ require_once '../classes/user.php';
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
-                                                    <button class="btn btn-primary w-100" name="save" type="submit">Login</button>
+                                                    <button class="btn btn-primary w-100" name="save"
+                                                        type="submit">Login</button>
                                                 </div>
                                                 <div class="col-12">
-                                                    <p class="small mb-0">Don't have account? <a href="./signup.php">Create an account</a></p>
+                                                    <p class="small mb-0">Don't have an account? <a
+                                                            href="./signup.php">Create an account.</a></p>
                                                 </div>
                                             </form>
                                             <?php
@@ -89,20 +92,24 @@ require_once '../classes/user.php';
 													$loggedUser = User::validUser($username, $password);
 
 													if (!is_null($loggedUser)) {
-														$_SESSION['auth'] = true;
+														$_SESSION['logged'] = true;
 												
-                                                        $userVars = array("userId"=>$loggedUser->userId, "firstName"=>$loggedUser->firstName, "lastName"=>$loggedUser->firstName, "nickName"=>$loggedUser->nickName, "password"=>$loggedUser->password, "guest"=>$loggedUser->guest);
-														// $userVars = array($loggedUser->userId, $loggedUser->firstName, $loggedUser->lastName, $loggedUser->nickName, $loggedUser->password, $loggedUser->guest);
-
-														$_SESSION['loggedUser'] = $userVars;
+                                                        $userVars = array(
+                                                            "userId"=>$loggedUser->userId,
+                                                            "firstName"=>$loggedUser->firstName,
+                                                            "lastName"=>$loggedUser->lastName,
+                                                            "nickName"=>$loggedUser->nickName,
+                                                            "password"=>$loggedUser->password,
+                                                            "guest"=>$loggedUser->guest
+                                                        );
+														
+                                                        
+                                                        $_SESSION['loggedUser'] = $userVars;
 														echo '<script>window.location.href = "./dashboard.php";</script>';
 													}
 													else {
-                                                        ?>
-                                                        <script>
-                                                            alert('Invalid username or password');
-                                                        </script>
-                                                        <?php
+                                                        echo '<br><div class="alert alert-danger" role="alert">Wrong username or password.</div>';
+
 													}
 												}
 											?>
