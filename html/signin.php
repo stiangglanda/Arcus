@@ -81,7 +81,7 @@ require_once '../classes/user.php';
                                                     <button class="btn btn-primary w-100" name="save" type="submit">Login</button>
                                                 </div>
                                                 <div class="col-12">
-                                                    <p class="small mb-0">Don't have account? <a href="./signup.php">Create an account</a></p>
+                                                    <p class="small mb-0">Don't have an account? <a href="./signup.php">Create an account</a></p>
                                                 </div>
                                             </form>
                                             <?php
