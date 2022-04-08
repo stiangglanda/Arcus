@@ -44,10 +44,11 @@
                             data-bs-toggle="dropdown">
                             <i class="bi-list toggle-sidebar-btn"></i>
                         </a><!-- End Profile Iamge Icon -->
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" style="user-select: none">
                             <li class="dropdown-header">
                                 <php? session_start(); ?>
-                                    <h6><?=$_SESSION['loggedUser']['firstName']?> <?=$_SESSION['loggedUser']['lastName']?></h6>
+                                    <h6><?=$_SESSION['loggedUser']['firstName']?>
+                                        <?=$_SESSION['loggedUser']['lastName']?></h6>
                                     <span><?=$_SESSION['loggedUser']['nickName']?></span>
                             </li>
                             <li>
@@ -94,7 +95,7 @@
                                             </select>
                                         </div>
                                         <div class="col-1">
-                                            <a href="?page=addParcour" class="btn btn btn-success" role="button">Add</a>
+                                            <a href="./addParcour.php" class="btn btn btn-success" role="button">Add</a>
                                         </div>
                                     </div>
                                     <div class="card">
