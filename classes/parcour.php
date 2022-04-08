@@ -37,7 +37,7 @@ class Parcour extends Database
 		$stmt = $this->pdo->prepare("INSERT INTO parcour (name, place, animalCount) VALUES (?,?,?)");
 		$stmt->execute([$this->name, $this->place, $this->animalCount]);
 
-		for ($i = 1; $i < $this->animalCount; $i++) {
+		for ($i = 1; $i <= $this->animalCount; $i++) {
 			$animal = new Animal(Utils::nextId("animal"), $i, $this->parcourId);
 			$animal->insert();
 		}

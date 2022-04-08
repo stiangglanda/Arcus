@@ -8,4 +8,7 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
 else {
     header("location: ./html/signin.php");
 }
+
+// require_once "./classes/utils.php";
+// Utils::resetDb();
 ?>
