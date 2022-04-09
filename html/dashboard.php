@@ -9,7 +9,27 @@ require_once "../classes/user.php";
 $david = User::getByNickName("Kr4mpuz");
 $leander = User::getByNickName("stiangglanda");
 $tim = User::getByNickName("ThisTim");
-$players = array($david, $leander, $tim);
+
+if(isset($_SESSION['players']))
+{
+
+}
+else
+{
+    $_SESSION['players'] = array($_SESSION['loggedUser']);
+    $newPlayer = array();
+    
+    foreach($tim as $item)
+    {
+        if(!is_object($item))
+        {
+            $newPlayer[] = $item;
+        }
+    }
+    
+    $_SESSION['players'][] = $newPlayer;
+}
+
 
 ?>
 
@@ -113,16 +133,29 @@ $players = array($david, $leander, $tim);
                                 </div>
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title"><?= count($players) . "Players" ?></h5>
+                                        <h5 class="card-title"><?= count($_SESSION['players']) . "/10 Players" ?></h5>
                                         <!-- List group with badges -->
                                         <ul class="list-group">
                                             <?php
-                                            foreach ($players as $curr_player) {
+                                            foreach ($_SESSION['players'] as $curr_player)
+                                            {
+                                                if(array_search($_SESSION['loggedUser']['nickName'], $curr_player))
+                                                {
                                             ?>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center" onclick="remove(this)" id="remove">
-                                                    Player 1<span><button type="button" class="btn btn-danger rounded-pill">Remove</button></span>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <?= $curr_player['nickName'] ?>
                                                 </li>
                                             <?php
+                                                }
+                                                else
+                                                {
+                                            ?>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center" onclick="remove(this)" id="remove">
+                                                    <?= $curr_player[3] ?>
+                                                    <span><button type="button" class="btn btn-danger rounded-pill">Remove</button></span>
+                                                </li>
+                                            <?php
+                                                }
                                             }
                                             ?>
 
