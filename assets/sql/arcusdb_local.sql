@@ -2,7 +2,7 @@
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
 -- Schema arcusdb
@@ -122,11 +122,13 @@ CREATE TABLE IF NOT EXISTS `arcusdb`.`score` (
   `userId` INT NOT NULL,
   `animalId` INT NOT NULL,
   `pointsId` INT NOT NULL,
+  `eventId` INT NOT NULL,
   `created` DATETIME NULL DEFAULT current_timestamp,
   PRIMARY KEY (`scoreId`),
   INDEX `fk_score_user_idx` (`userId` ASC),
   INDEX `fk_score_animal1_idx` (`animalId` ASC),
   INDEX `fk_score_points1_idx` (`pointsId` ASC),
+  INDEX `fk_score_event1_idx` (`eventId` ASC),
   CONSTRAINT `fk_score_user`
     FOREIGN KEY (`userId`)
     REFERENCES `arcusdb`.`user` (`userId`)
@@ -140,6 +142,11 @@ CREATE TABLE IF NOT EXISTS `arcusdb`.`score` (
   CONSTRAINT `fk_score_points1`
     FOREIGN KEY (`pointsId`)
     REFERENCES `arcusdb`.`points` (`pointsId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_score_event1`
+    FOREIGN KEY (`eventId`)
+    REFERENCES `arcusdb`.`event` (`eventId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
