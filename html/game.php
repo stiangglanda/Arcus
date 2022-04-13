@@ -90,11 +90,11 @@ require_once '../classes/hitzone.php';
                                 <h5 class="card-title text-center">Animal 3/22</h5>
                                 <h6 class="card-title text-center">Nickname</h6>
                                 <!-- General Form Elements -->
-                                <form>
+                                <form method="post">
                                     <div class="col-12">
                                         <label for="Arrows" class="form-label">How much Arrows did you shot?</label>
-                                        <select class="form-select" aria-label="Default select example">
-                                            <option selected>Open this select menu</option>
+                                        <select class="form-select" aria-label="Default select example" required>
+                                            <option selected hidden disabled value="">Open this select menu</option>
                                             <option value="1">1 Arrow</option>
                                             <option value="2">2 Arrows</option>
                                             <?php
@@ -107,8 +107,8 @@ require_once '../classes/hitzone.php';
                                     </div>
                                     <div class="col-12">
                                         <label for="Points" class="form-label">Where did you hit the Animal?</label>
-                                        <select class="form-select" aria-label="Default select example">
-                                            <option selected>Open this select menu</option>
+                                        <select class="form-select" aria-label="Default select example" required>
+                                            <option selected hidden disabled value="">Open this select menu</option>
                                             <?php
                                                 $hitzone = Hitzone::getAll();
                                                 foreach ($hitzone as $curr_hitzone)
@@ -122,14 +122,26 @@ require_once '../classes/hitzone.php';
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="d-grid gap-2 mt-3">
-                                                    <a href="?page=statistics"
-                                                        class="btn btn-primary btn-lg float-right"
-                                                        role="button">Next</a>
+                                                    <button class="btn btn-primary btn-lg float-right"
+                                                        type="submit" name="submit">Next</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
+                                <?php
+                                if (isset($_POST['submit']))
+                                {
+                                    try
+                                    {
+                                        echo '<script>window.location.href = "./statistics.php";</script>';
+                                    } 
+                                    catch (PDOException $e)
+                                    {
+                                        echo $e->getMessage();
+                                    }
+                                }
+                                ?>
                                 <!-- End General Form Elements -->
                             </div>
                         </div>
