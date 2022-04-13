@@ -185,12 +185,12 @@ else
                             if (isset($_POST['submit']))
                             {
                                 $parcour = $_POST['currparcour'];
-                                $countSys = $_POST['countSys'];
+                                $_SESSION['countSys'] = $_POST['countSys'];
                                 $eventId = Utils::nextId("event");
 
                                 try
                                 {
-                                    Utils::executeAnything("insert into event(eventId, countingMode) values(?,?)", [$eventId, $countSys]);
+                                    Utils::executeAnything("insert into event(eventId, countingMode) values(?,?)", [$eventId, $_SESSION['countSys']]);
                                     Utils::executeAnything("insert into event_has_parcour(eventId, parcourId) values(?,?)", [$eventId, $parcour]);
 
                                     foreach ($players as $player)
