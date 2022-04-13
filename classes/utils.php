@@ -6,10 +6,12 @@ class Utils extends Database
     {
         $db = new Database();
         
-        $stmt = $db->pdo->prepare("SHOW VARIABLES LIKE 'version';");
+        $stmt = $db->pdo->prepare("SHOW VARIABLES LIKE 'version'");
         $stmt->execute();
 
-        if(str_contains(strtolower($stmt->fetch()["value"]), 'mariadb'))
+        print_r($stmt->fetch());
+
+        if(str_contains(strtolower($stmt->fetch()["Value"]), 'mariadb'))
         {
             $stmt = $db->pdo->prepare("SET GLOBAL information_schema_stats_expiry = 0");
             $stmt->execute();
