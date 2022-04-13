@@ -188,7 +188,7 @@ else
 
                                 try {
                                     Utils::executeAnything("insert into event(eventId, countingMode) values(?,?)", [$eventId, $countSys]);
-                                    Utils::executeAnything("insert into event_has_padrcour(eventId, parcourId) values(?,?)", [$eventId, $parcour]);
+                                    Utils::executeAnything("insert into event_has_parcour(eventId, parcourId) values(?,?)", [$eventId, $parcour]);
 
                                     foreach ($players as $player) {
                                         Utils::executeAnything("INSERT INTO event_has_user(eventId, userId) VALUES(?,?)", [$eventId, $player->playerId]);
