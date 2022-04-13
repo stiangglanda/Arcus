@@ -2,6 +2,11 @@
   session_start();
   require_once "../classes/utils.php";
   require_once "../classes/parcour.php";
+
+  // if user session variable is null, redirect to login page
+    if (!isset($_SESSION['loggedUser']) || is_null($_SESSION['loggedUser'])) {
+        header("Location: ./signin.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +97,7 @@
                                                 <option selected>Open this select menu</option>
                                                 <!-- get parcours from db -->
                                                 <?php
-                                                    $parcours = Parcour::getParcours();
+                                                    $parcours = Parcour::getAll();
                                                     foreach ($parcours as $curr_parcour) {
                                                         echo '<option value="' . $curr_parcour->parcourId . '">' . $curr_parcour->name . " ($curr_parcour->place / $curr_parcour->animalCount animals)" . '</option>';
                                                     }
