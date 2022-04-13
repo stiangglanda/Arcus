@@ -92,22 +92,21 @@ require_once '../classes/hitzone.php';
                                 <!-- General Form Elements -->
                                 <form method="post">
                                     <div class="col-12">
-                                        <label for="Arrows" class="form-label">How much Arrows did you shot?</label>
-                                        <select class="form-select" aria-label="Default select example" required>
+                                        <label for="Arrows" class="form-label">How many Arrows did you need until you hit?</label>
+                                        <select class="form-select" aria-label="Default select example" id="shots" name="shots" required>
                                             <option selected hidden disabled value="">Open this select menu</option>
                                             <option value="1">1 Arrow</option>
                                             <option value="2">2 Arrows</option>
                                             <?php
-                                                /*If three Arrows as counting system selected*/
-                                                if (true) {
-                                                    echo '<option>3 Arrows</option>';
+                                                if ($_SESSION['countSys'] == "3") {
+                                                    echo '<option value="3">3 Arrows</option>';
                                                 }
                                             ?>
                                         </select>
                                     </div>
                                     <div class="col-12">
                                         <label for="Points" class="form-label">Where did you hit the Animal?</label>
-                                        <select class="form-select" aria-label="Default select example" required>
+                                        <select class="form-select" aria-label="Default select example" id="hitzone" name="hitzone" required>
                                             <option selected hidden disabled value="">Open this select menu</option>
                                             <?php
                                                 $hitzone = Hitzone::getAll();
@@ -117,6 +116,17 @@ require_once '../classes/hitzone.php';
                                                 }
                                             ?>
                                         </select>
+                                        <script>
+                                            let sel = document.getElementById('hitzone');
+                                            sel.addEventListener ("change", function() {
+                                                if (this.value == '4') {
+                                                    document.getElementById('shots').disabled = true;
+                                                } else {
+                                                    document.getElementById('shots').disabled = false;
+                                                }
+                                            });
+                                        </script>
+                                        
                                     </div>
                                     <div class="container-fluid mt-12">
                                         <div class="row">
