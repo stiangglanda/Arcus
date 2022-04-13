@@ -112,7 +112,7 @@ else
                         <div class="card-body">
                             <h5 class="card-title">Dashboard</h5>
                             <!-- General Form Elements -->
-                            <form method="post">
+                            <form action="./dashboard.php" method="post">
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Parcour</label>
                                     <div class="col-9">
@@ -177,18 +177,11 @@ else
                                     </div>
                                 </div>
                                 <div class="d-grid gap-2 mt-3">
-                                    <a class="btn btn-primary" role="submit" name="submit">Start</a>
+                                    <button class="btn btn-primary" type="submit" name="submit">Start</button>
                                 </div>
                             </form><!-- End General Form Elements -->
                             <?php
                             if (isset($_POST['submit'])) {
-
-                                echo 'test';
-
-                                include '../classes/user.php';
-                                include '../classes/utils.php';
-                                include '../classes/parcour.php';
-
                                 $parcour = $_POST['currparcour'];
                                 $countSys = $_POST['countSys'];
                                 $eventId = Utils::nextId("event");
