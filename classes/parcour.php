@@ -19,17 +19,6 @@ class Parcour extends Database
 	}
 	#endregion
 
-	public function insert()
-	{
-		$stmt = $this->pdo->prepare("INSERT INTO parcour (name, place, animalCount) VALUES (?,?,?)");
-		$stmt->execute([$this->name, $this->place, $this->animalCount]);
-
-		for ($i = 1; $i <= $this->animalCount; $i++) {
-			$animal = new Animal(Utils::nextId("animal"), $i, $this->parcourId);
-			$animal->insert();
-		}
-	}
-
 	public static function getAll()
 	{
 		$db = new Database();
@@ -43,6 +32,17 @@ class Parcour extends Database
 		}
 
 		return $data;
+	}
+
+	public function insert()
+	{
+		$stmt = $this->pdo->prepare("INSERT INTO parcour (name, place, animalCount) VALUES (?,?,?)");
+		$stmt->execute([$this->name, $this->place, $this->animalCount]);
+
+		for ($i = 1; $i <= $this->animalCount; $i++) {
+			$animal = new Animal(Utils::nextId("animal"), $i, $this->parcourId);
+			$animal->insert();
+		}
 	}
 
 	public static function getById($id)
