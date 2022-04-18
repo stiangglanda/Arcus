@@ -17,15 +17,16 @@ if(isset($_SESSION['players']))
 else
 {
     $_SESSION['players'] = array($_SESSION['loggedUser']);
-    $newPlayer = array();
     
-    foreach($tim as $item)
-    {
-        if(!is_object($item))
-        {
-            $newPlayer[] = $item;
-        }
-    }
+    $userVars = array(
+        "userId"=>$tim->userId,
+        "firstName"=>$tim->firstName,
+        "lastName"=>$tim->lastName,
+        "nickName"=>$tim->nickName,
+        "password"=>$tim->password,
+        "guest"=>$tim->guest,
+        "currTarget"=>1
+    );
     
     $_SESSION['players'][] = $newPlayer;
 }
