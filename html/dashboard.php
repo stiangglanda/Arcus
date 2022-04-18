@@ -12,7 +12,7 @@ $tim = User::getByNickName("ThisTim");
 
 if(isset($_SESSION['players']))
 {
-
+    
 }
 else
 {
