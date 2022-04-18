@@ -100,7 +100,8 @@ require_once '../classes/user.php';
                                                             "lastName"=>$loggedUser->lastName,
                                                             "nickName"=>$loggedUser->nickName,
                                                             "password"=>$loggedUser->password,
-                                                            "guest"=>$loggedUser->guest
+                                                            "guest"=>$loggedUser->guest,
+                                                            "currTarget"=>1
                                                         );
 														
                                                         
