@@ -112,12 +112,12 @@ else
                         <div class="card-body">
                             <h5 class="card-title">Dashboard</h5>
                             <!-- General Form Elements -->
-                            <form method="post">
+                            <form action="./dashboard.php" method="post">
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Parcour</label>
                                     <div class="col-9">
-                                        <select name="currparcour" class="form-select" aria-label="Default select example">
-                                            <option selected>Open this select menu</option>
+                                        <select name="currparcour" class="form-select" aria-label="Default select example" required>
+                                            <option selected hidden disabled value="">Open this select menu</option>
                                             <!-- get parcours from db -->
                                             <?php
                                             $parcours = Parcour::getAll();
@@ -170,39 +170,38 @@ else
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Counting System</label>
                                     <div>
-                                        <select name="countSys" class="form-select" aria-label="Default select example">
+                                        <select name="countSys" class="form-select" aria-label="Default select example" required>
+                                            <option selected hidden disabled value="">Open this select menu</option>
                                             <option value="2">Two Arrows</option>
-                                            <option value="3" selected>Three Arrows</option>
+                                            <option value="3">Three Arrows</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="d-grid gap-2 mt-3">
-                                    <a class="btn btn-primary" role="submit" name="submit">Start</a>
+                                    <button class="btn btn-primary" type="submit" name="submit">Start</button>
                                 </div>
                             </form><!-- End General Form Elements -->
                             <?php
-                            if (isset($_POST['submit'])) {
-
-                                echo 'test';
-
-                                include '../classes/user.php';
-                                include '../classes/utils.php';
-                                include '../classes/parcour.php';
-
+                            if (isset($_POST['submit']))
+                            {
                                 $parcour = $_POST['currparcour'];
-                                $countSys = $_POST['countSys'];
+                                $_SESSION['countSys'] = $_POST['countSys'];
                                 $eventId = Utils::nextId("event");
 
-                                try {
-                                    Utils::executeAnything("insert into event(eventId, countingMode) values(?,?)", [$eventId, $countSys]);
-                                    Utils::executeAnything("insert into event_has_padrcour(eventId, parcourId) values(?,?)", [$eventId, $parcour]);
+                                try
+                                {
+                                    Utils::executeAnything("insert into event(eventId, countingMode) values(?,?)", [$eventId, $_SESSION['countSys']]);
+                                    Utils::executeAnything("insert into event_has_parcour(eventId, parcourId) values(?,?)", [$eventId, $parcour]);
 
-                                    foreach ($players as $player) {
+                                    foreach ($players as $player)
+                                    {
                                         Utils::executeAnything("INSERT INTO event_has_user(eventId, userId) VALUES(?,?)", [$eventId, $player->playerId]);
                                     }
 
                                     echo '<script>window.location.href = "./game.php";</script>';
-                                } catch (PDOException $e) {
+                                } 
+                                catch (PDOException $e)
+                                {
                                     echo $e->getMessage();
                                 }
                             }
