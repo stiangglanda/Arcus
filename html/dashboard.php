@@ -126,7 +126,7 @@ if(!isset($_SESSION['players']) || empty($_SESSION['players']))
                                         <div class="card-body">
                                             <h5 class="card-title"><?= count($_SESSION['players']) . "/10 Players" ?>
                                             </h5>
-                                            <!-- List group with badges -->
+                                            <!-- List users -->
                                             <ul class="list-group">
                                                 <?php
                                             foreach ($_SESSION['players'] as $curr_player) {
@@ -140,7 +140,7 @@ if(!isset($_SESSION['players']) || empty($_SESSION['players']))
                                             ?>
 
                                             </ul>
-                                            <!-- End List with badges -->
+                                            <!-- End List users -->
 
                                             <div class="d-grid gap-2 mt-3">
                                                 <a href="./addPlayer.php" type="button"
