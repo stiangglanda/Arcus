@@ -95,17 +95,17 @@
                                 <!-- General Form Elements -->
                                 <form action="./addParcour.php" method="post">
                                     <div class="col-12">
-                                        <label for="FirstName" class="form-label">Parcour Name</label>
+                                        <label for="name" class="form-label">Parcour Name</label>
                                         <input type="text" name="name" class="form-control" id="name" required>
                                         <div class="invalid-feedback">Please enter a valid name!</div>
                                     </div>
                                     <div class="col-12">
-                                        <label for="SecondName" class="form-label">Place</label>
+                                        <label for="place" class="form-label">Place</label>
                                         <input type="text" name="place" class="form-control" id="place" required>
                                         <div class="invalid-feedback">Please enter a valid place!</div>
                                     </div>
                                     <div class="col-12">
-                                        <label for="SecondName" class="form-label">3D Animal Count</label>
+                                        <label for="animalCount" class="form-label">3D Animal Count</label>
                                         <input type="number" name="animalCount" class="form-control" id="animalCount"
                                             required>
                                         <div class="invalid-feedback">Please enter a valid number!</div>

@@ -58,13 +58,13 @@ session_start();
                                             $password = isset($_POST['password']) ? $_POST['password'] : '';
                                             ?>
                                             <div class="col-12">
-                                                <label for="FirstName" class="form-label">First Name</label>
-                                                <input type="text" name="firstName" class="form-control" id="FirstName" value="<?= $firstname ?>" required>
+                                                <label for="firstName" class="form-label">First Name</label>
+                                                <input type="text" name="firstName" class="form-control" id="firstName" value="<?= $firstname ?>" required>
                                                 <div class="invalid-feedback">Please, enter your name!</div>
                                             </div>
                                             <div class="col-12">
-                                                <label for="SecondName" class="form-label">Second Name</label>
-                                                <input type="text" name="lastName" class="form-control" id="SecondName" value="<?= $lastname ?>" required>
+                                                <label for="lastName" class="form-label">Second Name</label>
+                                                <input type="text" name="lastName" class="form-control" id="lastName" value="<?= $lastname ?>" required>
                                                 <div class="invalid-feedback">Please, enter your name!</div>
                                             </div>
                                             <div class="col-12">
