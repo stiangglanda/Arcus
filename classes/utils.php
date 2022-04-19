@@ -43,5 +43,6 @@ class Utils extends Database
         $db = new Database();
         $stmt = $db->pdo->prepare($query);
         $stmt->execute($array);
+        return $stmt->fetch();
     }
 }

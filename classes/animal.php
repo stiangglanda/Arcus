@@ -72,4 +72,14 @@ class Animal extends Database
 
 		return new Animal($row["animalId"], $row["animalNumber"], $row["parcourId"]);
 	}
+
+	public static function findShotAnimal($parcourId, $currAnimal)
+	{
+		$db = new Database();
+		$stmt = $db->pdo->prepare("SELECT * FROM animal WHERE parcourId = ? and animalNumber = ?");
+		$stmt->execute([$parcourId, $currAnimal]);
+		$row = $stmt->fetch();
+
+		return $row["animalId"];
+	}
 }
