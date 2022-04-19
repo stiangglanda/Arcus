@@ -23,14 +23,6 @@ class Utils extends Database
         return $stmt->fetch()["AUTO_INCREMENT"];
     }
 
-    public static function getCleanPdoErr($input)
-    {
-        $matches = array();
-        $regex = '/[0-9]+(\\s+([a-zA-Z]+\\s+)+)\'[a-zA-Z]+\'(\\s+([a-zA-Z]+\\s+)+)\'[^\']*\'/i';
-        preg_match($regex, $input, $matches);
-        return $matches[0];
-    }
-
     public static function resetDb()
     {
         $db = new Database();
