@@ -8,8 +8,7 @@ class Utils extends Database
         
         $stmt = $db->pdo->prepare("SHOW VARIABLES LIKE 'version'");
         $stmt->execute();
-
-        print_r($stmt->fetch());
+        $stmt->fetch();
 
         if(str_contains(strtolower($stmt->fetch()["Value"]), 'mariadb'))
         {
