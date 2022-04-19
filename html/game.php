@@ -85,9 +85,9 @@ require_once '../classes/hitzone.php';
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Game: <?php echo $_SESSION['parcour']['name'] ?></h5>
-                                <h5 class="card-title text-center">Animal 3/<?php echo $_SESSION['parcour']['animalCount'] ?></h5>
-                                <h6 class="card-title text-center">Nickname</h6>
+                                <h5 class="card-title">Game: <?= $_SESSION['parcour']['name'] ?></h5>
+                                <h5 class="card-title text-center">Animal <?= $_SESSION['players'][$_SESSION['count']%count($_SESSION['players'])]['currTarget'] . '/' . $_SESSION['parcour']['animalCount'] ?></h5>
+                                <h6 class="card-title text-center"><?= $_SESSION['players'][$_SESSION['count']%count($_SESSION['players'])]['nickName'] ?></h6>
                                 <!-- General Form Elements -->
                                 <form method="post">
                                     <div class="col-12">
@@ -143,7 +143,17 @@ require_once '../classes/hitzone.php';
                                 {
                                     try
                                     {
-                                        echo '<script>window.location.href = "./statistics.php";</script>';
+                                        $_SESSION['players'][$_SESSION['count']%count($_SESSION['players'])]['currTarget']++;
+                                        $_SESSION['count']++;
+
+                                        if($_SESSION['count']/count($_SESSION['players']) < $_SESSION['parcour']['animalCount'])
+                                        {
+                                            echo '<script>window.location.href = "./game.php";</script>';
+                                        }
+                                        else
+                                        {
+                                            echo '<script>window.location.href = "./statistics.php";</script>';
+                                        }
                                     } 
                                     catch (PDOException $e)
                                     {
