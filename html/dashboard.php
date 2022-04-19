@@ -49,13 +49,15 @@ if(!isset($_SESSION['players']) || empty($_SESSION['players']))
                 <img src="../assets/img/arrows.png" alt="">
                 <span class="d-none d-lg-block">Arcus</span>
             </a>
-        </div><!-- End Logo -->
+        </div>
+        <!-- End Logo -->
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
                 <li class="nav-item dropdown pe-3">
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <i class="bi-list toggle-sidebar-btn"></i>
-                    </a><!-- End Profile Iamge Icon -->
+                    </a>
+                    <!-- End Profile Iamge Icon -->
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" style="user-select: none">
                         <li class="dropdown-header">
                             <php? session_start(); ?>
@@ -81,11 +83,15 @@ if(!isset($_SESSION['players']) || empty($_SESSION['players']))
                                 <span>Sign Out</span>
                             </a>
                         </li>
-                    </ul><!-- End Profile Dropdown Items -->
-                </li><!-- End Profile Nav -->
+                    </ul>
+                    <!-- End Profile Dropdown Items -->
+                </li>
+                <!-- End Profile Nav -->
             </ul>
-        </nav><!-- End Icons Navigation -->
-    </header><!-- End Header -->
+        </nav>
+        <!-- End Icons Navigation -->
+    </header>
+    <!-- End Header -->
     <main id="main" class="main">
         <section class="section">
             <div class="row">
