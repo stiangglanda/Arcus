@@ -19,7 +19,7 @@ class Parcour extends Database
 	}
 	#endregion
 
-	public static function getParcours()
+	public static function getAll()
 	{
 		$db = new Database();
 		$stmt = $db->pdo->prepare("SELECT * FROM parcour");
@@ -45,7 +45,7 @@ class Parcour extends Database
 		}
 	}
 
-	public function getParcourById($id)
+	public static function getById($id)
 	{
 		$parcour = new Parcour();
 		$stmt = $parcour->pdo->prepare("SELECT * FROM parcour WHERE parcourId = ?");

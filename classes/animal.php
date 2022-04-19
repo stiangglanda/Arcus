@@ -2,7 +2,7 @@
 require_once 'db.php';
 class Animal extends Database
 {
-	#region ctor
+	#region constructor and variables
 	public $animalId;
 	public $animalNumber;
 	public $parcourId;
@@ -16,6 +16,11 @@ class Animal extends Database
 	}
 	#endregion
 
+	/**
+	 * Gets all animals from the database and returns them as an array
+	 * 
+	 * @return array[Animal]
+	 */
 	public function getAll()
 	{
 		$stmt = $this->pdo->prepare("SELECT * FROM animal");
@@ -30,18 +35,34 @@ class Animal extends Database
 		return $data;
 	}
 
+	/**
+	 * Inserts a new animal into the database.
+	 * Throws an exception if unsuccessful.
+	 * @return void
+	 */
 	public function insert()
 	{
 		$stmt = $this->pdo->prepare("INSERT INTO animal (animalNumber, parcourId) VALUES (?,?)");
 		$stmt->execute([$this->animalNumber, $this->parcourId]);
 	}
 
+	/**
+	 * Deletes an animal from the database.
+	 * Throws an exception if unsuccessful.
+	 * @return void
+	 */
 	public function delete()
 	{
 		$stmt = $this->pdo->prepare("DELETE FROM animal WHERE animalId = ?");
 		$stmt->execute([$this->animalId]);
 	}
 
+	/**
+	 * Gets an animal from the database by its id.
+	 * Throws an exception if unsuccessful.
+	 * @param int $id
+	 * @return Animal
+	 */
 	public static function getById($id)
 	{
 		$db = new Database();

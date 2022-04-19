@@ -1,5 +1,7 @@
 <?php
-    session_start();
+session_start();
+require_once '../classes/hitzone.php';
+// require '../classes/_classes.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,19 +42,17 @@
             <!-- End Logo -->
             <nav class="header-nav ms-auto">
                 <ul class="d-flex align-items-center">
-                    <!-- Start Profile Nav -->
                     <li class="nav-item dropdown pe-3">
-                        <!-- Start Profile Iamge Icon -->
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                             data-bs-toggle="dropdown">
                             <i class="bi-list toggle-sidebar-btn"></i>
-                        </a>
-                        <!-- End Profile Iamge Icon -->
-                        <!-- Start Profile Dropdown Items -->
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        </a><!-- End Profile Iamge Icon -->
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" style="user-select: none">
                             <li class="dropdown-header">
-                                <h6>Leander Kieweg</h6>
-                                <span>stiangglanda</span>
+                                <php? session_start(); ?>
+                                    <h6><?=$_SESSION['loggedUser']['firstName']?>
+                                        <?=$_SESSION['loggedUser']['lastName']?></h6>
+                                    <span><?=$_SESSION['loggedUser']['nickName']?></span>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -67,17 +67,15 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="../index.php">
+                                <a class="dropdown-item d-flex align-items-center" href="./signout.php">
                                     <i class="bi bi-box-arrow-right"></i>
                                     <span>Sign Out</span>
                                 </a>
                             </li>
-                        </ul>
-                        <!-- End Profile Dropdown Items -->
-                    </li>
-                    <!-- End Profile Nav -->
+                        </ul><!-- End Profile Dropdown Items -->
+                    </li><!-- End Profile Nav -->
                 </ul>
-            </nav>
+            </nav><!-- End Icons Navigation -->
             <!-- End Icons Navigation -->
         </header>
         <!-- End Header -->
@@ -92,41 +90,68 @@
                                 <h5 class="card-title text-center">Animal 3/22</h5>
                                 <h6 class="card-title text-center">Nickname</h6>
                                 <!-- General Form Elements -->
-                                <form>
+                                <form method="post">
                                     <div class="col-12">
-                                        <label for="Arrows" class="form-label">How much Arrows did you shot?</label>
-                                        <select class="form-select" aria-label="Default select example">
-                                            <option selected>1 Arrow</option>
-                                            <option>2 Arrows</option>
+                                        <label for="Arrows" class="form-label">How many Arrows did you need until you hit?</label>
+                                        <select class="form-select" aria-label="Default select example" id="shots" name="shots" required>
+                                            <option selected hidden disabled value="">Open this select menu</option>
+                                            <option value="1">1 Arrow</option>
+                                            <option value="2">2 Arrows</option>
                                             <?php
-                                                if (/*If three Arrows as counting system selected*/ true)
-                                                {
-                                                    echo '<option>3 Arrows</option>';
+                                                if ($_SESSION['countSys'] == "3") {
+                                                    echo '<option value="3">3 Arrows</option>';
                                                 }
                                             ?>
                                         </select>
                                     </div>
                                     <div class="col-12">
                                         <label for="Points" class="form-label">Where did you hit the Animal?</label>
-                                        <select class="form-select" aria-label="Default select example">
-                                            <option selected>Center Kill</option>
-                                            <option>Kill</option>
-                                            <option>Body</option>
-                                            <option>Miss</option>
+                                        <select class="form-select" aria-label="Default select example" id="hitzone" name="hitzone" required>
+                                            <option selected hidden disabled value="">Open this select menu</option>
+                                            <?php
+                                                $hitzone = Hitzone::getAll();
+                                                foreach ($hitzone as $curr_hitzone)
+                                                {
+                                                    echo '<option value="' . $curr_hitzone->hitzoneId . '">' . $curr_hitzone->hitzoneName . '</option>';
+                                                }
+                                            ?>
                                         </select>
+                                        <script>
+                                            let sel = document.getElementById('hitzone');
+                                            sel.addEventListener ("change", function() {
+                                                if (this.value == '4') {
+                                                    document.getElementById('shots').disabled = true;
+                                                } else {
+                                                    document.getElementById('shots').disabled = false;
+                                                }
+                                            });
+                                        </script>
+                                        
                                     </div>
                                     <div class="container-fluid mt-12">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="d-grid gap-2 mt-3">
-                                                    <a href="?page=statistics"
-                                                        class="btn btn-primary btn-lg float-right"
-                                                        role="button">Next</a>
+                                                    <button class="btn btn-primary btn-lg float-right"
+                                                        type="submit" name="submit">Next</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
+                                <?php
+                                if (isset($_POST['submit']))
+                                {
+                                    try
+                                    {
+                                        echo '<script>window.location.href = "./statistics.php";</script>';
+                                    } 
+                                    catch (PDOException $e)
+                                    {
+                                        echo $e->getMessage();
+                                    }
+                                }
+                                ?>
                                 <!-- End General Form Elements -->
                             </div>
                         </div>
