@@ -1,5 +1,10 @@
 <?php
   session_start();
+  $i = 0;
+  while ($i < count($_SESSION['players'])) {
+    $_SESSION['players'][$i]['currTarget'] = 1;
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,7 +112,8 @@
                                         grid: {
                                             row: {
                                                 colors: ['#f3f3f3',
-                                                'transparent'], // takes an array which will be repeated on columns
+                                                    'transparent'
+                                                ], // takes an array which will be repeated on columns
                                                 opacity: 0.5
                                             },
                                         },
