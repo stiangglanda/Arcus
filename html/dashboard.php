@@ -5,17 +5,12 @@ require_once "../classes/parcour.php";
 require_once "../classes/user.php";
 
 // TODO: get current players and save to array
-// TODO: try if the array works after addPlayer is finished!!!!!
-$david = User::getByNickName("Kr4mpuz");
-$leander = User::getByNickName("stiangglanda");
-$tim = User::getByNickName("ThisTim");
+// TODO: try if the array works after addPlayer is finished
 
-if(isset($_SESSION['players']))
+// if current players are not set, set them
+if(!isset($_SESSION['players']) || empty($_SESSION['players']))
 {
-    
-}
-else
-{
+<<<<<<< HEAD
     $_SESSION['players'] = array();
     
     $userVars = array(
@@ -29,8 +24,10 @@ else
     );
     
     array_push($_SESSION['players'], $_SESSION['loggedUser'], $userVars);
+=======
+    $_SESSION['players'] = array($_SESSION['loggedUser']);
+>>>>>>> 142d820997c1cec98b03c65f6979fbb8c30b3378
 }
-
 
 ?>
 
@@ -68,13 +65,15 @@ else
                 <img src="../assets/img/arrows.png" alt="">
                 <span class="d-none d-lg-block">Arcus</span>
             </a>
-        </div><!-- End Logo -->
+        </div>
+        <!-- End Logo -->
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
                 <li class="nav-item dropdown pe-3">
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <i class="bi-list toggle-sidebar-btn"></i>
-                    </a><!-- End Profile Iamge Icon -->
+                    </a>
+                    <!-- End Profile Iamge Icon -->
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" style="user-select: none">
                         <li class="dropdown-header">
                             <php? session_start(); ?>
@@ -100,11 +99,15 @@ else
                                 <span>Sign Out</span>
                             </a>
                         </li>
-                    </ul><!-- End Profile Dropdown Items -->
-                </li><!-- End Profile Nav -->
+                    </ul>
+                    <!-- End Profile Dropdown Items -->
+                </li>
+                <!-- End Profile Nav -->
             </ul>
-        </nav><!-- End Icons Navigation -->
-    </header><!-- End Header -->
+        </nav>
+        <!-- End Icons Navigation -->
+    </header>
+    <!-- End Header -->
     <main id="main" class="main">
         <section class="section">
             <div class="row">

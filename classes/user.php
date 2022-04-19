@@ -22,6 +22,7 @@ class User extends Database
 	}
 	#endregion
 
+	#region DML
 	public function insert()
 	{
 		$stmt = $this->pdo->prepare("INSERT INTO user(firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?)");
@@ -32,23 +33,9 @@ class User extends Database
 		$stmt = $this->pdo->prepare("DELETE FROM user WHERE userId = ?");
 		$stmt->execute([$this->userId]);
 	}
+	#endregion
 
-	public function exists()
-	{
-		try {
-			$stmt = $this->pdo->prepare("SELECT * FROM user where userId = ?");
-			$stmt->execute([$this->userId]);
-
-			if ($stmt->rowCount() > 0) {
-				return true;
-			}
-			return false;
-		}
-		catch (Error $th) {
-			return false;
-		}
-	}
-
+	#region get user(s)
 	public static function getAll()
 	{
 		$db = new Database();
@@ -79,14 +66,7 @@ class User extends Database
 		}
 	}
 
-	public static function addGuest($firstName, $lastName, $nickName)
-	{
-		$db = new Database();
-		$stmt = $db->pdo->prepare("call addGuest(?,?,?);");
-		$stmt->execute([$firstName, $lastName, $nickName]);
-	}
-
-	public static function getByNickName($nickName)
+	public static function getBynickName($nickName)
 	{
 		$db = new Database();
 		$stmt = $db->pdo->prepare("SELECT * FROM user WHERE nickName = ?");
@@ -100,6 +80,7 @@ class User extends Database
 			return false;
 		}
 	}
+	#endregion
 
 	public static function validate($nickName, $password)
 	{
@@ -116,8 +97,45 @@ class User extends Database
 		}
 	}
 
-	public static function prepareGuestName($nickName)
+	#region Guest related functions
+	public static function addGuest($firstName, $lastName, $nickName)
+	{
+		$db = new Database();
+		$user = new User();
+		$stmt = $db->pdo->prepare("INSERT INTO user(userId, firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?,1)");
+		$stmt->execute([$user->getNextGuestId(), $firstName, $lastName, $user->getNextGuestId().'_'.$nickName, 'guest'.$user->getNextGuestId()]);
+
+		$stmt = $db->pdo->prepare("SELECT * FROM user WHERE userId = ?");
+		$stmt->execute([$db->pdo->lastInsertId()]);
+		$res = $stmt->fetch();
+
+		if ($res) {
+			return new User($res["userId"], $res["firstName"], $res["lastName"], $res["nickName"], $res["password"], $res["guest"]);
+		}
+		else {
+			throw new PDOException("Could not add the guest.", 1);
+			
+		}
+	}
+
+	public static function getNextGuestId()
+	{
+		$db = new Database();
+		$stmt = $db->pdo->prepare("SELECT userId FROM user WHERE guest = 1 ORDER BY userId DESC LIMIT 1");
+		$stmt->execute();
+		$res = $stmt->fetch();
+
+		if ($res) {
+			return $res["userId"] + 1;
+		}
+		else {
+			return 900000000;
+		}
+	}
+
+	public static function showGuestName($nickName)
 	{
 		return substr($nickName, strpos($nickName, '_') + 1);
 	}
+	#endregion
 }
