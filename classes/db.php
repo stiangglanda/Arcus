@@ -5,8 +5,6 @@ class Database
     protected $db_name = "arcusdb";
     protected $db_user = "root";
     protected $db_password = "";
-    
-    // the database connection
     public $pdo;
 
     // // database connection to actual db
