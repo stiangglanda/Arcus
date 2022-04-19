@@ -5,32 +5,13 @@ require_once "../classes/parcour.php";
 require_once "../classes/user.php";
 
 // TODO: get current players and save to array
-// TODO: try if the array works after addPlayer is finished!!!!!
-$david = User::getByNickName("Kr4mpuz");
-$leander = User::getByNickName("stiangglanda");
-$tim = User::getByNickName("ThisTim");
+// TODO: try if the array works after addPlayer is finished
 
-if(isset($_SESSION['players']))
-{
-    
-}
-else
+// if current players are not set, set them
+if(!isset($_SESSION['players']) || empty($_SESSION['players']))
 {
     $_SESSION['players'] = array($_SESSION['loggedUser']);
-    
-    $userVars = array(
-        "userId"=>$tim->userId,
-        "firstName"=>$tim->firstName,
-        "lastName"=>$tim->lastName,
-        "nickName"=>$tim->nickName,
-        "password"=>$tim->password,
-        "guest"=>$tim->guest,
-        "currTarget"=>1
-    );
-    
-    $_SESSION['players'][] = $newPlayer;
 }
-
 
 ?>
 
@@ -152,7 +133,7 @@ else
                                                 {
                                             ?>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center" onclick="remove(this)" id="remove">
-                                                    <?= $curr_player[3] ?>
+                                                    <?= $curr_player['nickName'] ?>
                                                     <span><button type="button" class="btn btn-danger rounded-pill">Remove</button></span>
                                                 </li>
                                             <?php
