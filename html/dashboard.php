@@ -71,7 +71,7 @@ if(!isset($_SESSION['players']) || empty($_SESSION['players']))
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="settings.php">
+                                <a class="dropdown-item d-flex align-items-center disabled" href="settings.php">
                                     <i class="bi bi-gear"></i>
                                     <span>Account Settings</span>
                                 </a>
