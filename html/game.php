@@ -86,8 +86,8 @@ require_once '../classes/hitzone.php';
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Game: parcourName</h5>
-                                <h5 class="card-title text-center">Animal 3/22</h5>
+                                <h5 class="card-title">Game: <?php echo $_SESSION['parcour']['name'] ?></h5>
+                                <h5 class="card-title text-center">Animal 3/<?php echo $_SESSION['parcour']['animalCount'] ?></h5>
                                 <h6 class="card-title text-center">Nickname</h6>
                                 <!-- General Form Elements -->
                                 <form method="post">

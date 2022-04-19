@@ -133,7 +133,7 @@ if(!isset($_SESSION['players']) || empty($_SESSION['players']))
                                                 <?php
                                             foreach ($_SESSION['players'] as $curr_player)
                                             {
-                                                if(array_search($_SESSION['loggedUser']['nickName'], $curr_player))
+                                                if($_SESSION['loggedUser']['nickName'] = $curr_player['nickName'])
                                                 {
                                                 ?>
                                                 <li
@@ -192,6 +192,17 @@ if(!isset($_SESSION['players']) || empty($_SESSION['players']))
                                     {
                                         Utils::executeAnything("INSERT INTO event_has_user(eventId, userId) VALUES(?,?)", [$eventId, $player->playerId]);
                                     }
+
+                                    $parcour = Parcour::getById($parcour);
+
+                                    $parcVars = array(
+                                        "parcourId"=>$parcour->parcourId,
+                                        "name"=>$parcour->name,
+                                        "place"=>$parcour->place,
+                                        "animalCount"=>$parcour->animalCount
+                                    );
+
+                                    $_SESSION['parcour'] = $parcVars;
 
                                     echo '<script>window.location.href = "./game.php";</script>';
                                 } 
