@@ -10,20 +10,7 @@ require_once "../classes/user.php";
 // if current players are not set, set them
 if(!isset($_SESSION['players']) || empty($_SESSION['players']))
 {
-
-    $_SESSION['players'] = array();
-    
-    $userVars = array(
-        "userId"=>$tim->userId,
-        "firstName"=>$tim->firstName,
-        "lastName"=>$tim->lastName,
-        "nickName"=>$tim->nickName,
-        "password"=>$tim->password,
-        "guest"=>$tim->guest,
-        "currTarget"=>1
-    );
-    
-    array_push($_SESSION['players'], $_SESSION['loggedUser'], $userVars);
+    $_SESSION['players'] = array($_SESSION['loggedUser']);
 }
 
 ?>
