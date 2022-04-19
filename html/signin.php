@@ -92,9 +92,8 @@ require_once '../classes/user.php';
 													$loggedUser = User::validate($username, $password);
 
 													if (!is_null($loggedUser)) {
-														$_SESSION['logged'] = true;
-												
-                                                        $userVars = array(
+														$_SESSION['logged'] = true;                                                        
+                                                        $_SESSION['loggedUser'] = array(
                                                             "userId"=>$loggedUser->userId,
                                                             "firstName"=>$loggedUser->firstName,
                                                             "lastName"=>$loggedUser->lastName,
@@ -103,9 +102,6 @@ require_once '../classes/user.php';
                                                             "guest"=>$loggedUser->guest,
                                                             "currTarget"=>1
                                                         );
-														
-                                                        
-                                                        $_SESSION['loggedUser'] = $userVars;
 														echo '<script>window.location.href = "./dashboard.php";</script>';
 													}
 													else {
