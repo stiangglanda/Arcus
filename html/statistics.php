@@ -84,7 +84,7 @@
             </nav><!-- End Icons Navigation -->
         </header><!-- End Header -->
         <main id="main" class="main">
-            <section class="section">
+            <section class="section" hidden>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
