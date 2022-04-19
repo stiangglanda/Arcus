@@ -155,7 +155,7 @@
                                     </tbody>
                                 </table>
                                 <div class="d-grid gap-2 mt-3">
-                                    <a href="?page=dashboard" class="btn btn-primary" role="button">Finish</a>
+                                    <a href="./dashboard.php" class="btn btn-primary" role="button">Finish</a>
                                 </div>
                                 <!-- End Default Table Example -->
                             </div>
