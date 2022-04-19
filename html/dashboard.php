@@ -16,7 +16,7 @@ if(isset($_SESSION['players']))
 }
 else
 {
-    $_SESSION['players'] = array($_SESSION['loggedUser']);
+    $_SESSION['players'] = array();
     
     $userVars = array(
         "userId"=>$tim->userId,
@@ -28,7 +28,7 @@ else
         "currTarget"=>1
     );
     
-    $_SESSION['players'][] = $newPlayer;
+    array_push($_SESSION['players'], $_SESSION['loggedUser'], $userVars);
 }
 
 
@@ -140,7 +140,7 @@ else
                                             <?php
                                             foreach ($_SESSION['players'] as $curr_player)
                                             {
-                                                if(array_search($_SESSION['loggedUser']['nickName'], $curr_player))
+                                                if($_SESSION['loggedUser']['nickName'] = $curr_player['nickName'])
                                                 {
                                             ?>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -152,7 +152,7 @@ else
                                                 {
                                             ?>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center" onclick="remove(this)" id="remove">
-                                                    <?= $curr_player[3] ?>
+                                                    <?= $curr_player['nickName'] ?>
                                                     <span><button type="button" class="btn btn-danger rounded-pill">Remove</button></span>
                                                 </li>
                                             <?php
@@ -198,6 +198,17 @@ else
                                     {
                                         Utils::executeAnything("INSERT INTO event_has_user(eventId, userId) VALUES(?,?)", [$eventId, $player->playerId]);
                                     }
+
+                                    $parcour = Parcour::getById($parcour);
+
+                                    $parcVars = array(
+                                        "parcourId"=>$parcour->parcourId,
+                                        "name"=>$parcour->name,
+                                        "place"=>$parcour->place,
+                                        "animalCount"=>$parcour->animalCount
+                                    );
+
+                                    $_SESSION['parcour'] = $parcVars;
 
                                     echo '<script>window.location.href = "./game.php";</script>';
                                 } 
