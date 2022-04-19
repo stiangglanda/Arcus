@@ -1,5 +1,7 @@
 <?php
   session_start();
+  require_once "../classes/score.php";
+
   $i = 0;
   while ($i < count($_SESSION['players'])) {
     $_SESSION['players'][$i]['currTarget'] = 1;
@@ -137,28 +139,52 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Players</h5>
+                                <h5 class="card-title">Scoreboard</h5>
                                 <!-- Default Table -->
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th scope="col">Position</th>
                                             <th scope="col">Name</th>
+                                            <th scope="col">Points(Average)</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Player 2</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Player 1</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Player 3</td>
-                                        </tr>
+                                        <?php
+
+                                        $players = array();
+                                        
+                                        for ($i=0; $i < count($_SESSION['players']); $i++)
+                                        {
+                                            array_push($players, array($_SESSION['players'][$i]['nickName'], Score::getPointsFromPlayer($_SESSION['players'][$i]['userId'], $_SESSION['eventId'])));
+                                        }
+
+                                        for ($i=0; $i < count($players)-1; $i++)
+                                        { 
+                                            for ($j=0; $j < $i-2; $j++) { 
+                                                if($players[$j][1] < $players[$j+1][1])
+                                                {
+                                                    $help = $players[$j];
+                                                    $players[$j] = $players[$j+1];
+                                                    $players[$j+1] = $help;
+                                                }
+                                            }
+                                        }
+
+                                        $count = 1;
+
+                                        foreach($players as $player)
+                                        {
+                                            echo '<tr>
+                                            <th scope="row">' . $count . '</th>
+                                            <td>' . $player[0] . '</td>
+                                            <td>' . $player[1] . '(' . $player[1]/$_SESSION['parcour']['animalCount'] . ')</td>
+                                            </tr>';
+
+                                            $count++;
+                                        }
+                                        ?>
+                                        
                                     </tbody>
                                 </table>
                                 <div class="d-grid gap-2 mt-3">
