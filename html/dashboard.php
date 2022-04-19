@@ -10,7 +10,7 @@ require_once "../classes/user.php";
 // if current players are not set, set them
 if(!isset($_SESSION['players']) || empty($_SESSION['players']))
 {
-<<<<<<< HEAD
+
     $_SESSION['players'] = array();
     
     $userVars = array(
@@ -24,9 +24,6 @@ if(!isset($_SESSION['players']) || empty($_SESSION['players']))
     );
     
     array_push($_SESSION['players'], $_SESSION['loggedUser'], $userVars);
-=======
-    $_SESSION['players'] = array($_SESSION['loggedUser']);
->>>>>>> 142d820997c1cec98b03c65f6979fbb8c30b3378
 }
 
 ?>
