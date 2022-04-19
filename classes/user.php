@@ -22,6 +22,7 @@ class User extends Database
 	}
 	#endregion
 
+	#region DML
 	public function insert()
 	{
 		$stmt = $this->pdo->prepare("INSERT INTO user(firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?)");
@@ -32,23 +33,9 @@ class User extends Database
 		$stmt = $this->pdo->prepare("DELETE FROM user WHERE userId = ?");
 		$stmt->execute([$this->userId]);
 	}
+	#endregion
 
-	public function exists()
-	{
-		try {
-			$stmt = $this->pdo->prepare("SELECT * FROM user where userId = ?");
-			$stmt->execute([$this->userId]);
-
-			if ($stmt->rowCount() > 0) {
-				return true;
-			}
-			return false;
-		}
-		catch (Error $th) {
-			return false;
-		}
-	}
-
+	#region get user(s)
 	public static function getAll()
 	{
 		$db = new Database();
@@ -79,13 +66,6 @@ class User extends Database
 		}
 	}
 
-	public static function addGuest($firstName, $lastName, $nickName)
-	{
-		$db = new Database();
-		$stmt = $db->pdo->prepare("call addGuest(?,?,?);");
-		$stmt->execute([$firstName, $lastName, $nickName]);
-	}
-
 	public static function getByNickName($nickName)
 	{
 		$db = new Database();
@@ -100,6 +80,7 @@ class User extends Database
 			return false;
 		}
 	}
+	#endregion
 
 	public static function validate($nickName, $password)
 	{
@@ -116,8 +97,17 @@ class User extends Database
 		}
 	}
 
+	#region Guest related functions
+	public static function addGuest($firstName, $lastName, $nickName)
+	{
+		$db = new Database();
+		$stmt = $db->pdo->prepare("call addGuest(?,?,?);");
+		$stmt->execute([$firstName, $lastName, $nickName]);
+	}
+
 	public static function prepareGuestName($nickName)
 	{
 		return substr($nickName, strpos($nickName, '_') + 1);
 	}
+	#endregion
 }
