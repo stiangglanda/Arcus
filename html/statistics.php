@@ -3,6 +3,7 @@
   $i = 0;
   while ($i < count($_SESSION['players'])) {
     $_SESSION['players'][$i]['currTarget'] = 1;
+    $i++;
   }
 
 ?>
