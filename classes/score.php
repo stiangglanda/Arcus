@@ -1,5 +1,6 @@
 <?php
 
+require_once 'db.php';
 class Score extends Database
 {
 	#region ctor
@@ -10,6 +11,7 @@ class Score extends Database
 
 	public function __construct($userId = null, $animalId = null, $pointsId = null, $eventId = null)
 	{
+		parent::__construct();
 		$this->userId = $userId;
 		$this->animalId = $animalId;
 		$this->pointsId = $pointsId;
