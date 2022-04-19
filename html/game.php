@@ -162,8 +162,6 @@ require_once '../classes/user.php';
                                             $_SESSION['eventId']
                                         );
 
-                                        print_r($score);
-
                                         $score->insert();
 
                                         $_SESSION['players'][$_SESSION['count']%count($_SESSION['players'])]['currTarget']++;
