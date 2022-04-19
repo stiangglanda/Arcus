@@ -1,10 +1,5 @@
 <?php
 session_start();
-
-// TODO: just for testing, remove later
-session_unset();
-
-
 if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
     header("location: ./html/dashboard.php");
 }
