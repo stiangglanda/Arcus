@@ -275,32 +275,5 @@ INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitzoneId`, `arrowId`) 
 INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitzoneId`, `arrowId`) VALUES (DEFAULT, 4, 3, 3);
 INSERT INTO `arcusdb`.`points` (`pointsId`, `counting`, `hitzoneId`, `arrowId`) VALUES (DEFAULT, 0, 4, NULL);
 
--- -----------------------------------------------------
--- Procedures
--- -----------------------------------------------------
-drop procedure if exists `addGuest`;
-DELIMITER //
-CREATE PROCEDURE `addGuest` (firstname varchar(45), lastname varchar(45), nickname varchar(45))
-BEGIN
-DECLARE passwort varchar(45);
-DECLARE guestId int;
-
-select userId
-into guestId
-from user
-where guest = 1
-order by 1 desc
-limit 0, 1;
-
-if (guestId is null) then
-set guestId = 900000000;
-else
-set guestId = guestId+1;
-end if;
-
-insert into user(userId, firstName, lastName, nickName, password, guest)
-values(guestId, firstname, lastname, guestId+"_"+nickname, "guest"+guestId, 1);
-END //
-
 COMMIT;
 
