@@ -133,11 +133,14 @@ if(!isset($_SESSION['players']) || empty($_SESSION['players']))
                                                 <?php
                                             foreach ($_SESSION['players'] as $curr_player) {
                                                 
-                                                if($curr_player['guest'] == 0) {
-                                                    echo '<li class="list-group-item d-flex justify-content-between align-items-center">' . $curr_player['nickName'] . '</li>';
-                                                } else {
-                                                    echo '<li class="list-group-item d-flex justify-content-between align-items-center">' . User::showGuestName($curr_player['nickName']) . '</li>';
-                                                }
+                                                echo '<li class="list-group-item d-flex justify-content-between align-items-center">' . User::showName($curr_player['nickName']) . '</li>';
+
+                                                
+                                                // if($curr_player['guest'] == 0) {
+                                                //     echo '<li class="list-group-item d-flex justify-content-between align-items-center">' . User::showGuestName($curr_player['nickName']) . '</li>';
+                                                // } else {
+                                                //     echo '<li class="list-group-item d-flex justify-content-between align-items-center">' . User::showGuestName($curr_player['nickName']) . '</li>';
+                                                // }
                                             }
                                             ?>
 

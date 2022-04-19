@@ -103,7 +103,7 @@ class User extends Database
 		$db = new Database();
 		$user = new User();
 		$stmt = $db->pdo->prepare("INSERT INTO user(userId, firstName, lastName, nickName, password, guest) VALUES (?,?,?,?,?,1)");
-		$stmt->execute([$user->getNextGuestId(), $firstName, $lastName, $user->getNextGuestId().'_'.$nickName, 'guest'.$user->getNextGuestId()]);
+		$stmt->execute([$user->getNextGuestId(), $firstName, $lastName, $user->getNextGuestId() . '_' . $nickName, 'guest' . $user->getNextGuestId()]);
 
 		$stmt = $db->pdo->prepare("SELECT * FROM user WHERE userId = ?");
 		$stmt->execute([$db->pdo->lastInsertId()]);
@@ -114,7 +114,7 @@ class User extends Database
 		}
 		else {
 			throw new PDOException("Could not add the guest.", 1);
-			
+
 		}
 	}
 
@@ -133,9 +133,9 @@ class User extends Database
 		}
 	}
 
-	public static function showGuestName($nickName)
+	public static function showName($nickName)
 	{
-		return substr($nickName, strpos($nickName, '_') + 1);
+		return preg_replace('/(\d+)_/', '', $nickName);
 	}
-	#endregion
+#endregion
 }

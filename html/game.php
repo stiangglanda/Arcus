@@ -4,7 +4,7 @@ require_once '../classes/hitzone.php';
 require_once '../classes/utils.php';
 require_once '../classes/score.php';
 require_once '../classes/animal.php';
-// require '../classes/_classes.php';
+require_once '../classes/user.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,7 +90,7 @@ require_once '../classes/animal.php';
                             <div class="card-body">
                                 <h5 class="card-title">Game: <?= $_SESSION['parcour']['name'] ?></h5>
                                 <h5 class="card-title text-center">Animal <?= $_SESSION['players'][$_SESSION['count']%count($_SESSION['players'])]['currTarget'] . '/' . $_SESSION['parcour']['animalCount'] ?></h5>
-                                <h6 class="card-title text-center"><?= $_SESSION['players'][$_SESSION['count']%count($_SESSION['players'])]['nickName'] ?></h6>
+                                <h6 class="card-title text-center"><?= User::showName($_SESSION['players'][$_SESSION['count']%count($_SESSION['players'])]['nickName']) ?></h6>
                                 <!-- General Form Elements -->
                                 <form method="post">
                                     <div class="col-12">
