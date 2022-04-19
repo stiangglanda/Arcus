@@ -4,7 +4,7 @@ class Database
     protected $db_host = '127.0.0.1';
     protected $db_name = "arcusdb";
     protected $db_user = "root";
-    protected $db_password = "admin";
+    protected $db_password = "";
     
     // the database connection
     public $pdo;
