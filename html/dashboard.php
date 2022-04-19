@@ -12,7 +12,6 @@ if(!isset($_SESSION['players']) || empty($_SESSION['players']))
 {
     $_SESSION['players'] = array($_SESSION['loggedUser']);
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -60,14 +59,13 @@ if(!isset($_SESSION['players']) || empty($_SESSION['players']))
                             data-bs-toggle="dropdown">
                             <i class="bi-list toggle-sidebar-btn"></i>
                         </a>
-                        <!-- End Profile Iamge Icon -->
+                        <!-- End Profile Image Icon -->
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"
                             style="user-select: none">
                             <li class="dropdown-header">
-                                <php? session_start(); ?>
-                                    <h6><?= $_SESSION['loggedUser']['firstName'] ?>
-                                        <?= $_SESSION['loggedUser']['lastName'] ?></h6>
-                                    <span><?= $_SESSION['loggedUser']['nickName'] ?></span>
+                                <h6><?= $_SESSION['loggedUser']['firstName'] ?>
+                                    <?= $_SESSION['loggedUser']['lastName'] ?></h6>
+                                <span><?= $_SESSION['loggedUser']['nickName'] ?></span>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -131,22 +129,12 @@ if(!isset($_SESSION['players']) || empty($_SESSION['players']))
                                             <!-- List group with badges -->
                                             <ul class="list-group">
                                                 <?php
-                                            foreach ($_SESSION['players'] as $curr_player)
-                                            {
-                                                if($_SESSION['loggedUser']['nickName'] = $curr_player['nickName'])
-                                                {
-                                                ?>
-                                                <li
-                                                    class="list-group-item d-flex justify-content-between align-items-center">
-                                                    <?= $curr_player['nickName'] ?>
-                                                </li>
-                                                <?php
-                                                }
-                                                else
-                                                {
-                                                ?>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center"> <?= $curr_player['nickName'] ?></li>
-                                                <?php
+                                            foreach ($_SESSION['players'] as $curr_player) {
+                                                
+                                                if($curr_player['guest'] == 0) {
+                                                    echo '<li class="list-group-item d-flex justify-content-between align-items-center">' . $curr_player['nickName'] . '</li>';
+                                                } else {
+                                                    echo '<li class="list-group-item d-flex justify-content-between align-items-center">' . User::showGuestName($curr_player['nickName']) . '</li>';
                                                 }
                                             }
                                             ?>

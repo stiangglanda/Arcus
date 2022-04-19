@@ -49,7 +49,6 @@ require_once '../classes/hitzone.php';
                         </a><!-- End Profile Iamge Icon -->
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" style="user-select: none">
                             <li class="dropdown-header">
-                                <php? session_start(); ?>
                                     <h6><?=$_SESSION['loggedUser']['firstName']?>
                                         <?=$_SESSION['loggedUser']['lastName']?></h6>
                                     <span><?=$_SESSION['loggedUser']['nickName']?></span>
