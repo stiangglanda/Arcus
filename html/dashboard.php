@@ -4,6 +4,8 @@ require_once "../classes/utils.php";
 require_once "../classes/parcour.php";
 require_once "../classes/user.php";
 
+$_SESSION['count'] = 0;
+
 // TODO: get current players and save to array
 // TODO: try if the array works after addPlayer is finished
 
