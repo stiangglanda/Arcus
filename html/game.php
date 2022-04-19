@@ -1,6 +1,9 @@
 <?php
 session_start();
 require_once '../classes/hitzone.php';
+require_once '../classes/utils.php';
+require_once '../classes/score.php';
+require_once '../classes/animal.php';
 // require '../classes/_classes.php';
 ?>
 <!DOCTYPE html>
@@ -143,6 +146,26 @@ require_once '../classes/hitzone.php';
                                 {
                                     try
                                     {
+                                        if(isset($_POST['shots']))
+                                        {
+                                            $points = Utils::executeAnything('select * from points where hitzoneId = ? and arrowId = ?', [$_POST['hitzone'], $_POST['shots']])['pointsId'];
+                                        }
+                                        else
+                                        {
+                                            $points = Utils::executeAnything('select * from points where hitzoneId = ?', [$_POST['hitzone']])['pointsId'];
+                                        }
+                                        
+                                        $score = new Score(
+                                            $_SESSION['players'][$_SESSION['count']%count($_SESSION['players'])]['userId'],
+                                            Animal::findShotAnimal($_SESSION['parcour']['parcourId'], $_SESSION['players'][$_SESSION['count']%count($_SESSION['players'])]['currTarget']),
+                                            $points,
+                                            $_SESSION['eventId']
+                                        );
+
+                                        print_r($score);
+
+                                        $score->insert();
+
                                         $_SESSION['players'][$_SESSION['count']%count($_SESSION['players'])]['currTarget']++;
                                         $_SESSION['count']++;
 

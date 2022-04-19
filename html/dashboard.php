@@ -193,6 +193,7 @@ if(!isset($_SESSION['players']) || empty($_SESSION['players']))
                                     );
 
                                     $_SESSION['parcour'] = $parcVars;
+                                    $_SESSION['eventId'] = $eventId;
 
                                     echo '<script>window.location.href = "./game.php";</script>';
                                 } 
