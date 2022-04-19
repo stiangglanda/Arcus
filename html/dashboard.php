@@ -131,18 +131,10 @@ if(!isset($_SESSION['players']) || empty($_SESSION['players']))
                                             <!-- List users -->
                                             <ul class="list-group">
                                                 <?php
-                                            foreach ($_SESSION['players'] as $curr_player) {
-                                                
-                                                echo '<li class="list-group-item d-flex justify-content-between align-items-center">' . User::showName($curr_player['nickName']) . '</li>';
-
-                                                
-                                                // if($curr_player['guest'] == 0) {
-                                                //     echo '<li class="list-group-item d-flex justify-content-between align-items-center">' . User::showGuestName($curr_player['nickName']) . '</li>';
-                                                // } else {
-                                                //     echo '<li class="list-group-item d-flex justify-content-between align-items-center">' . User::showGuestName($curr_player['nickName']) . '</li>';
-                                                // }
-                                            }
-                                            ?>
+                                                foreach ($_SESSION['players'] as $curr_player) {
+                                                    echo '<li class="list-group-item d-flex justify-content-between align-items-center">' . User::showName($curr_player['nickName']) . '</li>';
+                                                }
+                                                ?>
 
                                             </ul>
                                             <!-- End List users -->

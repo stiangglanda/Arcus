@@ -49,4 +49,17 @@ class Score extends Database
 
 		return new Score($row['scoreId'], $row['userId'], $row['animalId'], $row['pointsId'], $row['eventId'], $row['created']);
 	}
+
+	public static function getPointsFromPlayer($userId, $eventId)
+	{
+		$db = new Database();
+		$stmt = $db->pdo->prepare("SELECT sum(counting) FROM score, points WHERE points.pointsId = score.pointsId
+																		and userId = ?
+																		and eventId = ?
+																		group by userId");
+		$stmt->execute([$userId, $eventId]);
+		$row = $stmt->fetch();
+
+		return $row['sum(counting)'];
+	}
 }
