@@ -1,6 +1,7 @@
 <?php
   session_start();
   require_once "../classes/score.php";
+  require_once "../classes/user.php";
 
   $i = 0;
   while ($i < count($_SESSION['players'])) {
@@ -159,9 +160,9 @@
                                             array_push($players, array($_SESSION['players'][$i]['nickName'], Score::getPointsFromPlayer($_SESSION['players'][$i]['userId'], $_SESSION['eventId'])));
                                         }
 
-                                        for ($i=0; $i < count($players)-1; $i++)
+                                        for ($i=0; $i < count($players); $i++)
                                         { 
-                                            for ($j=0; $j < $i-2; $j++) { 
+                                            for ($j=0; $j < count($players)-1; $j++) { 
                                                 if($players[$j][1] < $players[$j+1][1])
                                                 {
                                                     $help = $players[$j];
@@ -177,7 +178,7 @@
                                         {
                                             echo '<tr>
                                             <th scope="row">' . $count . '</th>
-                                            <td>' . $player[0] . '</td>
+                                            <td>' . User::showName($player[0]) . '</td>
                                             <td>' . $player[1] . '(' . $player[1]/$_SESSION['parcour']['animalCount'] . ')</td>
                                             </tr>';
 
